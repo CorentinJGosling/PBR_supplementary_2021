@@ -1,0 +1,2805 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>7 Primary Meta-analysis | Psychonomics Bulletin and Review - Supplementary Materials - R Code &amp; Results</title>
+  <meta name="description" content="This books is designed to share the code underlying the main analyses and to present supplemental results of Tremolire &amp; Gosling (2021)" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="7 Primary Meta-analysis | Psychonomics Bulletin and Review - Supplementary Materials - R Code &amp; Results" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This books is designed to share the code underlying the main analyses and to present supplemental results of Tremolire &amp; Gosling (2021)" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="7 Primary Meta-analysis | Psychonomics Bulletin and Review - Supplementary Materials - R Code &amp; Results" />
+  
+  <meta name="twitter:description" content="This books is designed to share the code underlying the main analyses and to present supplemental results of Tremolire &amp; Gosling (2021)" />
+  
+
+<meta name="author" content="Trémolière B &amp; Gosling CJ" />
+
+
+<meta name="date" content="2021-02-19" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="study-6.html"/>
+<link rel="next" href="sensitivity-analyses.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">PBR : Supplementary results</a></li>
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="1" data-path="study-1.html"><a href="study-1.html"><i class="fa fa-check"></i><b>1</b> Study 1</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="study-1.html"><a href="study-1.html#data-analysis"><i class="fa fa-check"></i><b>1.1</b> Data analysis</a></li>
+<li class="chapter" data-level="1.2" data-path="study-1.html"><a href="study-1.html#summary-of-study-1-results"><i class="fa fa-check"></i><b>1.2</b> Summary of Study 1 results</a></li>
+<li class="chapter" data-level="1.3" data-path="study-1.html"><a href="study-1.html#plot-study-1-results"><i class="fa fa-check"></i><b>1.3</b> Plot Study 1 results</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="study-2.html"><a href="study-2.html"><i class="fa fa-check"></i><b>2</b> Study 2</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="study-1.html"><a href="study-1.html#data-analysis"><i class="fa fa-check"></i><b>2.1</b> Data analysis</a></li>
+<li class="chapter" data-level="2.2" data-path="study-2.html"><a href="study-2.html#summary-of-study-2-results"><i class="fa fa-check"></i><b>2.2</b> Summary of Study 2 results</a></li>
+<li class="chapter" data-level="2.3" data-path="study-2.html"><a href="study-2.html#plot-study-2-results"><i class="fa fa-check"></i><b>2.3</b> Plot Study 2 Results</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="study-3.html"><a href="study-3.html"><i class="fa fa-check"></i><b>3</b> Study 3</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="study-1.html"><a href="study-1.html#data-analysis"><i class="fa fa-check"></i><b>3.1</b> Data analysis</a></li>
+<li class="chapter" data-level="3.2" data-path="study-3.html"><a href="study-3.html#summary-of-study-3-results"><i class="fa fa-check"></i><b>3.2</b> Summary of Study 3 results</a></li>
+<li class="chapter" data-level="3.3" data-path="study-3.html"><a href="study-3.html#plot-study-3-results"><i class="fa fa-check"></i><b>3.3</b> Plot Study 3 results</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="study-4.html"><a href="study-4.html"><i class="fa fa-check"></i><b>4</b> Study 4</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="study-1.html"><a href="study-1.html#data-analysis"><i class="fa fa-check"></i><b>4.1</b> Data analysis</a></li>
+<li class="chapter" data-level="4.2" data-path="study-4.html"><a href="study-4.html#summary-of-study-4-results"><i class="fa fa-check"></i><b>4.2</b> Summary of Study 4 results</a></li>
+<li class="chapter" data-level="4.3" data-path="study-4.html"><a href="study-4.html#plots-of-study-4-results"><i class="fa fa-check"></i><b>4.3</b> Plots of Study 4 results</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="study-5.html"><a href="study-5.html"><i class="fa fa-check"></i><b>5</b> Study 5</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="study-1.html"><a href="study-1.html#data-analysis"><i class="fa fa-check"></i><b>5.1</b> Data analysis</a></li>
+<li class="chapter" data-level="5.2" data-path="study-5.html"><a href="study-5.html#summary-of-study-5-results"><i class="fa fa-check"></i><b>5.2</b> Summary of Study 5 results</a></li>
+<li class="chapter" data-level="5.3" data-path="study-5.html"><a href="study-5.html#plots-of-study-5-results"><i class="fa fa-check"></i><b>5.3</b> Plots of Study 5 results</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="study-6.html"><a href="study-6.html"><i class="fa fa-check"></i><b>6</b> Study 6</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="study-1.html"><a href="study-1.html#data-analysis"><i class="fa fa-check"></i><b>6.1</b> Data analysis</a></li>
+<li class="chapter" data-level="6.2" data-path="study-6.html"><a href="study-6.html#summary-of-study-6-results"><i class="fa fa-check"></i><b>6.2</b> Summary of Study 6 results</a></li>
+<li class="chapter" data-level="6.3" data-path="study-6.html"><a href="study-6.html#plots-of-study-6-results"><i class="fa fa-check"></i><b>6.3</b> Plots of Study 6 results</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="primary-meta-analysis.html"><a href="primary-meta-analysis.html"><i class="fa fa-check"></i><b>7</b> Primary Meta-analysis</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="primary-meta-analysis.html"><a href="primary-meta-analysis.html#functions-performing-data-analysis-and-facilitating-data-reporting"><i class="fa fa-check"></i><b>7.1</b> Functions performing data analysis and facilitating data reporting**</a></li>
+<li class="chapter" data-level="7.2" data-path="primary-meta-analysis.html"><a href="primary-meta-analysis.html#primary-analysis"><i class="fa fa-check"></i><b>7.2</b> Primary Analysis</a></li>
+<li class="chapter" data-level="7.3" data-path="primary-meta-analysis.html"><a href="primary-meta-analysis.html#summary-of-the-results-of-the-primary-meta-analysis-and-of-the-individual-studies"><i class="fa fa-check"></i><b>7.3</b> Summary of the results of the primary meta-analysis and of the individual studies</a></li>
+<li class="chapter" data-level="7.4" data-path="primary-meta-analysis.html"><a href="primary-meta-analysis.html#heterogeneity"><i class="fa fa-check"></i><b>7.4</b> Heterogeneity</a></li>
+<li class="chapter" data-level="7.5" data-path="primary-meta-analysis.html"><a href="primary-meta-analysis.html#plot-of-the-primary-meta-analysis-results"><i class="fa fa-check"></i><b>7.5</b> Plot of the primary meta-analysis results</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="sensitivity-analyses.html"><a href="sensitivity-analyses.html"><i class="fa fa-check"></i><b>8</b> Sensitivity analyses</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="sensitivity-analyses.html"><a href="sensitivity-analyses.html#sensitivity-analysis-1-refitting-primary-model-but-with-a-cs-structure"><i class="fa fa-check"></i><b>8.1</b> Sensitivity analysis 1 : Refitting primary model but with a CS structure</a></li>
+<li class="chapter" data-level="8.2" data-path="sensitivity-analyses.html"><a href="sensitivity-analyses.html#sensitivity-analysis-2-by-fitting-separate-models-but-with-an-unstructed-variance-structure"><i class="fa fa-check"></i><b>8.2</b> Sensitivity Analysis 2 : By fitting separate models but with an unstructed variance structure</a></li>
+<li class="chapter" data-level="8.3" data-path="sensitivity-analyses.html"><a href="sensitivity-analyses.html#sensitivity-analysis-3-one-stage-meta-analysis"><i class="fa fa-check"></i><b>8.3</b> Sensitivity analysis 3 : One-stage meta-analysis</a></li>
+<li class="chapter" data-level="8.4" data-path="sensitivity-analyses.html"><a href="sensitivity-analyses.html#sensitivity-analyses-4-and-5-excluding-outliers"><i class="fa fa-check"></i><b>8.4</b> Sensitivity analyses 4 and 5 : Excluding outliers</a></li>
+<li class="chapter" data-level="8.5" data-path="sensitivity-analyses.html"><a href="sensitivity-analyses.html#sensitivity-analysis-6-short-durations"><i class="fa fa-check"></i><b>8.5</b> Sensitivity analysis 6 : Short durations</a></li>
+<li class="chapter" data-level="8.6" data-path="sensitivity-analyses.html"><a href="sensitivity-analyses.html#sensitivity-analysis-7-all-participants"><i class="fa fa-check"></i><b>8.6</b> Sensitivity analysis 7 : all participants</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="summary-results.html"><a href="summary-results.html"><i class="fa fa-check"></i><b>9</b> Summary results</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="summary-results.html"><a href="summary-results.html#quality-of-acute-sleep"><i class="fa fa-check"></i><b>9.1</b> Quality of Acute Sleep</a></li>
+<li class="chapter" data-level="9.2" data-path="summary-results.html"><a href="summary-results.html#quality-of-chronic-sleep"><i class="fa fa-check"></i><b>9.2</b> Quality of Chronic Sleep</a></li>
+<li class="chapter" data-level="9.3" data-path="summary-results.html"><a href="summary-results.html#quantity-of-acute-sleep"><i class="fa fa-check"></i><b>9.3</b> Quantity of Acute Sleep</a></li>
+<li class="chapter" data-level="9.4" data-path="summary-results.html"><a href="summary-results.html#quantity-of-chronic-sleep"><i class="fa fa-check"></i><b>9.4</b> Quantity of Chronic Sleep</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="post-hoc-exploratory-analyses.html"><a href="post-hoc-exploratory-analyses.html"><i class="fa fa-check"></i><b>10</b> Post hoc exploratory analyses</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Psychonomics Bulletin and Review - Supplementary Materials - R Code &amp; Results</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="primary-meta-analysis" class="section level1" number="7">
+<h1><span class="header-section-number">7</span> Primary Meta-analysis</h1>
+<div id="functions-performing-data-analysis-and-facilitating-data-reporting" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> Functions performing data analysis and facilitating data reporting**</h2>
+<p><strong>Function performing correlations (depending on the study) </strong></p>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="primary-meta-analysis.html#cb116-1" aria-hidden="true" tabindex="-1"></a>CorS1<span class="ot">&lt;-</span><span class="cf">function</span>(x){</span>
+<span id="cb116-2"><a href="primary-meta-analysis.html#cb116-2" aria-hidden="true" tabindex="-1"></a>     <span class="fu">cor</span>(dplyr<span class="sc">::</span><span class="fu">select</span>(x,</span>
+<span id="cb116-3"><a href="primary-meta-analysis.html#cb116-3" aria-hidden="true" tabindex="-1"></a>             Moral_DIL,</span>
+<span id="cb116-4"><a href="primary-meta-analysis.html#cb116-4" aria-hidden="true" tabindex="-1"></a>             SleepQualAcu,</span>
+<span id="cb116-5"><a href="primary-meta-analysis.html#cb116-5" aria-hidden="true" tabindex="-1"></a>             SleepQualCro,</span>
+<span id="cb116-6"><a href="primary-meta-analysis.html#cb116-6" aria-hidden="true" tabindex="-1"></a>             SleepQuantAcu,</span>
+<span id="cb116-7"><a href="primary-meta-analysis.html#cb116-7" aria-hidden="true" tabindex="-1"></a>             SleepQuantCro))}</span>
+<span id="cb116-8"><a href="primary-meta-analysis.html#cb116-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-9"><a href="primary-meta-analysis.html#cb116-9" aria-hidden="true" tabindex="-1"></a>CorS2S3<span class="ot">&lt;-</span><span class="cf">function</span>(x){</span>
+<span id="cb116-10"><a href="primary-meta-analysis.html#cb116-10" aria-hidden="true" tabindex="-1"></a>     <span class="fu">cor</span>(dplyr<span class="sc">::</span><span class="fu">select</span>(x,</span>
+<span id="cb116-11"><a href="primary-meta-analysis.html#cb116-11" aria-hidden="true" tabindex="-1"></a>             Moral_SCA,</span>
+<span id="cb116-12"><a href="primary-meta-analysis.html#cb116-12" aria-hidden="true" tabindex="-1"></a>             SleepQualAcu,</span>
+<span id="cb116-13"><a href="primary-meta-analysis.html#cb116-13" aria-hidden="true" tabindex="-1"></a>             SleepQualCro,</span>
+<span id="cb116-14"><a href="primary-meta-analysis.html#cb116-14" aria-hidden="true" tabindex="-1"></a>             SleepQuantAcu,</span>
+<span id="cb116-15"><a href="primary-meta-analysis.html#cb116-15" aria-hidden="true" tabindex="-1"></a>             SleepQuantCro))}</span>
+<span id="cb116-16"><a href="primary-meta-analysis.html#cb116-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-17"><a href="primary-meta-analysis.html#cb116-17" aria-hidden="true" tabindex="-1"></a>CorS4<span class="ot">&lt;-</span><span class="cf">function</span>(x){</span>
+<span id="cb116-18"><a href="primary-meta-analysis.html#cb116-18" aria-hidden="true" tabindex="-1"></a>     <span class="fu">cor</span>(dplyr<span class="sc">::</span><span class="fu">select</span>(x,</span>
+<span id="cb116-19"><a href="primary-meta-analysis.html#cb116-19" aria-hidden="true" tabindex="-1"></a>             Moral_DIL,</span>
+<span id="cb116-20"><a href="primary-meta-analysis.html#cb116-20" aria-hidden="true" tabindex="-1"></a>             Moral_SCA,</span>
+<span id="cb116-21"><a href="primary-meta-analysis.html#cb116-21" aria-hidden="true" tabindex="-1"></a>             Moral_CAR,</span>
+<span id="cb116-22"><a href="primary-meta-analysis.html#cb116-22" aria-hidden="true" tabindex="-1"></a>             SleepQualAcu,</span>
+<span id="cb116-23"><a href="primary-meta-analysis.html#cb116-23" aria-hidden="true" tabindex="-1"></a>             SleepQualCro,</span>
+<span id="cb116-24"><a href="primary-meta-analysis.html#cb116-24" aria-hidden="true" tabindex="-1"></a>             SleepQuantAcu,</span>
+<span id="cb116-25"><a href="primary-meta-analysis.html#cb116-25" aria-hidden="true" tabindex="-1"></a>             SleepQuantCro))}</span>
+<span id="cb116-26"><a href="primary-meta-analysis.html#cb116-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-27"><a href="primary-meta-analysis.html#cb116-27" aria-hidden="true" tabindex="-1"></a>CorS5S6<span class="ot">&lt;-</span><span class="cf">function</span>(x){</span>
+<span id="cb116-28"><a href="primary-meta-analysis.html#cb116-28" aria-hidden="true" tabindex="-1"></a>     <span class="fu">cor</span>(dplyr<span class="sc">::</span><span class="fu">select</span>(x,</span>
+<span id="cb116-29"><a href="primary-meta-analysis.html#cb116-29" aria-hidden="true" tabindex="-1"></a>           Moral_DIL,</span>
+<span id="cb116-30"><a href="primary-meta-analysis.html#cb116-30" aria-hidden="true" tabindex="-1"></a>           Moral_SCA,</span>
+<span id="cb116-31"><a href="primary-meta-analysis.html#cb116-31" aria-hidden="true" tabindex="-1"></a>           SleepQualAcu,</span>
+<span id="cb116-32"><a href="primary-meta-analysis.html#cb116-32" aria-hidden="true" tabindex="-1"></a>           SleepQualCro,</span>
+<span id="cb116-33"><a href="primary-meta-analysis.html#cb116-33" aria-hidden="true" tabindex="-1"></a>           SleepQuantAcu,</span>
+<span id="cb116-34"><a href="primary-meta-analysis.html#cb116-34" aria-hidden="true" tabindex="-1"></a>           SleepQuantCro))}</span>
+<span id="cb116-35"><a href="primary-meta-analysis.html#cb116-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-36"><a href="primary-meta-analysis.html#cb116-36" aria-hidden="true" tabindex="-1"></a>CorFUNCTION <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb116-37"><a href="primary-meta-analysis.html#cb116-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ifelse</span>(<span class="fu">unique</span>(x<span class="sc">$</span>Study)<span class="sc">==</span><span class="dv">1</span>,</span>
+<span id="cb116-38"><a href="primary-meta-analysis.html#cb116-38" aria-hidden="true" tabindex="-1"></a>    COR <span class="ot">&lt;-</span> <span class="fu">CorS1</span>(x),</span>
+<span id="cb116-39"><a href="primary-meta-analysis.html#cb116-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ifelse</span>(<span class="fu">unique</span>(x<span class="sc">$</span>Study) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>),</span>
+<span id="cb116-40"><a href="primary-meta-analysis.html#cb116-40" aria-hidden="true" tabindex="-1"></a>       COR<span class="ot">&lt;-</span> <span class="fu">CorS2S3</span>(x),</span>
+<span id="cb116-41"><a href="primary-meta-analysis.html#cb116-41" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ifelse</span>(<span class="fu">unique</span>(x<span class="sc">$</span>Study)<span class="sc">==</span><span class="dv">4</span>,</span>
+<span id="cb116-42"><a href="primary-meta-analysis.html#cb116-42" aria-hidden="true" tabindex="-1"></a>          COR<span class="ot">&lt;-</span> <span class="fu">CorS4</span>(x),</span>
+<span id="cb116-43"><a href="primary-meta-analysis.html#cb116-43" aria-hidden="true" tabindex="-1"></a>            <span class="fu">ifelse</span>(<span class="fu">unique</span>(x<span class="sc">$</span>Study) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">6</span>),</span>
+<span id="cb116-44"><a href="primary-meta-analysis.html#cb116-44" aria-hidden="true" tabindex="-1"></a>              COR<span class="ot">&lt;-</span> <span class="fu">CorS5S6</span>(x),</span>
+<span id="cb116-45"><a href="primary-meta-analysis.html#cb116-45" aria-hidden="true" tabindex="-1"></a>      <span class="cn">NA</span>))))</span>
+<span id="cb116-46"><a href="primary-meta-analysis.html#cb116-46" aria-hidden="true" tabindex="-1"></a>   COR}</span></code></pre></div>
+<p><strong>Function computing variance/covariance matrix based on the equation approach (Steiger, 1980). All the credit for this function should be given to Pr Wolfgang Viechtbauer.</strong></p>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="primary-meta-analysis.html#cb117-1" aria-hidden="true" tabindex="-1"></a>rmat <span class="ot">&lt;-</span> <span class="cf">function</span>(x, n, <span class="at">upper=</span><span class="cn">TRUE</span>, <span class="at">simplify=</span><span class="cn">TRUE</span>, <span class="at">rtoz=</span><span class="cn">FALSE</span>, data) {</span>
+<span id="cb117-2"><a href="primary-meta-analysis.html#cb117-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-3"><a href="primary-meta-analysis.html#cb117-3" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span> (<span class="fu">inherits</span>(x, <span class="st">&quot;formula&quot;</span>)) {</span>
+<span id="cb117-4"><a href="primary-meta-analysis.html#cb117-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-5"><a href="primary-meta-analysis.html#cb117-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">options</span>(<span class="at">na.action =</span> <span class="st">&quot;na.pass&quot;</span>)</span>
+<span id="cb117-6"><a href="primary-meta-analysis.html#cb117-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-7"><a href="primary-meta-analysis.html#cb117-7" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (<span class="fu">missing</span>(data))</span>
+<span id="cb117-8"><a href="primary-meta-analysis.html#cb117-8" aria-hidden="true" tabindex="-1"></a>         <span class="fu">stop</span>(<span class="st">&quot;Must specify &#39;data&#39; argument when &#39;x&#39; is a formula.&quot;</span>)</span>
+<span id="cb117-9"><a href="primary-meta-analysis.html#cb117-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-10"><a href="primary-meta-analysis.html#cb117-10" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.data.frame</span>(data))</span>
+<span id="cb117-11"><a href="primary-meta-analysis.html#cb117-11" aria-hidden="true" tabindex="-1"></a>         data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(data)</span>
+<span id="cb117-12"><a href="primary-meta-analysis.html#cb117-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-13"><a href="primary-meta-analysis.html#cb117-13" aria-hidden="true" tabindex="-1"></a>      dat <span class="ot">&lt;-</span> <span class="fu">get_all_vars</span>(x, <span class="at">data=</span>data)</span>
+<span id="cb117-14"><a href="primary-meta-analysis.html#cb117-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-15"><a href="primary-meta-analysis.html#cb117-15" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (<span class="fu">ncol</span>(dat) <span class="sc">!=</span> <span class="dv">4</span>)</span>
+<span id="cb117-16"><a href="primary-meta-analysis.html#cb117-16" aria-hidden="true" tabindex="-1"></a>         <span class="fu">stop</span>(<span class="st">&quot;Incorrect number of variables specified in formula.&quot;</span>)</span>
+<span id="cb117-17"><a href="primary-meta-analysis.html#cb117-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-18"><a href="primary-meta-analysis.html#cb117-18" aria-hidden="true" tabindex="-1"></a>      id <span class="ot">&lt;-</span> dat[,<span class="dv">4</span>]</span>
+<span id="cb117-19"><a href="primary-meta-analysis.html#cb117-19" aria-hidden="true" tabindex="-1"></a>      dat <span class="ot">&lt;-</span> <span class="fu">split</span>(dat, id)</span>
+<span id="cb117-20"><a href="primary-meta-analysis.html#cb117-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-21"><a href="primary-meta-analysis.html#cb117-21" aria-hidden="true" tabindex="-1"></a>      res <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb117-22"><a href="primary-meta-analysis.html#cb117-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-23"><a href="primary-meta-analysis.html#cb117-23" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(dat)) {</span>
+<span id="cb117-24"><a href="primary-meta-analysis.html#cb117-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-25"><a href="primary-meta-analysis.html#cb117-25" aria-hidden="true" tabindex="-1"></a>         ri <span class="ot">&lt;-</span> dat[[i]][[<span class="dv">1</span>]]</span>
+<span id="cb117-26"><a href="primary-meta-analysis.html#cb117-26" aria-hidden="true" tabindex="-1"></a>         var1 <span class="ot">&lt;-</span> <span class="fu">as.character</span>(dat[[i]][[<span class="dv">2</span>]])</span>
+<span id="cb117-27"><a href="primary-meta-analysis.html#cb117-27" aria-hidden="true" tabindex="-1"></a>         var2 <span class="ot">&lt;-</span> <span class="fu">as.character</span>(dat[[i]][[<span class="dv">3</span>]])</span>
+<span id="cb117-28"><a href="primary-meta-analysis.html#cb117-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-29"><a href="primary-meta-analysis.html#cb117-29" aria-hidden="true" tabindex="-1"></a>         vars <span class="ot">&lt;-</span> <span class="fu">sort</span>(<span class="fu">unique</span>(<span class="fu">c</span>(var1, var2)))</span>
+<span id="cb117-30"><a href="primary-meta-analysis.html#cb117-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-31"><a href="primary-meta-analysis.html#cb117-31" aria-hidden="true" tabindex="-1"></a>         R <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="cn">NA</span>, <span class="at">nrow=</span><span class="fu">length</span>(vars), <span class="at">ncol=</span><span class="fu">length</span>(vars))</span>
+<span id="cb117-32"><a href="primary-meta-analysis.html#cb117-32" aria-hidden="true" tabindex="-1"></a>         <span class="fu">diag</span>(R) <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb117-33"><a href="primary-meta-analysis.html#cb117-33" aria-hidden="true" tabindex="-1"></a>         <span class="fu">rownames</span>(R) <span class="ot">&lt;-</span> <span class="fu">colnames</span>(R) <span class="ot">&lt;-</span> vars</span>
+<span id="cb117-34"><a href="primary-meta-analysis.html#cb117-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-35"><a href="primary-meta-analysis.html#cb117-35" aria-hidden="true" tabindex="-1"></a>         <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(var1)) {</span>
+<span id="cb117-36"><a href="primary-meta-analysis.html#cb117-36" aria-hidden="true" tabindex="-1"></a>            R[var1[j],var2[j]] <span class="ot">&lt;-</span> R[var2[j],var1[j]] <span class="ot">&lt;-</span> ri[j]</span>
+<span id="cb117-37"><a href="primary-meta-analysis.html#cb117-37" aria-hidden="true" tabindex="-1"></a>         }</span>
+<span id="cb117-38"><a href="primary-meta-analysis.html#cb117-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-39"><a href="primary-meta-analysis.html#cb117-39" aria-hidden="true" tabindex="-1"></a>         res[[i]] <span class="ot">&lt;-</span> R</span>
+<span id="cb117-40"><a href="primary-meta-analysis.html#cb117-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-41"><a href="primary-meta-analysis.html#cb117-41" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb117-42"><a href="primary-meta-analysis.html#cb117-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-43"><a href="primary-meta-analysis.html#cb117-43" aria-hidden="true" tabindex="-1"></a>      <span class="fu">return</span>(<span class="fu">rmat</span>(res, <span class="at">n=</span>n, <span class="at">simplify=</span><span class="cn">TRUE</span>, <span class="at">rtoz=</span>rtoz))</span>
+<span id="cb117-44"><a href="primary-meta-analysis.html#cb117-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-45"><a href="primary-meta-analysis.html#cb117-45" aria-hidden="true" tabindex="-1"></a>   }</span>
+<span id="cb117-46"><a href="primary-meta-analysis.html#cb117-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-47"><a href="primary-meta-analysis.html#cb117-47" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span> (<span class="fu">is.list</span>(x)) {</span>
+<span id="cb117-48"><a href="primary-meta-analysis.html#cb117-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-49"><a href="primary-meta-analysis.html#cb117-49" aria-hidden="true" tabindex="-1"></a>      k <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb117-50"><a href="primary-meta-analysis.html#cb117-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-51"><a href="primary-meta-analysis.html#cb117-51" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (<span class="fu">length</span>(x) <span class="sc">!=</span> <span class="fu">length</span>(n))</span>
+<span id="cb117-52"><a href="primary-meta-analysis.html#cb117-52" aria-hidden="true" tabindex="-1"></a>         <span class="fu">stop</span>(<span class="st">&quot;Argument &#39;n&#39; must be of the same length as there are elements in &#39;x&#39;.&quot;</span>)</span>
+<span id="cb117-53"><a href="primary-meta-analysis.html#cb117-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-54"><a href="primary-meta-analysis.html#cb117-54" aria-hidden="true" tabindex="-1"></a>      res <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb117-55"><a href="primary-meta-analysis.html#cb117-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-56"><a href="primary-meta-analysis.html#cb117-56" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>k) {</span>
+<span id="cb117-57"><a href="primary-meta-analysis.html#cb117-57" aria-hidden="true" tabindex="-1"></a>         res[[i]] <span class="ot">&lt;-</span> <span class="fu">rmat</span>(x[[i]], n[i], <span class="at">upper=</span>upper, <span class="at">rtoz=</span>rtoz)</span>
+<span id="cb117-58"><a href="primary-meta-analysis.html#cb117-58" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb117-59"><a href="primary-meta-analysis.html#cb117-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-60"><a href="primary-meta-analysis.html#cb117-60" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (simplify) {</span>
+<span id="cb117-61"><a href="primary-meta-analysis.html#cb117-61" aria-hidden="true" tabindex="-1"></a>         ki <span class="ot">&lt;-</span> <span class="fu">sapply</span>(res, <span class="cf">function</span>(x) <span class="fu">ifelse</span>(<span class="fu">is.null</span>(x<span class="sc">$</span>dat), <span class="dv">0</span>, <span class="fu">nrow</span>(x<span class="sc">$</span>dat)))</span>
+<span id="cb117-62"><a href="primary-meta-analysis.html#cb117-62" aria-hidden="true" tabindex="-1"></a>         dat <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="at">id=</span><span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span>k, <span class="at">times=</span>ki), <span class="fu">do.call</span>(rbind, <span class="fu">lapply</span>(res, <span class="st">&quot;[[&quot;</span>, <span class="st">&quot;dat&quot;</span>)))</span>
+<span id="cb117-63"><a href="primary-meta-analysis.html#cb117-63" aria-hidden="true" tabindex="-1"></a>         V <span class="ot">&lt;-</span> <span class="fu">bldiag</span>(<span class="fu">lapply</span>(res[ki <span class="sc">&gt;</span> <span class="dv">0</span>], <span class="st">&quot;[[&quot;</span>, <span class="st">&quot;V&quot;</span>))</span>
+<span id="cb117-64"><a href="primary-meta-analysis.html#cb117-64" aria-hidden="true" tabindex="-1"></a>         <span class="fu">rownames</span>(V) <span class="ot">&lt;-</span> <span class="fu">colnames</span>(V) <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">lapply</span>(res, <span class="cf">function</span>(x) <span class="fu">rownames</span>(x<span class="sc">$</span>V)))</span>
+<span id="cb117-65"><a href="primary-meta-analysis.html#cb117-65" aria-hidden="true" tabindex="-1"></a>         <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">dat=</span>dat, <span class="at">V=</span>V))</span>
+<span id="cb117-66"><a href="primary-meta-analysis.html#cb117-66" aria-hidden="true" tabindex="-1"></a>      } <span class="cf">else</span> {</span>
+<span id="cb117-67"><a href="primary-meta-analysis.html#cb117-67" aria-hidden="true" tabindex="-1"></a>         <span class="fu">return</span>(res)</span>
+<span id="cb117-68"><a href="primary-meta-analysis.html#cb117-68" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb117-69"><a href="primary-meta-analysis.html#cb117-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-70"><a href="primary-meta-analysis.html#cb117-70" aria-hidden="true" tabindex="-1"></a>   }</span>
+<span id="cb117-71"><a href="primary-meta-analysis.html#cb117-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-72"><a href="primary-meta-analysis.html#cb117-72" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.matrix</span>(x))</span>
+<span id="cb117-73"><a href="primary-meta-analysis.html#cb117-73" aria-hidden="true" tabindex="-1"></a>      <span class="fu">stop</span>(<span class="st">&quot;Argument &#39;x&#39; must be a matrix (or list thereof).&quot;</span>)</span>
+<span id="cb117-74"><a href="primary-meta-analysis.html#cb117-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-75"><a href="primary-meta-analysis.html#cb117-75" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span> (<span class="fu">dim</span>(x)[<span class="dv">1</span>] <span class="sc">!=</span> <span class="fu">dim</span>(x)[<span class="dv">2</span>])</span>
+<span id="cb117-76"><a href="primary-meta-analysis.html#cb117-76" aria-hidden="true" tabindex="-1"></a>      <span class="fu">stop</span>(<span class="st">&quot;Argument &#39;x&#39; must be a square matrix (or list thereof).&quot;</span>)</span>
+<span id="cb117-77"><a href="primary-meta-analysis.html#cb117-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-78"><a href="primary-meta-analysis.html#cb117-78" aria-hidden="true" tabindex="-1"></a>   dimsx <span class="ot">&lt;-</span> <span class="fu">nrow</span>(x)</span>
+<span id="cb117-79"><a href="primary-meta-analysis.html#cb117-79" aria-hidden="true" tabindex="-1"></a>   dnames <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;x&quot;</span>, <span class="dv">1</span><span class="sc">:</span>dimsx)</span>
+<span id="cb117-80"><a href="primary-meta-analysis.html#cb117-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-81"><a href="primary-meta-analysis.html#cb117-81" aria-hidden="true" tabindex="-1"></a>   <span class="do">### in case x has dimension names, use those</span></span>
+<span id="cb117-82"><a href="primary-meta-analysis.html#cb117-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-83"><a href="primary-meta-analysis.html#cb117-83" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(<span class="fu">rownames</span>(x)))</span>
+<span id="cb117-84"><a href="primary-meta-analysis.html#cb117-84" aria-hidden="true" tabindex="-1"></a>      dnames <span class="ot">&lt;-</span> <span class="fu">rownames</span>(x)</span>
+<span id="cb117-85"><a href="primary-meta-analysis.html#cb117-85" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(<span class="fu">colnames</span>(x)))</span>
+<span id="cb117-86"><a href="primary-meta-analysis.html#cb117-86" aria-hidden="true" tabindex="-1"></a>      dnames <span class="ot">&lt;-</span> <span class="fu">colnames</span>(x)</span>
+<span id="cb117-87"><a href="primary-meta-analysis.html#cb117-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-88"><a href="primary-meta-analysis.html#cb117-88" aria-hidden="true" tabindex="-1"></a>   <span class="do">### in case x is a 1x1 (or 0x0) matrix, return nothing</span></span>
+<span id="cb117-89"><a href="primary-meta-analysis.html#cb117-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-90"><a href="primary-meta-analysis.html#cb117-90" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span> (dimsx <span class="sc">&lt;=</span> 1L)</span>
+<span id="cb117-91"><a href="primary-meta-analysis.html#cb117-91" aria-hidden="true" tabindex="-1"></a>      <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">dat=</span><span class="cn">NULL</span>, <span class="at">V=</span><span class="cn">NULL</span>))</span>
+<span id="cb117-92"><a href="primary-meta-analysis.html#cb117-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-93"><a href="primary-meta-analysis.html#cb117-93" aria-hidden="true" tabindex="-1"></a>   <span class="do">### make x symmetric, depending on whether we use upper or lower part</span></span>
+<span id="cb117-94"><a href="primary-meta-analysis.html#cb117-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-95"><a href="primary-meta-analysis.html#cb117-95" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span> (upper) {</span>
+<span id="cb117-96"><a href="primary-meta-analysis.html#cb117-96" aria-hidden="true" tabindex="-1"></a>      x[<span class="fu">lower.tri</span>(x)] <span class="ot">&lt;-</span> <span class="fu">t</span>(x)[<span class="fu">lower.tri</span>(x)]</span>
+<span id="cb117-97"><a href="primary-meta-analysis.html#cb117-97" aria-hidden="true" tabindex="-1"></a>   } <span class="cf">else</span> {</span>
+<span id="cb117-98"><a href="primary-meta-analysis.html#cb117-98" aria-hidden="true" tabindex="-1"></a>      x[<span class="fu">upper.tri</span>(x)] <span class="ot">&lt;-</span> <span class="fu">t</span>(x)[<span class="fu">upper.tri</span>(x)]</span>
+<span id="cb117-99"><a href="primary-meta-analysis.html#cb117-99" aria-hidden="true" tabindex="-1"></a>   }</span>
+<span id="cb117-100"><a href="primary-meta-analysis.html#cb117-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-101"><a href="primary-meta-analysis.html#cb117-101" aria-hidden="true" tabindex="-1"></a>   <span class="do">### check if x is symmetric (can be skipped since x must now be symmetric)</span></span>
+<span id="cb117-102"><a href="primary-meta-analysis.html#cb117-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-103"><a href="primary-meta-analysis.html#cb117-103" aria-hidden="true" tabindex="-1"></a>   <span class="co">#if (!isSymmetric(x))</span></span>
+<span id="cb117-104"><a href="primary-meta-analysis.html#cb117-104" aria-hidden="true" tabindex="-1"></a>   <span class="co">#   stop(&quot;x must be a symmetric matrix.&quot;)</span></span>
+<span id="cb117-105"><a href="primary-meta-analysis.html#cb117-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-106"><a href="primary-meta-analysis.html#cb117-106" aria-hidden="true" tabindex="-1"></a>   <span class="do">### stack upper/lower triangular part of x into a column vector (this is always done column-wise!)</span></span>
+<span id="cb117-107"><a href="primary-meta-analysis.html#cb117-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-108"><a href="primary-meta-analysis.html#cb117-108" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span> (upper) {</span>
+<span id="cb117-109"><a href="primary-meta-analysis.html#cb117-109" aria-hidden="true" tabindex="-1"></a>      ri <span class="ot">&lt;-</span> <span class="fu">cbind</span>(x[<span class="fu">upper.tri</span>(x)])</span>
+<span id="cb117-110"><a href="primary-meta-analysis.html#cb117-110" aria-hidden="true" tabindex="-1"></a>   } <span class="cf">else</span> {</span>
+<span id="cb117-111"><a href="primary-meta-analysis.html#cb117-111" aria-hidden="true" tabindex="-1"></a>      ri <span class="ot">&lt;-</span> <span class="fu">cbind</span>(x[<span class="fu">lower.tri</span>(x)])</span>
+<span id="cb117-112"><a href="primary-meta-analysis.html#cb117-112" aria-hidden="true" tabindex="-1"></a>   }</span>
+<span id="cb117-113"><a href="primary-meta-analysis.html#cb117-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-114"><a href="primary-meta-analysis.html#cb117-114" aria-hidden="true" tabindex="-1"></a>   <span class="do">### apply r-to-z transformation if requested</span></span>
+<span id="cb117-115"><a href="primary-meta-analysis.html#cb117-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-116"><a href="primary-meta-analysis.html#cb117-116" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span> (rtoz)</span>
+<span id="cb117-117"><a href="primary-meta-analysis.html#cb117-117" aria-hidden="true" tabindex="-1"></a>      ri <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span> <span class="sc">*</span> <span class="fu">log</span>((<span class="dv">1</span> <span class="sc">+</span> ri)<span class="sc">/</span>(<span class="dv">1</span> <span class="sc">-</span> ri))</span>
+<span id="cb117-118"><a href="primary-meta-analysis.html#cb117-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-119"><a href="primary-meta-analysis.html#cb117-119" aria-hidden="true" tabindex="-1"></a>   <span class="do">### I and J are matrices with 1:dimsx for rows and columns, respectively</span></span>
+<span id="cb117-120"><a href="primary-meta-analysis.html#cb117-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-121"><a href="primary-meta-analysis.html#cb117-121" aria-hidden="true" tabindex="-1"></a>   I <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span>dimsx, <span class="at">nrow=</span>dimsx, <span class="at">ncol=</span>dimsx)</span>
+<span id="cb117-122"><a href="primary-meta-analysis.html#cb117-122" aria-hidden="true" tabindex="-1"></a>   J <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span>dimsx, <span class="at">nrow=</span>dimsx, <span class="at">ncol=</span>dimsx, <span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
+<span id="cb117-123"><a href="primary-meta-analysis.html#cb117-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-124"><a href="primary-meta-analysis.html#cb117-124" aria-hidden="true" tabindex="-1"></a>   <span class="do">### get upper/lower triangular elements of I and J</span></span>
+<span id="cb117-125"><a href="primary-meta-analysis.html#cb117-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-126"><a href="primary-meta-analysis.html#cb117-126" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span> (upper) {</span>
+<span id="cb117-127"><a href="primary-meta-analysis.html#cb117-127" aria-hidden="true" tabindex="-1"></a>      I <span class="ot">&lt;-</span> I[<span class="fu">upper.tri</span>(I)]</span>
+<span id="cb117-128"><a href="primary-meta-analysis.html#cb117-128" aria-hidden="true" tabindex="-1"></a>      J <span class="ot">&lt;-</span> J[<span class="fu">upper.tri</span>(J)]</span>
+<span id="cb117-129"><a href="primary-meta-analysis.html#cb117-129" aria-hidden="true" tabindex="-1"></a>   } <span class="cf">else</span> {</span>
+<span id="cb117-130"><a href="primary-meta-analysis.html#cb117-130" aria-hidden="true" tabindex="-1"></a>      I <span class="ot">&lt;-</span> I[<span class="fu">lower.tri</span>(I)]</span>
+<span id="cb117-131"><a href="primary-meta-analysis.html#cb117-131" aria-hidden="true" tabindex="-1"></a>      J <span class="ot">&lt;-</span> J[<span class="fu">lower.tri</span>(J)]</span>
+<span id="cb117-132"><a href="primary-meta-analysis.html#cb117-132" aria-hidden="true" tabindex="-1"></a>   }</span>
+<span id="cb117-133"><a href="primary-meta-analysis.html#cb117-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-134"><a href="primary-meta-analysis.html#cb117-134" aria-hidden="true" tabindex="-1"></a>   <span class="do">### dimensions in V (must be dimsx*(dimsx-1)/2)</span></span>
+<span id="cb117-135"><a href="primary-meta-analysis.html#cb117-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-136"><a href="primary-meta-analysis.html#cb117-136" aria-hidden="true" tabindex="-1"></a>   dimsV <span class="ot">&lt;-</span> <span class="fu">length</span>(ri)</span>
+<span id="cb117-137"><a href="primary-meta-analysis.html#cb117-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-138"><a href="primary-meta-analysis.html#cb117-138" aria-hidden="true" tabindex="-1"></a>   <span class="do">### set up V matrix</span></span>
+<span id="cb117-139"><a href="primary-meta-analysis.html#cb117-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-140"><a href="primary-meta-analysis.html#cb117-140" aria-hidden="true" tabindex="-1"></a>   V <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="cn">NA</span>, <span class="at">nrow=</span>dimsV, <span class="at">ncol=</span>dimsV)</span>
+<span id="cb117-141"><a href="primary-meta-analysis.html#cb117-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-142"><a href="primary-meta-analysis.html#cb117-142" aria-hidden="true" tabindex="-1"></a>   <span class="cf">for</span> (ro <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>dimsV) {</span>
+<span id="cb117-143"><a href="primary-meta-analysis.html#cb117-143" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> (co <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>dimsV) {</span>
+<span id="cb117-144"><a href="primary-meta-analysis.html#cb117-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-145"><a href="primary-meta-analysis.html#cb117-145" aria-hidden="true" tabindex="-1"></a>         i <span class="ot">&lt;-</span> I[ro]</span>
+<span id="cb117-146"><a href="primary-meta-analysis.html#cb117-146" aria-hidden="true" tabindex="-1"></a>         j <span class="ot">&lt;-</span> J[ro]</span>
+<span id="cb117-147"><a href="primary-meta-analysis.html#cb117-147" aria-hidden="true" tabindex="-1"></a>         k <span class="ot">&lt;-</span> I[co]</span>
+<span id="cb117-148"><a href="primary-meta-analysis.html#cb117-148" aria-hidden="true" tabindex="-1"></a>         l <span class="ot">&lt;-</span> J[co]</span>
+<span id="cb117-149"><a href="primary-meta-analysis.html#cb117-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-150"><a href="primary-meta-analysis.html#cb117-150" aria-hidden="true" tabindex="-1"></a>         <span class="do">### Olkin &amp; Finn (1995), equation 5, page 157</span></span>
+<span id="cb117-151"><a href="primary-meta-analysis.html#cb117-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-152"><a href="primary-meta-analysis.html#cb117-152" aria-hidden="true" tabindex="-1"></a>         V[ro,co] <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span> <span class="sc">*</span> x[i,j]<span class="sc">*</span>x[k,l] <span class="sc">*</span> (x[i,k]<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> x[i,l]<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> x[j,k]<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> x[j,l]<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb117-153"><a href="primary-meta-analysis.html#cb117-153" aria-hidden="true" tabindex="-1"></a>                     x[i,k]<span class="sc">*</span>x[j,l] <span class="sc">+</span> x[i,l]<span class="sc">*</span>x[j,k] <span class="sc">-</span></span>
+<span id="cb117-154"><a href="primary-meta-analysis.html#cb117-154" aria-hidden="true" tabindex="-1"></a>                     (x[i,j]<span class="sc">*</span>x[i,k]<span class="sc">*</span>x[i,l] <span class="sc">+</span> x[j,i]<span class="sc">*</span>x[j,k]<span class="sc">*</span>x[j,l] <span class="sc">+</span> x[k,i]<span class="sc">*</span>x[k,j]<span class="sc">*</span>x[k,l] <span class="sc">+</span> x[l,i]<span class="sc">*</span>x[l,j]<span class="sc">*</span>x[l,k])</span>
+<span id="cb117-155"><a href="primary-meta-analysis.html#cb117-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-156"><a href="primary-meta-analysis.html#cb117-156" aria-hidden="true" tabindex="-1"></a>         <span class="do">### Steiger (1980), equation 2, page 245 (provides the same result - checked)</span></span>
+<span id="cb117-157"><a href="primary-meta-analysis.html#cb117-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-158"><a href="primary-meta-analysis.html#cb117-158" aria-hidden="true" tabindex="-1"></a>         <span class="co">#V[ro,co] &lt;- 1/2 * ((x[i,k] - x[i,j]*x[j,k]) * (x[j,l] - x[j,k]*x[k,l]) +</span></span>
+<span id="cb117-159"><a href="primary-meta-analysis.html#cb117-159" aria-hidden="true" tabindex="-1"></a>         <span class="co">#                   (x[i,l] - x[i,k]*x[k,l]) * (x[j,k] - x[j,i]*x[i,k]) +</span></span>
+<span id="cb117-160"><a href="primary-meta-analysis.html#cb117-160" aria-hidden="true" tabindex="-1"></a>         <span class="co">#                   (x[i,k] - x[i,l]*x[l,k]) * (x[j,l] - x[j,i]*x[i,l]) +</span></span>
+<span id="cb117-161"><a href="primary-meta-analysis.html#cb117-161" aria-hidden="true" tabindex="-1"></a>         <span class="co">#                   (x[i,l] - x[i,j]*x[j,l]) * (x[j,k] - x[j,l]*x[l,k]))</span></span>
+<span id="cb117-162"><a href="primary-meta-analysis.html#cb117-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-163"><a href="primary-meta-analysis.html#cb117-163" aria-hidden="true" tabindex="-1"></a>         <span class="do">### Steiger (1980), equation 11, page 247 for r-to-z transformed values</span></span>
+<span id="cb117-164"><a href="primary-meta-analysis.html#cb117-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-165"><a href="primary-meta-analysis.html#cb117-165" aria-hidden="true" tabindex="-1"></a>         <span class="cf">if</span> (rtoz)</span>
+<span id="cb117-166"><a href="primary-meta-analysis.html#cb117-166" aria-hidden="true" tabindex="-1"></a>            V[ro,co] <span class="ot">&lt;-</span> V[ro,co] <span class="sc">/</span> ((<span class="dv">1</span> <span class="sc">-</span> x[i,j]<span class="sc">^</span><span class="dv">2</span>) <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> x[k,l]<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb117-167"><a href="primary-meta-analysis.html#cb117-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-168"><a href="primary-meta-analysis.html#cb117-168" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb117-169"><a href="primary-meta-analysis.html#cb117-169" aria-hidden="true" tabindex="-1"></a>   }</span>
+<span id="cb117-170"><a href="primary-meta-analysis.html#cb117-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-171"><a href="primary-meta-analysis.html#cb117-171" aria-hidden="true" tabindex="-1"></a>   <span class="do">### divide V by (n-1) for raw correlations and by (n-3) for r-to-z transformed correlations</span></span>
+<span id="cb117-172"><a href="primary-meta-analysis.html#cb117-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-173"><a href="primary-meta-analysis.html#cb117-173" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span> (rtoz) {</span>
+<span id="cb117-174"><a href="primary-meta-analysis.html#cb117-174" aria-hidden="true" tabindex="-1"></a>      V <span class="ot">&lt;-</span> V<span class="sc">/</span>(n<span class="dv">-3</span>)</span>
+<span id="cb117-175"><a href="primary-meta-analysis.html#cb117-175" aria-hidden="true" tabindex="-1"></a>   } <span class="cf">else</span> {</span>
+<span id="cb117-176"><a href="primary-meta-analysis.html#cb117-176" aria-hidden="true" tabindex="-1"></a>      V <span class="ot">&lt;-</span> V<span class="sc">/</span>(n<span class="dv">-1</span>)</span>
+<span id="cb117-177"><a href="primary-meta-analysis.html#cb117-177" aria-hidden="true" tabindex="-1"></a>   }</span>
+<span id="cb117-178"><a href="primary-meta-analysis.html#cb117-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-179"><a href="primary-meta-analysis.html#cb117-179" aria-hidden="true" tabindex="-1"></a>   <span class="do">### create matrix with var1 and var2 names and sort rowwise</span></span>
+<span id="cb117-180"><a href="primary-meta-analysis.html#cb117-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-181"><a href="primary-meta-analysis.html#cb117-181" aria-hidden="true" tabindex="-1"></a>   dmat <span class="ot">&lt;-</span> <span class="fu">cbind</span>(dnames[I], dnames[J])</span>
+<span id="cb117-182"><a href="primary-meta-analysis.html#cb117-182" aria-hidden="true" tabindex="-1"></a>   dmat <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">apply</span>(dmat, <span class="dv">1</span>, sort))</span>
+<span id="cb117-183"><a href="primary-meta-analysis.html#cb117-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-184"><a href="primary-meta-analysis.html#cb117-184" aria-hidden="true" tabindex="-1"></a>   <span class="do">### set row/column names for V</span></span>
+<span id="cb117-185"><a href="primary-meta-analysis.html#cb117-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-186"><a href="primary-meta-analysis.html#cb117-186" aria-hidden="true" tabindex="-1"></a>   var1var2 <span class="ot">&lt;-</span> <span class="fu">paste0</span>(dmat[,<span class="dv">1</span>], <span class="st">&quot;.&quot;</span>, dmat[,<span class="dv">2</span>])</span>
+<span id="cb117-187"><a href="primary-meta-analysis.html#cb117-187" aria-hidden="true" tabindex="-1"></a>   <span class="fu">rownames</span>(V) <span class="ot">&lt;-</span> <span class="fu">colnames</span>(V) <span class="ot">&lt;-</span> var1var2</span>
+<span id="cb117-188"><a href="primary-meta-analysis.html#cb117-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-189"><a href="primary-meta-analysis.html#cb117-189" aria-hidden="true" tabindex="-1"></a>   <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">dat=</span><span class="fu">data.frame</span>(<span class="at">yi=</span>ri, <span class="at">var1=</span>dmat[,<span class="dv">1</span>], <span class="at">var2=</span>dmat[,<span class="dv">2</span>], <span class="at">var1var2=</span>var1var2, <span class="at">stringsAsFactors=</span><span class="cn">FALSE</span>), <span class="at">V=</span>V))</span>
+<span id="cb117-190"><a href="primary-meta-analysis.html#cb117-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-191"><a href="primary-meta-analysis.html#cb117-191" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><strong>Function computing the correlation and variance/covariance matrix while converting Pearson’s r to Fisher’s Z</strong></p>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="primary-meta-analysis.html#cb118-1" aria-hidden="true" tabindex="-1"></a> RmatFUNCTION<span class="ot">&lt;-</span><span class="cf">function</span>(x,y){ </span>
+<span id="cb118-2"><a href="primary-meta-analysis.html#cb118-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">rmat</span>(x, <span class="at">n=</span>y, <span class="at">rtoz=</span><span class="cn">TRUE</span>)}</span></code></pre></div>
+<p><strong>Function extracting adjusted confidence intervals for correlations</strong></p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="primary-meta-analysis.html#cb119-1" aria-hidden="true" tabindex="-1"></a>CorCIFUNCTION<span class="ot">&lt;-</span><span class="cf">function</span>(x,y){</span>
+<span id="cb119-2"><a href="primary-meta-analysis.html#cb119-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">CorCI</span>(x,y, <span class="at">conf.level =</span> (<span class="dv">1</span><span class="sc">-</span>(<span class="fl">0.05</span><span class="sc">/</span><span class="dv">4</span>)))</span>
+<span id="cb119-3"><a href="primary-meta-analysis.html#cb119-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><strong>Function extracting critical information from meta analyses (performed using metafor)</strong></p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="primary-meta-analysis.html#cb120-1" aria-hidden="true" tabindex="-1"></a>ExtractMetaFUNCTION<span class="ot">&lt;-</span><span class="cf">function</span>(x){</span>
+<span id="cb120-2"><a href="primary-meta-analysis.html#cb120-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cbind</span>(</span>
+<span id="cb120-3"><a href="primary-meta-analysis.html#cb120-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">Raw.r=</span><span class="fu">FisherZInv</span>(<span class="fu">as.numeric</span>(<span class="fu">as.character</span>(x<span class="sc">$</span>b))),</span>
+<span id="cb120-4"><a href="primary-meta-analysis.html#cb120-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">p.val=</span><span class="fu">as.numeric</span>(<span class="fu">as.character</span>(x<span class="sc">$</span>pval)),</span>
+<span id="cb120-5"><a href="primary-meta-analysis.html#cb120-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">Adj.p.val=</span><span class="fu">as.numeric</span>(<span class="fu">as.character</span>(x<span class="sc">$</span>pval))<span class="sc">*</span><span class="dv">4</span>,</span>
+<span id="cb120-6"><a href="primary-meta-analysis.html#cb120-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">Adj.CIlow=</span><span class="fu">FisherZInv</span>(x<span class="sc">$</span>ci.lb),</span>
+<span id="cb120-7"><a href="primary-meta-analysis.html#cb120-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">Adj.CIup=</span><span class="fu">FisherZInv</span>(x<span class="sc">$</span>ci.ub),</span>
+<span id="cb120-8"><a href="primary-meta-analysis.html#cb120-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">TOST1=</span><span class="fu">abs</span>(<span class="fu">FisherZInv</span>(<span class="fu">as.numeric</span>(<span class="fu">as.character</span>(x<span class="sc">$</span>b))<span class="sc">-</span><span class="fu">as.numeric</span>(<span class="fu">as.character</span>(x<span class="sc">$</span>se<span class="sc">*</span><span class="fu">qnorm</span>(<span class="dv">1-2</span><span class="sc">*</span>(<span class="fl">0.05</span><span class="sc">/</span>(<span class="dv">2</span><span class="sc">*</span><span class="dv">4</span>))))))),</span>
+<span id="cb120-9"><a href="primary-meta-analysis.html#cb120-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">TOST2=</span><span class="fu">abs</span>(<span class="fu">FisherZInv</span>(<span class="fu">as.numeric</span>(<span class="fu">as.character</span>(x<span class="sc">$</span>b))<span class="sc">+</span><span class="fu">as.numeric</span>(<span class="fu">as.character</span>(x<span class="sc">$</span>se<span class="sc">*</span><span class="fu">qnorm</span>(<span class="dv">1-2</span><span class="sc">*</span>(<span class="fl">0.05</span><span class="sc">/</span>(<span class="dv">2</span><span class="sc">*</span><span class="dv">4</span>))))))),</span>
+<span id="cb120-10"><a href="primary-meta-analysis.html#cb120-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">Cochran.Q=</span>x<span class="sc">$</span>QE,</span>
+<span id="cb120-11"><a href="primary-meta-analysis.html#cb120-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">Cochran.Q.p.val=</span>x<span class="sc">$</span>QEp)</span>
+<span id="cb120-12"><a href="primary-meta-analysis.html#cb120-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><strong>Function extracting critical information about heterogeneity</strong></p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="primary-meta-analysis.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="co"># x is the rma object and y the variance covariance matrix</span></span>
+<span id="cb121-2"><a href="primary-meta-analysis.html#cb121-2" aria-hidden="true" tabindex="-1"></a>ExtractHeterogeneityFUNCTION<span class="ot">&lt;-</span><span class="cf">function</span>(x, y){</span>
+<span id="cb121-3"><a href="primary-meta-analysis.html#cb121-3" aria-hidden="true" tabindex="-1"></a>     W<span class="ot">&lt;-</span><span class="fu">solve</span>(y)</span>
+<span id="cb121-4"><a href="primary-meta-analysis.html#cb121-4" aria-hidden="true" tabindex="-1"></a>     X<span class="ot">&lt;-</span><span class="fu">model.matrix</span>(x)</span>
+<span id="cb121-5"><a href="primary-meta-analysis.html#cb121-5" aria-hidden="true" tabindex="-1"></a>     P <span class="ot">&lt;-</span> W <span class="sc">-</span> W <span class="sc">%*%</span> X <span class="sc">%*%</span> <span class="fu">solve</span>(<span class="fu">t</span>(X) <span class="sc">%*%</span> W <span class="sc">%*%</span> X) <span class="sc">%*%</span> <span class="fu">t</span>(X) <span class="sc">%*%</span> W</span>
+<span id="cb121-6"><a href="primary-meta-analysis.html#cb121-6" aria-hidden="true" tabindex="-1"></a>     <span class="fu">cbind</span>(</span>
+<span id="cb121-7"><a href="primary-meta-analysis.html#cb121-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">stud.out=</span><span class="fu">as.character</span>(<span class="fu">data.frame</span>(x<span class="sc">$</span>g.levels.k)[,<span class="dv">1</span>]),</span>
+<span id="cb121-8"><a href="primary-meta-analysis.html#cb121-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">N=</span><span class="fu">data.frame</span>(x<span class="sc">$</span>g.levels.k)[,<span class="dv">2</span>],</span>
+<span id="cb121-9"><a href="primary-meta-analysis.html#cb121-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">Tau.sq=</span>x<span class="sc">$</span>tau2,</span>
+<span id="cb121-10"><a href="primary-meta-analysis.html#cb121-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">Tau=</span><span class="fu">sqrt</span>(x<span class="sc">$</span>tau2),</span>
+<span id="cb121-11"><a href="primary-meta-analysis.html#cb121-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">Cochran.Q=</span>x<span class="sc">$</span>QE,</span>
+<span id="cb121-12"><a href="primary-meta-analysis.html#cb121-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">Cochran.Q.p.val=</span>x<span class="sc">$</span>QEp,</span>
+<span id="cb121-13"><a href="primary-meta-analysis.html#cb121-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">I.sq=</span><span class="dv">100</span> <span class="sc">*</span>x<span class="sc">$</span>tau2 <span class="sc">/</span> (x<span class="sc">$</span>tau2 <span class="sc">+</span> (x<span class="sc">$</span>k<span class="sc">-</span>x<span class="sc">$</span>p)<span class="sc">/</span><span class="fu">sum</span>(<span class="fu">diag</span>(P))))</span>
+<span id="cb121-14"><a href="primary-meta-analysis.html#cb121-14" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><strong>Functions selecting appropriate data in the correlation or variance/covariance matrix (i.e., information regarding only the relationship between sleep and moral outcomes and not those regarding - for example - the relationship between 2 sleep indicators)</strong></p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="primary-meta-analysis.html#cb122-1" aria-hidden="true" tabindex="-1"></a>FourPredictFUNCTION<span class="ot">&lt;-</span><span class="cf">function</span>(x){</span>
+<span id="cb122-2"><a href="primary-meta-analysis.html#cb122-2" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">str_detect</span>(<span class="fu">row.names</span>(x), <span class="st">&quot;Sleep&quot;</span>) <span class="sc">&amp;</span> <span class="fu">str_detect</span>(<span class="fu">row.names</span>(x), <span class="st">&quot;Moral&quot;</span>),</span>
+<span id="cb122-3"><a href="primary-meta-analysis.html#cb122-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_detect</span>(<span class="fu">colnames</span>(x), <span class="st">&quot;Sleep&quot;</span>) <span class="sc">&amp;</span> <span class="fu">str_detect</span>(<span class="fu">colnames</span>(x), <span class="st">&quot;Moral&quot;</span>)]}</span>
+<span id="cb122-4"><a href="primary-meta-analysis.html#cb122-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-5"><a href="primary-meta-analysis.html#cb122-5" aria-hidden="true" tabindex="-1"></a>QualAcuPredictFUNCTION<span class="ot">&lt;-</span><span class="cf">function</span>(x){</span>
+<span id="cb122-6"><a href="primary-meta-analysis.html#cb122-6" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">str_detect</span>(<span class="fu">row.names</span>(x), <span class="st">&quot;SleepQualAcu&quot;</span>) <span class="sc">&amp;</span> <span class="fu">str_detect</span>(<span class="fu">row.names</span>(x), <span class="st">&quot;Moral&quot;</span>),</span>
+<span id="cb122-7"><a href="primary-meta-analysis.html#cb122-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_detect</span>(<span class="fu">colnames</span>(x), <span class="st">&quot;SleepQualAcu&quot;</span>) <span class="sc">&amp;</span> <span class="fu">str_detect</span>(<span class="fu">colnames</span>(x), <span class="st">&quot;Moral&quot;</span>)]}  </span>
+<span id="cb122-8"><a href="primary-meta-analysis.html#cb122-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-9"><a href="primary-meta-analysis.html#cb122-9" aria-hidden="true" tabindex="-1"></a>QualCroPredictFUNCTION<span class="ot">&lt;-</span><span class="cf">function</span>(x){</span>
+<span id="cb122-10"><a href="primary-meta-analysis.html#cb122-10" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">str_detect</span>(<span class="fu">row.names</span>(x), <span class="st">&quot;SleepQualCro&quot;</span>) <span class="sc">&amp;</span> <span class="fu">str_detect</span>(<span class="fu">row.names</span>(x), <span class="st">&quot;Moral&quot;</span>),</span>
+<span id="cb122-11"><a href="primary-meta-analysis.html#cb122-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_detect</span>(<span class="fu">colnames</span>(x), <span class="st">&quot;SleepQualCro&quot;</span>) <span class="sc">&amp;</span> <span class="fu">str_detect</span>(<span class="fu">colnames</span>(x), <span class="st">&quot;Moral&quot;</span>)]} </span>
+<span id="cb122-12"><a href="primary-meta-analysis.html#cb122-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-13"><a href="primary-meta-analysis.html#cb122-13" aria-hidden="true" tabindex="-1"></a>QuantAcuPredictFUNCTION<span class="ot">&lt;-</span><span class="cf">function</span>(x){</span>
+<span id="cb122-14"><a href="primary-meta-analysis.html#cb122-14" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">str_detect</span>(<span class="fu">row.names</span>(x), <span class="st">&quot;SleepQuantAcu&quot;</span>) <span class="sc">&amp;</span> <span class="fu">str_detect</span>(<span class="fu">row.names</span>(x), <span class="st">&quot;Moral&quot;</span>),</span>
+<span id="cb122-15"><a href="primary-meta-analysis.html#cb122-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_detect</span>(<span class="fu">colnames</span>(x), <span class="st">&quot;SleepQuantAcu&quot;</span>) <span class="sc">&amp;</span> <span class="fu">str_detect</span>(<span class="fu">colnames</span>(x), <span class="st">&quot;Moral&quot;</span>)]} </span>
+<span id="cb122-16"><a href="primary-meta-analysis.html#cb122-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-17"><a href="primary-meta-analysis.html#cb122-17" aria-hidden="true" tabindex="-1"></a>QuantCroPredictFUNCTION<span class="ot">&lt;-</span><span class="cf">function</span>(x){</span>
+<span id="cb122-18"><a href="primary-meta-analysis.html#cb122-18" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">str_detect</span>(<span class="fu">row.names</span>(x), <span class="st">&quot;SleepQuantCro&quot;</span>) <span class="sc">&amp;</span> <span class="fu">str_detect</span>(<span class="fu">row.names</span>(x), <span class="st">&quot;Moral&quot;</span>),</span>
+<span id="cb122-19"><a href="primary-meta-analysis.html#cb122-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_detect</span>(<span class="fu">colnames</span>(x), <span class="st">&quot;SleepQuantCro&quot;</span>) <span class="sc">&amp;</span> <span class="fu">str_detect</span>(<span class="fu">colnames</span>(x), <span class="st">&quot;Moral&quot;</span>)]} </span></code></pre></div>
+</div>
+<div id="primary-analysis" class="section level2" number="7.2">
+<h2><span class="header-section-number">7.2</span> Primary Analysis</h2>
+<p><strong>Multivariate random effects meta analysis (var-covar matrix estimated using equation based approach)</strong></p>
+<p><em>Preparation of the general dataset. We split the large dataset including the 6 studies as required by most of the functions of the apply family</em></p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="primary-meta-analysis.html#cb123-1" aria-hidden="true" tabindex="-1"></a>Data_Meta_Raw.wide.split<span class="ot">&lt;-</span><span class="fu">split</span>(Data_Meta_Raw.wide, Data_Meta_Raw.wide<span class="sc">$</span>Study)</span></code></pre></div>
+<p><em>Obtaining sample size for each dataset (here, it is equal to the number of rows since we have evicted participants not retained in final analyses (i.e., those with missing values or incorrect attentional check)</em></p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="primary-meta-analysis.html#cb124-1" aria-hidden="true" tabindex="-1"></a>N.prim<span class="ot">&lt;-</span><span class="fu">sapply</span>(Data_Meta_Raw.wide.split, nrow)</span></code></pre></div>
+<p><em>Obtention of Correlation matrix and Variance-Covariance matrix for each study</em></p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="primary-meta-analysis.html#cb125-1" aria-hidden="true" tabindex="-1"></a>Cor.matrix.prim<span class="ot">&lt;-</span><span class="fu">lapply</span>(Data_Meta_Raw.wide.split, CorFUNCTION)</span>
+<span id="cb125-2"><a href="primary-meta-analysis.html#cb125-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb125-3"><a href="primary-meta-analysis.html#cb125-3" aria-hidden="true" tabindex="-1"></a>List.Cor.Varcovar.prim<span class="ot">&lt;-</span><span class="fu">mapply</span>(RmatFUNCTION, Cor.matrix.prim, N.prim, <span class="at">SIMPLIFY=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<p><strong>Performing multivariate meta analysis</strong></p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="primary-meta-analysis.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlation (Fisher&#39;s z) between all sleep indicators and all outcomes for each study</span></span>
+<span id="cb126-2"><a href="primary-meta-analysis.html#cb126-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-3"><a href="primary-meta-analysis.html#cb126-3" aria-hidden="true" tabindex="-1"></a>ES.prim_transit<span class="ot">&lt;-</span><span class="fu">do.call</span>(rbind, <span class="fu">lapply</span>(List.Cor.Varcovar.prim, <span class="cf">function</span>(x) x<span class="sc">$</span>dat))</span>
+<span id="cb126-4"><a href="primary-meta-analysis.html#cb126-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-5"><a href="primary-meta-analysis.html#cb126-5" aria-hidden="true" tabindex="-1"></a>ES.prim_transit1<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="fu">cbind</span>(</span>
+<span id="cb126-6"><a href="primary-meta-analysis.html#cb126-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">stud.out=</span><span class="fu">row.names</span>(ES.prim_transit), ES.prim_transit))</span>
+<span id="cb126-7"><a href="primary-meta-analysis.html#cb126-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-8"><a href="primary-meta-analysis.html#cb126-8" aria-hidden="true" tabindex="-1"></a>ES.prim_transit2<span class="ot">&lt;-</span><span class="fu">separate</span>(ES.prim_transit1, stud.out,</span>
+<span id="cb126-9"><a href="primary-meta-analysis.html#cb126-9" aria-hidden="true" tabindex="-1"></a>                          <span class="at">into=</span><span class="fu">c</span>(<span class="st">&quot;Study&quot;</span>))</span></code></pre></div>
+<pre><code>## Warning: Expected 1 pieces. Additional pieces discarded in 81 rows [1, 2, 3, 4,
+## 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, ...].</code></pre>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="primary-meta-analysis.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Here, we delete all correlations not regarding sleep-moral outcomes relationship (k=40)</span></span>
+<span id="cb128-2"><a href="primary-meta-analysis.html#cb128-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb128-3"><a href="primary-meta-analysis.html#cb128-3" aria-hidden="true" tabindex="-1"></a>ES.Prim<span class="ot">&lt;-</span>ES.prim_transit2 <span class="sc">%&gt;%</span></span>
+<span id="cb128-4"><a href="primary-meta-analysis.html#cb128-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">&quot;Outcome&quot;</span><span class="ot">=</span>var1,</span>
+<span id="cb128-5"><a href="primary-meta-analysis.html#cb128-5" aria-hidden="true" tabindex="-1"></a>         <span class="st">&quot;Predictor&quot;</span><span class="ot">=</span>var2,</span>
+<span id="cb128-6"><a href="primary-meta-analysis.html#cb128-6" aria-hidden="true" tabindex="-1"></a>         <span class="st">&quot;Out.Pred&quot;</span><span class="ot">=</span>var1var2) <span class="sc">%&gt;%</span> </span>
+<span id="cb128-7"><a href="primary-meta-analysis.html#cb128-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb128-8"><a href="primary-meta-analysis.html#cb128-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">Asso.of.int=</span><span class="fu">case_when</span>(</span>
+<span id="cb128-9"><a href="primary-meta-analysis.html#cb128-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">str_detect</span>(Outcome, <span class="st">&quot;Sleep&quot;</span>) <span class="sc">&amp;</span> <span class="fu">str_detect</span>(Predictor, <span class="st">&quot;Moral&quot;</span>) <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb128-10"><a href="primary-meta-analysis.html#cb128-10" aria-hidden="true" tabindex="-1"></a>      <span class="fu">str_detect</span>(Outcome, <span class="st">&quot;Moral&quot;</span>) <span class="sc">&amp;</span> <span class="fu">str_detect</span>(Predictor, <span class="st">&quot;Sleep&quot;</span>) <span class="sc">~</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb128-11"><a href="primary-meta-analysis.html#cb128-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Asso.of.int<span class="sc">==</span><span class="dv">1</span>)</span>
+<span id="cb128-12"><a href="primary-meta-analysis.html#cb128-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb128-13"><a href="primary-meta-analysis.html#cb128-13" aria-hidden="true" tabindex="-1"></a>ES.Prim<span class="sc">$</span>N<span class="ot">&lt;-</span><span class="fu">rep</span>(N.prim, <span class="fu">c</span>(<span class="dv">1</span><span class="sc">*</span><span class="dv">4</span>,<span class="dv">1</span><span class="sc">*</span><span class="dv">4</span>,<span class="dv">1</span><span class="sc">*</span><span class="dv">4</span>,<span class="dv">3</span><span class="sc">*</span><span class="dv">4</span>,<span class="dv">2</span><span class="sc">*</span><span class="dv">4</span>,<span class="dv">2</span><span class="sc">*</span><span class="dv">4</span>))</span>
+<span id="cb128-14"><a href="primary-meta-analysis.html#cb128-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb128-15"><a href="primary-meta-analysis.html#cb128-15" aria-hidden="true" tabindex="-1"></a>ES.Prim<span class="sc">$</span>ES.ID<span class="ot">&lt;-</span><span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(ES.Prim)</span>
+<span id="cb128-16"><a href="primary-meta-analysis.html#cb128-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb128-17"><a href="primary-meta-analysis.html#cb128-17" aria-hidden="true" tabindex="-1"></a><span class="co">#Variance-covariance matrix for each study (N=6)</span></span>
+<span id="cb128-18"><a href="primary-meta-analysis.html#cb128-18" aria-hidden="true" tabindex="-1"></a>List.Varcovar.prim_transit1<span class="ot">&lt;-</span><span class="fu">lapply</span>(List.Cor.Varcovar.prim, <span class="cf">function</span>(x) x<span class="sc">$</span>V)</span>
+<span id="cb128-19"><a href="primary-meta-analysis.html#cb128-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb128-20"><a href="primary-meta-analysis.html#cb128-20" aria-hidden="true" tabindex="-1"></a><span class="co"># we apply the fourpredictfunction to keep only associations of interest</span></span>
+<span id="cb128-21"><a href="primary-meta-analysis.html#cb128-21" aria-hidden="true" tabindex="-1"></a>List.Varcovar.prim<span class="ot">&lt;-</span><span class="fu">lapply</span>(List.Varcovar.prim_transit1, FourPredictFUNCTION)</span>
+<span id="cb128-22"><a href="primary-meta-analysis.html#cb128-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb128-23"><a href="primary-meta-analysis.html#cb128-23" aria-hidden="true" tabindex="-1"></a>V.Prim<span class="ot">=</span><span class="fu">bldiag</span>(<span class="fu">list</span>(</span>
+<span id="cb128-24"><a href="primary-meta-analysis.html#cb128-24" aria-hidden="true" tabindex="-1"></a>  List.Varcovar.prim[[<span class="dv">1</span>]], </span>
+<span id="cb128-25"><a href="primary-meta-analysis.html#cb128-25" aria-hidden="true" tabindex="-1"></a>  List.Varcovar.prim[[<span class="dv">2</span>]],</span>
+<span id="cb128-26"><a href="primary-meta-analysis.html#cb128-26" aria-hidden="true" tabindex="-1"></a>  List.Varcovar.prim[[<span class="dv">3</span>]],</span>
+<span id="cb128-27"><a href="primary-meta-analysis.html#cb128-27" aria-hidden="true" tabindex="-1"></a>  List.Varcovar.prim[[<span class="dv">4</span>]], </span>
+<span id="cb128-28"><a href="primary-meta-analysis.html#cb128-28" aria-hidden="true" tabindex="-1"></a>  List.Varcovar.prim[[<span class="dv">5</span>]],</span>
+<span id="cb128-29"><a href="primary-meta-analysis.html#cb128-29" aria-hidden="true" tabindex="-1"></a>  List.Varcovar.prim[[<span class="dv">6</span>]]))</span>
+<span id="cb128-30"><a href="primary-meta-analysis.html#cb128-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb128-31"><a href="primary-meta-analysis.html#cb128-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Primary analysis investigated with an unstructured variance structure: leads to convergence issues</span></span>
+<span id="cb128-32"><a href="primary-meta-analysis.html#cb128-32" aria-hidden="true" tabindex="-1"></a><span class="co">#Error in rma.mv(yi, V.Prim, mods = ~Predictor - 1, random = ~Out.Pred |  : </span></span>
+<span id="cb128-33"><a href="primary-meta-analysis.html#cb128-33" aria-hidden="true" tabindex="-1"></a><span class="co">#  Optimizer (nlminb) did not achieve convergence (convergence = 1).</span></span>
+<span id="cb128-34"><a href="primary-meta-analysis.html#cb128-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb128-35"><a href="primary-meta-analysis.html#cb128-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Meta.Prim&lt;-rma.mv(yi,V.Prim, </span></span>
+<span id="cb128-36"><a href="primary-meta-analysis.html#cb128-36" aria-hidden="true" tabindex="-1"></a><span class="co">#                   mods=~Predictor-1, </span></span>
+<span id="cb128-37"><a href="primary-meta-analysis.html#cb128-37" aria-hidden="true" tabindex="-1"></a><span class="co">#                   random = ~ Out.Pred | Study, </span></span>
+<span id="cb128-38"><a href="primary-meta-analysis.html#cb128-38" aria-hidden="true" tabindex="-1"></a><span class="co">#                   struct=&quot;UN&quot;, </span></span>
+<span id="cb128-39"><a href="primary-meta-analysis.html#cb128-39" aria-hidden="true" tabindex="-1"></a><span class="co">#                   data=ES.Prim, level=100-(5/4))</span></span>
+<span id="cb128-40"><a href="primary-meta-analysis.html#cb128-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb128-41"><a href="primary-meta-analysis.html#cb128-41" aria-hidden="true" tabindex="-1"></a><span class="co"># We simplified the structure by requesting a HCS structure</span></span>
+<span id="cb128-42"><a href="primary-meta-analysis.html#cb128-42" aria-hidden="true" tabindex="-1"></a><span class="co"># We correct the 95%CI with a bonferroni procedure due to the 4 assessments of our hypothesis</span></span>
+<span id="cb128-43"><a href="primary-meta-analysis.html#cb128-43" aria-hidden="true" tabindex="-1"></a>Meta.Prim<span class="ot">&lt;-</span><span class="fu">rma.mv</span>(yi,V.Prim, </span>
+<span id="cb128-44"><a href="primary-meta-analysis.html#cb128-44" aria-hidden="true" tabindex="-1"></a>                  <span class="at">mods=</span><span class="sc">~</span>Predictor<span class="dv">-1</span>, </span>
+<span id="cb128-45"><a href="primary-meta-analysis.html#cb128-45" aria-hidden="true" tabindex="-1"></a>                  <span class="at">random =</span> <span class="sc">~</span> Out.Pred <span class="sc">|</span> Study, </span>
+<span id="cb128-46"><a href="primary-meta-analysis.html#cb128-46" aria-hidden="true" tabindex="-1"></a>                  <span class="at">struct=</span><span class="st">&quot;HCS&quot;</span>, </span>
+<span id="cb128-47"><a href="primary-meta-analysis.html#cb128-47" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data=</span>ES.Prim, <span class="at">level=</span><span class="dv">100</span><span class="sc">-</span>(<span class="dv">5</span><span class="sc">/</span><span class="dv">4</span>))</span></code></pre></div>
+</div>
+<div id="summary-of-the-results-of-the-primary-meta-analysis-and-of-the-individual-studies" class="section level2" number="7.3">
+<h2><span class="header-section-number">7.3</span> Summary of the results of the primary meta-analysis and of the individual studies</h2>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="primary-meta-analysis.html#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="co">#individual studies</span></span>
+<span id="cb129-2"><a href="primary-meta-analysis.html#cb129-2" aria-hidden="true" tabindex="-1"></a>ES.Prim<span class="sc">$</span>Raw.r<span class="ot">&lt;-</span><span class="fu">FisherZInv</span>(ES.Prim<span class="sc">$</span>yi)</span>
+<span id="cb129-3"><a href="primary-meta-analysis.html#cb129-3" aria-hidden="true" tabindex="-1"></a>df.ES.Prim<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="fu">cbind</span>(</span>
+<span id="cb129-4"><a href="primary-meta-analysis.html#cb129-4" aria-hidden="true" tabindex="-1"></a>  ES.Prim,</span>
+<span id="cb129-5"><a href="primary-meta-analysis.html#cb129-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">t</span>(<span class="fu">apply</span>(ES.Prim[,<span class="fu">c</span>(<span class="st">&#39;Raw.r&#39;</span>,<span class="st">&#39;N&#39;</span>)], <span class="dv">1</span>, </span>
+<span id="cb129-6"><a href="primary-meta-analysis.html#cb129-6" aria-hidden="true" tabindex="-1"></a>          <span class="cf">function</span>(x) <span class="fu">CorCIFUNCTION</span>(x[<span class="dv">1</span>], x[<span class="dv">2</span>])))[,<span class="fu">c</span>(<span class="st">&#39;lwr.ci&#39;</span>,<span class="st">&#39;upr.ci&#39;</span>)]))</span>
+<span id="cb129-7"><a href="primary-meta-analysis.html#cb129-7" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(df.ES.Prim)[<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">10</span><span class="sc">:</span><span class="dv">11</span>)] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;SleepIndicator&quot;</span>, <span class="st">&quot;Adj.CIlow&quot;</span>, <span class="st">&quot;Adj.CIup&quot;</span>)</span>
+<span id="cb129-8"><a href="primary-meta-analysis.html#cb129-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb129-9"><a href="primary-meta-analysis.html#cb129-9" aria-hidden="true" tabindex="-1"></a><span class="co">#Meta-analyses</span></span>
+<span id="cb129-10"><a href="primary-meta-analysis.html#cb129-10" aria-hidden="true" tabindex="-1"></a>df.Meta.Res1.Prim<span class="ot">&lt;-</span><span class="fu">as.data.frame</span>(<span class="fu">ExtractMetaFUNCTION</span>(Meta.Prim))</span>
+<span id="cb129-11"><a href="primary-meta-analysis.html#cb129-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb129-12"><a href="primary-meta-analysis.html#cb129-12" aria-hidden="true" tabindex="-1"></a>df.Meta.Prim<span class="ot">&lt;-</span> df.Meta.Res1.Prim <span class="sc">%&gt;%</span> </span>
+<span id="cb129-13"><a href="primary-meta-analysis.html#cb129-13" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb129-14"><a href="primary-meta-analysis.html#cb129-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">Study=</span><span class="st">&quot;Pooled Effect Size&quot;</span>,</span>
+<span id="cb129-15"><a href="primary-meta-analysis.html#cb129-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">Outcome=</span><span class="st">&quot;All outcomes&quot;</span>,</span>
+<span id="cb129-16"><a href="primary-meta-analysis.html#cb129-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">SleepIndicator=</span><span class="fu">c</span>(<span class="st">&quot;Quality of Acute Sleep&quot;</span>, <span class="st">&quot;Quality of Chronic Sleep&quot;</span>,</span>
+<span id="cb129-17"><a href="primary-meta-analysis.html#cb129-17" aria-hidden="true" tabindex="-1"></a>                     <span class="st">&quot;Quantity of Acute Sleep&quot;</span>,<span class="st">&quot;Quantity of Chronic Sleep&quot;</span>),</span>
+<span id="cb129-18"><a href="primary-meta-analysis.html#cb129-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">Adj.p.val=</span><span class="fu">case_when</span>(</span>
+<span id="cb129-19"><a href="primary-meta-analysis.html#cb129-19" aria-hidden="true" tabindex="-1"></a>      Adj.p.val<span class="sc">&gt;</span>.<span class="dv">99</span><span class="sc">~</span>.<span class="dv">99</span>,</span>
+<span id="cb129-20"><a href="primary-meta-analysis.html#cb129-20" aria-hidden="true" tabindex="-1"></a>      Adj.p.val<span class="sc">&lt;=</span>.<span class="dv">99</span><span class="sc">~</span>Adj.p.val),</span>
+<span id="cb129-21"><a href="primary-meta-analysis.html#cb129-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">N=</span><span class="fu">sum</span>(N.prim)) <span class="sc">%&gt;%</span></span>
+<span id="cb129-22"><a href="primary-meta-analysis.html#cb129-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb129-23"><a href="primary-meta-analysis.html#cb129-23" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">TOST=</span><span class="fu">max</span>(TOST1, TOST2)) <span class="sc">%&gt;%</span></span>
+<span id="cb129-24"><a href="primary-meta-analysis.html#cb129-24" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(TOST1,TOST2))</span>
+<span id="cb129-25"><a href="primary-meta-analysis.html#cb129-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb129-26"><a href="primary-meta-analysis.html#cb129-26" aria-hidden="true" tabindex="-1"></a>df.Meta.Prim<span class="ot">&lt;-</span>df.Meta.Prim[,<span class="fu">c</span>(<span class="dv">8</span><span class="sc">:</span><span class="dv">11</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>,<span class="dv">12</span>)]</span>
+<span id="cb129-27"><a href="primary-meta-analysis.html#cb129-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb129-28"><a href="primary-meta-analysis.html#cb129-28" aria-hidden="true" tabindex="-1"></a>df.Results.Prim<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="fu">bind_rows</span>(df.Meta.Prim, df.ES.Prim)[,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">13</span><span class="sc">:</span><span class="dv">15</span>)])</span>
+<span id="cb129-29"><a href="primary-meta-analysis.html#cb129-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb129-30"><a href="primary-meta-analysis.html#cb129-30" aria-hidden="true" tabindex="-1"></a>df.Results.Prim<span class="sc">$</span>Outcome<span class="ot">&lt;-</span>dplyr<span class="sc">::</span><span class="fu">recode</span>(df.Results.Prim<span class="sc">$</span>Outcome, </span>
+<span id="cb129-31"><a href="primary-meta-analysis.html#cb129-31" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">Moral_DIL=</span><span class="st">&quot;Dilemmas&quot;</span>, </span>
+<span id="cb129-32"><a href="primary-meta-analysis.html#cb129-32" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">Moral_SCA=</span><span class="st">&quot;Scale&quot;</span>, </span>
+<span id="cb129-33"><a href="primary-meta-analysis.html#cb129-33" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">Moral_CAR=</span><span class="st">&quot;Autonomous.Cars&quot;</span>)</span>
+<span id="cb129-34"><a href="primary-meta-analysis.html#cb129-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb129-35"><a href="primary-meta-analysis.html#cb129-35" aria-hidden="true" tabindex="-1"></a>df.Results.Prim<span class="sc">$</span>SleepIndicator<span class="ot">&lt;-</span>dplyr<span class="sc">::</span><span class="fu">recode</span>(df.Results.Prim<span class="sc">$</span>SleepIndicator, </span>
+<span id="cb129-36"><a href="primary-meta-analysis.html#cb129-36" aria-hidden="true" tabindex="-1"></a>                                         <span class="at">SleepQualAcu=</span><span class="st">&quot;Quality of Acute Sleep&quot;</span>,</span>
+<span id="cb129-37"><a href="primary-meta-analysis.html#cb129-37" aria-hidden="true" tabindex="-1"></a>                                         <span class="at">SleepQualCro=</span><span class="st">&quot;Quality of Chronic Sleep&quot;</span>,</span>
+<span id="cb129-38"><a href="primary-meta-analysis.html#cb129-38" aria-hidden="true" tabindex="-1"></a>                                         <span class="at">SleepQuantAcu=</span><span class="st">&quot;Quantity of Acute Sleep&quot;</span>,</span>
+<span id="cb129-39"><a href="primary-meta-analysis.html#cb129-39" aria-hidden="true" tabindex="-1"></a>                                         <span class="at">SleepQuantCro=</span><span class="st">&quot;Quantity of Chronic Sleep&quot;</span>)</span>
+<span id="cb129-40"><a href="primary-meta-analysis.html#cb129-40" aria-hidden="true" tabindex="-1"></a><span class="co">#Summary of the meta analysis</span></span>
+<span id="cb129-41"><a href="primary-meta-analysis.html#cb129-41" aria-hidden="true" tabindex="-1"></a><span class="fu">gt</span>(df.Results.Prim[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,])<span class="sc">%&gt;%</span> </span>
+<span id="cb129-42"><a href="primary-meta-analysis.html#cb129-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_number</span>(</span>
+<span id="cb129-43"><a href="primary-meta-analysis.html#cb129-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">12</span>,</span>
+<span id="cb129-44"><a href="primary-meta-analysis.html#cb129-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">decimals =</span> <span class="dv">3</span>)</span></code></pre></div>
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#bvuajlumcq .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#bvuajlumcq .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#bvuajlumcq .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#bvuajlumcq .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#bvuajlumcq .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bvuajlumcq .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#bvuajlumcq .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#bvuajlumcq .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#bvuajlumcq .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#bvuajlumcq .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#bvuajlumcq .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#bvuajlumcq .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#bvuajlumcq .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#bvuajlumcq .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#bvuajlumcq .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#bvuajlumcq .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#bvuajlumcq .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#bvuajlumcq .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bvuajlumcq .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#bvuajlumcq .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bvuajlumcq .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#bvuajlumcq .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#bvuajlumcq .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bvuajlumcq .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#bvuajlumcq .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#bvuajlumcq .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#bvuajlumcq .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#bvuajlumcq .gt_left {
+  text-align: left;
+}
+
+#bvuajlumcq .gt_center {
+  text-align: center;
+}
+
+#bvuajlumcq .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#bvuajlumcq .gt_font_normal {
+  font-weight: normal;
+}
+
+#bvuajlumcq .gt_font_bold {
+  font-weight: bold;
+}
+
+#bvuajlumcq .gt_font_italic {
+  font-style: italic;
+}
+
+#bvuajlumcq .gt_super {
+  font-size: 65%;
+}
+
+#bvuajlumcq .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="bvuajlumcq" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Study</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Outcome</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">SleepIndicator</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">N</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Raw.r</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">p.val</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Adj.p.val</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Adj.CIlow</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Adj.CIup</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Cochran.Q</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Cochran.Q.p.val</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">TOST</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">ES.ID</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr>
+      <td class="gt_row gt_left">Pooled Effect Size</td>
+      <td class="gt_row gt_left">All outcomes</td>
+      <td class="gt_row gt_left">Quality of Acute Sleep</td>
+      <td class="gt_row gt_center">582</td>
+      <td class="gt_row gt_right">0.088</td>
+      <td class="gt_row gt_right">0.018</td>
+      <td class="gt_row gt_right">0.072</td>
+      <td class="gt_row gt_right">&minus;0.005</td>
+      <td class="gt_row gt_right">0.179</td>
+      <td class="gt_row gt_right">24.200</td>
+      <td class="gt_row gt_right">0.933</td>
+      <td class="gt_row gt_right">0.170</td>
+      <td class="gt_row gt_center">NA</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">Pooled Effect Size</td>
+      <td class="gt_row gt_left">All outcomes</td>
+      <td class="gt_row gt_left">Quality of Chronic Sleep</td>
+      <td class="gt_row gt_center">582</td>
+      <td class="gt_row gt_right">0.049</td>
+      <td class="gt_row gt_right">0.208</td>
+      <td class="gt_row gt_right">0.832</td>
+      <td class="gt_row gt_right">&minus;0.048</td>
+      <td class="gt_row gt_right">0.145</td>
+      <td class="gt_row gt_right">24.200</td>
+      <td class="gt_row gt_right">0.933</td>
+      <td class="gt_row gt_right">0.135</td>
+      <td class="gt_row gt_center">NA</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">Pooled Effect Size</td>
+      <td class="gt_row gt_left">All outcomes</td>
+      <td class="gt_row gt_left">Quantity of Acute Sleep</td>
+      <td class="gt_row gt_center">582</td>
+      <td class="gt_row gt_right">0.031</td>
+      <td class="gt_row gt_right">0.384</td>
+      <td class="gt_row gt_right">0.990</td>
+      <td class="gt_row gt_right">&minus;0.058</td>
+      <td class="gt_row gt_right">0.120</td>
+      <td class="gt_row gt_right">24.200</td>
+      <td class="gt_row gt_right">0.933</td>
+      <td class="gt_row gt_right">0.111</td>
+      <td class="gt_row gt_center">NA</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">Pooled Effect Size</td>
+      <td class="gt_row gt_left">All outcomes</td>
+      <td class="gt_row gt_left">Quantity of Chronic Sleep</td>
+      <td class="gt_row gt_center">582</td>
+      <td class="gt_row gt_right">&minus;0.003</td>
+      <td class="gt_row gt_right">0.944</td>
+      <td class="gt_row gt_right">0.990</td>
+      <td class="gt_row gt_right">&minus;0.093</td>
+      <td class="gt_row gt_right">0.088</td>
+      <td class="gt_row gt_right">24.200</td>
+      <td class="gt_row gt_right">0.933</td>
+      <td class="gt_row gt_right">0.084</td>
+      <td class="gt_row gt_center">NA</td>
+    </tr>
+  </tbody>
+  
+  
+</table></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="primary-meta-analysis.html#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Summary of the primary studies</span></span>
+<span id="cb130-2"><a href="primary-meta-analysis.html#cb130-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gt</span>(df.Results.Prim[<span class="dv">5</span><span class="sc">:</span><span class="fu">nrow</span>(df.Results.Prim),<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,<span class="dv">8</span><span class="sc">:</span><span class="dv">9</span>)]) <span class="sc">%&gt;%</span> </span>
+<span id="cb130-3"><a href="primary-meta-analysis.html#cb130-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_number</span>(</span>
+<span id="cb130-4"><a href="primary-meta-analysis.html#cb130-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">7</span>,</span>
+<span id="cb130-5"><a href="primary-meta-analysis.html#cb130-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">decimals =</span> <span class="dv">3</span>)</span></code></pre></div>
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#kccyxodfew .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#kccyxodfew .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#kccyxodfew .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#kccyxodfew .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#kccyxodfew .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#kccyxodfew .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#kccyxodfew .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#kccyxodfew .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#kccyxodfew .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#kccyxodfew .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#kccyxodfew .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#kccyxodfew .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#kccyxodfew .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#kccyxodfew .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#kccyxodfew .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#kccyxodfew .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#kccyxodfew .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#kccyxodfew .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kccyxodfew .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#kccyxodfew .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kccyxodfew .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#kccyxodfew .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#kccyxodfew .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#kccyxodfew .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#kccyxodfew .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#kccyxodfew .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#kccyxodfew .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#kccyxodfew .gt_left {
+  text-align: left;
+}
+
+#kccyxodfew .gt_center {
+  text-align: center;
+}
+
+#kccyxodfew .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#kccyxodfew .gt_font_normal {
+  font-weight: normal;
+}
+
+#kccyxodfew .gt_font_bold {
+  font-weight: bold;
+}
+
+#kccyxodfew .gt_font_italic {
+  font-style: italic;
+}
+
+#kccyxodfew .gt_super {
+  font-size: 65%;
+}
+
+#kccyxodfew .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="kccyxodfew" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Study</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Outcome</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">SleepIndicator</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">N</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Raw.r</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Adj.CIlow</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Adj.CIup</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr>
+      <td class="gt_row gt_left">1</td>
+      <td class="gt_row gt_left">Dilemmas</td>
+      <td class="gt_row gt_left">Quality of Acute Sleep</td>
+      <td class="gt_row gt_center">122</td>
+      <td class="gt_row gt_right">0.101</td>
+      <td class="gt_row gt_right">&minus;0.127</td>
+      <td class="gt_row gt_right">0.319</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">1</td>
+      <td class="gt_row gt_left">Dilemmas</td>
+      <td class="gt_row gt_left">Quality of Chronic Sleep</td>
+      <td class="gt_row gt_center">122</td>
+      <td class="gt_row gt_right">0.021</td>
+      <td class="gt_row gt_right">&minus;0.205</td>
+      <td class="gt_row gt_right">0.245</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">1</td>
+      <td class="gt_row gt_left">Dilemmas</td>
+      <td class="gt_row gt_left">Quantity of Acute Sleep</td>
+      <td class="gt_row gt_center">122</td>
+      <td class="gt_row gt_right">0.074</td>
+      <td class="gt_row gt_right">&minus;0.153</td>
+      <td class="gt_row gt_right">0.294</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">1</td>
+      <td class="gt_row gt_left">Dilemmas</td>
+      <td class="gt_row gt_left">Quantity of Chronic Sleep</td>
+      <td class="gt_row gt_center">122</td>
+      <td class="gt_row gt_right">&minus;0.000</td>
+      <td class="gt_row gt_right">&minus;0.225</td>
+      <td class="gt_row gt_right">0.225</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">2</td>
+      <td class="gt_row gt_left">Scale</td>
+      <td class="gt_row gt_left">Quality of Acute Sleep</td>
+      <td class="gt_row gt_center">105</td>
+      <td class="gt_row gt_right">0.086</td>
+      <td class="gt_row gt_right">&minus;0.160</td>
+      <td class="gt_row gt_right">0.322</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">2</td>
+      <td class="gt_row gt_left">Scale</td>
+      <td class="gt_row gt_left">Quality of Chronic Sleep</td>
+      <td class="gt_row gt_center">105</td>
+      <td class="gt_row gt_right">0.056</td>
+      <td class="gt_row gt_right">&minus;0.189</td>
+      <td class="gt_row gt_right">0.295</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">2</td>
+      <td class="gt_row gt_left">Scale</td>
+      <td class="gt_row gt_left">Quantity of Acute Sleep</td>
+      <td class="gt_row gt_center">105</td>
+      <td class="gt_row gt_right">0.040</td>
+      <td class="gt_row gt_right">&minus;0.204</td>
+      <td class="gt_row gt_right">0.280</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">2</td>
+      <td class="gt_row gt_left">Scale</td>
+      <td class="gt_row gt_left">Quantity of Chronic Sleep</td>
+      <td class="gt_row gt_center">105</td>
+      <td class="gt_row gt_right">0.066</td>
+      <td class="gt_row gt_right">&minus;0.179</td>
+      <td class="gt_row gt_right">0.304</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">3</td>
+      <td class="gt_row gt_left">Scale</td>
+      <td class="gt_row gt_left">Quality of Acute Sleep</td>
+      <td class="gt_row gt_center">52</td>
+      <td class="gt_row gt_right">&minus;0.079</td>
+      <td class="gt_row gt_right">&minus;0.410</td>
+      <td class="gt_row gt_right">0.271</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">3</td>
+      <td class="gt_row gt_left">Scale</td>
+      <td class="gt_row gt_left">Quality of Chronic Sleep</td>
+      <td class="gt_row gt_center">52</td>
+      <td class="gt_row gt_right">0.053</td>
+      <td class="gt_row gt_right">&minus;0.295</td>
+      <td class="gt_row gt_right">0.388</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">3</td>
+      <td class="gt_row gt_left">Scale</td>
+      <td class="gt_row gt_left">Quantity of Acute Sleep</td>
+      <td class="gt_row gt_center">52</td>
+      <td class="gt_row gt_right">&minus;0.147</td>
+      <td class="gt_row gt_right">&minus;0.466</td>
+      <td class="gt_row gt_right">0.206</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">3</td>
+      <td class="gt_row gt_left">Scale</td>
+      <td class="gt_row gt_left">Quantity of Chronic Sleep</td>
+      <td class="gt_row gt_center">52</td>
+      <td class="gt_row gt_right">&minus;0.065</td>
+      <td class="gt_row gt_right">&minus;0.398</td>
+      <td class="gt_row gt_right">0.284</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">4</td>
+      <td class="gt_row gt_left">Dilemmas</td>
+      <td class="gt_row gt_left">Quality of Acute Sleep</td>
+      <td class="gt_row gt_center">99</td>
+      <td class="gt_row gt_right">&minus;0.030</td>
+      <td class="gt_row gt_right">&minus;0.277</td>
+      <td class="gt_row gt_right">0.222</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">4</td>
+      <td class="gt_row gt_left">Scale</td>
+      <td class="gt_row gt_left">Quality of Acute Sleep</td>
+      <td class="gt_row gt_center">99</td>
+      <td class="gt_row gt_right">&minus;0.040</td>
+      <td class="gt_row gt_right">&minus;0.287</td>
+      <td class="gt_row gt_right">0.211</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">4</td>
+      <td class="gt_row gt_left">Autonomous.Cars</td>
+      <td class="gt_row gt_left">Quality of Acute Sleep</td>
+      <td class="gt_row gt_center">99</td>
+      <td class="gt_row gt_right">0.003</td>
+      <td class="gt_row gt_right">&minus;0.246</td>
+      <td class="gt_row gt_right">0.253</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">4</td>
+      <td class="gt_row gt_left">Dilemmas</td>
+      <td class="gt_row gt_left">Quality of Chronic Sleep</td>
+      <td class="gt_row gt_center">99</td>
+      <td class="gt_row gt_right">&minus;0.186</td>
+      <td class="gt_row gt_right">&minus;0.416</td>
+      <td class="gt_row gt_right">0.067</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">4</td>
+      <td class="gt_row gt_left">Scale</td>
+      <td class="gt_row gt_left">Quality of Chronic Sleep</td>
+      <td class="gt_row gt_center">99</td>
+      <td class="gt_row gt_right">0.053</td>
+      <td class="gt_row gt_right">&minus;0.199</td>
+      <td class="gt_row gt_right">0.299</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">4</td>
+      <td class="gt_row gt_left">Autonomous.Cars</td>
+      <td class="gt_row gt_left">Quality of Chronic Sleep</td>
+      <td class="gt_row gt_center">99</td>
+      <td class="gt_row gt_right">0.057</td>
+      <td class="gt_row gt_right">&minus;0.196</td>
+      <td class="gt_row gt_right">0.302</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">4</td>
+      <td class="gt_row gt_left">Dilemmas</td>
+      <td class="gt_row gt_left">Quantity of Acute Sleep</td>
+      <td class="gt_row gt_center">99</td>
+      <td class="gt_row gt_right">0.067</td>
+      <td class="gt_row gt_right">&minus;0.185</td>
+      <td class="gt_row gt_right">0.312</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">4</td>
+      <td class="gt_row gt_left">Scale</td>
+      <td class="gt_row gt_left">Quantity of Acute Sleep</td>
+      <td class="gt_row gt_center">99</td>
+      <td class="gt_row gt_right">&minus;0.028</td>
+      <td class="gt_row gt_right">&minus;0.276</td>
+      <td class="gt_row gt_right">0.223</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">4</td>
+      <td class="gt_row gt_left">Autonomous.Cars</td>
+      <td class="gt_row gt_left">Quantity of Acute Sleep</td>
+      <td class="gt_row gt_center">99</td>
+      <td class="gt_row gt_right">&minus;0.038</td>
+      <td class="gt_row gt_right">&minus;0.285</td>
+      <td class="gt_row gt_right">0.213</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">4</td>
+      <td class="gt_row gt_left">Dilemmas</td>
+      <td class="gt_row gt_left">Quantity of Chronic Sleep</td>
+      <td class="gt_row gt_center">99</td>
+      <td class="gt_row gt_right">&minus;0.004</td>
+      <td class="gt_row gt_right">&minus;0.253</td>
+      <td class="gt_row gt_right">0.246</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">4</td>
+      <td class="gt_row gt_left">Scale</td>
+      <td class="gt_row gt_left">Quantity of Chronic Sleep</td>
+      <td class="gt_row gt_center">99</td>
+      <td class="gt_row gt_right">&minus;0.103</td>
+      <td class="gt_row gt_right">&minus;0.344</td>
+      <td class="gt_row gt_right">0.150</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">4</td>
+      <td class="gt_row gt_left">Autonomous.Cars</td>
+      <td class="gt_row gt_left">Quantity of Chronic Sleep</td>
+      <td class="gt_row gt_center">99</td>
+      <td class="gt_row gt_right">&minus;0.000</td>
+      <td class="gt_row gt_right">&minus;0.250</td>
+      <td class="gt_row gt_right">0.249</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">5</td>
+      <td class="gt_row gt_left">Dilemmas</td>
+      <td class="gt_row gt_left">Quality of Acute Sleep</td>
+      <td class="gt_row gt_center">105</td>
+      <td class="gt_row gt_right">0.110</td>
+      <td class="gt_row gt_right">&minus;0.136</td>
+      <td class="gt_row gt_right">0.344</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">5</td>
+      <td class="gt_row gt_left">Scale</td>
+      <td class="gt_row gt_left">Quality of Acute Sleep</td>
+      <td class="gt_row gt_center">105</td>
+      <td class="gt_row gt_right">0.069</td>
+      <td class="gt_row gt_right">&minus;0.176</td>
+      <td class="gt_row gt_right">0.307</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">5</td>
+      <td class="gt_row gt_left">Dilemmas</td>
+      <td class="gt_row gt_left">Quality of Chronic Sleep</td>
+      <td class="gt_row gt_center">105</td>
+      <td class="gt_row gt_right">&minus;0.078</td>
+      <td class="gt_row gt_right">&minus;0.314</td>
+      <td class="gt_row gt_right">0.168</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">5</td>
+      <td class="gt_row gt_left">Scale</td>
+      <td class="gt_row gt_left">Quality of Chronic Sleep</td>
+      <td class="gt_row gt_center">105</td>
+      <td class="gt_row gt_right">0.059</td>
+      <td class="gt_row gt_right">&minus;0.186</td>
+      <td class="gt_row gt_right">0.297</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">5</td>
+      <td class="gt_row gt_left">Dilemmas</td>
+      <td class="gt_row gt_left">Quantity of Acute Sleep</td>
+      <td class="gt_row gt_center">105</td>
+      <td class="gt_row gt_right">0.050</td>
+      <td class="gt_row gt_right">&minus;0.195</td>
+      <td class="gt_row gt_right">0.289</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">5</td>
+      <td class="gt_row gt_left">Scale</td>
+      <td class="gt_row gt_left">Quantity of Acute Sleep</td>
+      <td class="gt_row gt_center">105</td>
+      <td class="gt_row gt_right">&minus;0.025</td>
+      <td class="gt_row gt_right">&minus;0.265</td>
+      <td class="gt_row gt_right">0.219</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">5</td>
+      <td class="gt_row gt_left">Dilemmas</td>
+      <td class="gt_row gt_left">Quantity of Chronic Sleep</td>
+      <td class="gt_row gt_center">105</td>
+      <td class="gt_row gt_right">&minus;0.066</td>
+      <td class="gt_row gt_right">&minus;0.304</td>
+      <td class="gt_row gt_right">0.179</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">5</td>
+      <td class="gt_row gt_left">Scale</td>
+      <td class="gt_row gt_left">Quantity of Chronic Sleep</td>
+      <td class="gt_row gt_center">105</td>
+      <td class="gt_row gt_right">&minus;0.021</td>
+      <td class="gt_row gt_right">&minus;0.262</td>
+      <td class="gt_row gt_right">0.223</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">6</td>
+      <td class="gt_row gt_left">Dilemmas</td>
+      <td class="gt_row gt_left">Quality of Acute Sleep</td>
+      <td class="gt_row gt_center">99</td>
+      <td class="gt_row gt_right">0.119</td>
+      <td class="gt_row gt_right">&minus;0.134</td>
+      <td class="gt_row gt_right">0.358</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">6</td>
+      <td class="gt_row gt_left">Scale</td>
+      <td class="gt_row gt_left">Quality of Acute Sleep</td>
+      <td class="gt_row gt_center">99</td>
+      <td class="gt_row gt_right">0.140</td>
+      <td class="gt_row gt_right">&minus;0.113</td>
+      <td class="gt_row gt_right">0.376</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">6</td>
+      <td class="gt_row gt_left">Dilemmas</td>
+      <td class="gt_row gt_left">Quality of Chronic Sleep</td>
+      <td class="gt_row gt_center">99</td>
+      <td class="gt_row gt_right">0.018</td>
+      <td class="gt_row gt_right">&minus;0.232</td>
+      <td class="gt_row gt_right">0.266</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">6</td>
+      <td class="gt_row gt_left">Scale</td>
+      <td class="gt_row gt_left">Quality of Chronic Sleep</td>
+      <td class="gt_row gt_center">99</td>
+      <td class="gt_row gt_right">0.134</td>
+      <td class="gt_row gt_right">&minus;0.119</td>
+      <td class="gt_row gt_right">0.371</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">6</td>
+      <td class="gt_row gt_left">Dilemmas</td>
+      <td class="gt_row gt_left">Quantity of Acute Sleep</td>
+      <td class="gt_row gt_center">99</td>
+      <td class="gt_row gt_right">&minus;0.008</td>
+      <td class="gt_row gt_right">&minus;0.257</td>
+      <td class="gt_row gt_right">0.242</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">6</td>
+      <td class="gt_row gt_left">Scale</td>
+      <td class="gt_row gt_left">Quantity of Acute Sleep</td>
+      <td class="gt_row gt_center">99</td>
+      <td class="gt_row gt_right">0.106</td>
+      <td class="gt_row gt_right">&minus;0.147</td>
+      <td class="gt_row gt_right">0.346</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">6</td>
+      <td class="gt_row gt_left">Dilemmas</td>
+      <td class="gt_row gt_left">Quantity of Chronic Sleep</td>
+      <td class="gt_row gt_center">99</td>
+      <td class="gt_row gt_right">&minus;0.042</td>
+      <td class="gt_row gt_right">&minus;0.289</td>
+      <td class="gt_row gt_right">0.210</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">6</td>
+      <td class="gt_row gt_left">Scale</td>
+      <td class="gt_row gt_left">Quantity of Chronic Sleep</td>
+      <td class="gt_row gt_center">99</td>
+      <td class="gt_row gt_right">0.013</td>
+      <td class="gt_row gt_right">&minus;0.237</td>
+      <td class="gt_row gt_right">0.262</td>
+    </tr>
+  </tbody>
+  
+  
+</table></div>
+</div>
+<div id="heterogeneity" class="section level2" number="7.4">
+<h2><span class="header-section-number">7.4</span> Heterogeneity</h2>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="primary-meta-analysis.html#cb131-1" aria-hidden="true" tabindex="-1"></a>Heterogeneity.Prim<span class="ot">&lt;-</span><span class="fu">as.data.frame</span>(<span class="fu">ExtractHeterogeneityFUNCTION</span>(Meta.Prim, V.Prim))</span>
+<span id="cb131-2"><a href="primary-meta-analysis.html#cb131-2" aria-hidden="true" tabindex="-1"></a>Heterogeneity.Prim2<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="fu">apply</span>(Heterogeneity.Prim[,<span class="dv">3</span><span class="sc">:</span><span class="dv">7</span>], <span class="dv">2</span>, <span class="cf">function</span>(x) <span class="fu">as.numeric</span>(<span class="fu">as.character</span>(x))))</span>
+<span id="cb131-3"><a href="primary-meta-analysis.html#cb131-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb131-4"><a href="primary-meta-analysis.html#cb131-4" aria-hidden="true" tabindex="-1"></a><span class="fu">gt</span>(<span class="fu">cbind</span>(Heterogeneity.Prim[,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], Heterogeneity.Prim2)) <span class="sc">%&gt;%</span> </span>
+<span id="cb131-5"><a href="primary-meta-analysis.html#cb131-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_number</span>(</span>
+<span id="cb131-6"><a href="primary-meta-analysis.html#cb131-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">7</span>,</span>
+<span id="cb131-7"><a href="primary-meta-analysis.html#cb131-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">decimals =</span> <span class="dv">3</span>)</span></code></pre></div>
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#vmbktmhvsc .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#vmbktmhvsc .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#vmbktmhvsc .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#vmbktmhvsc .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#vmbktmhvsc .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#vmbktmhvsc .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#vmbktmhvsc .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#vmbktmhvsc .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#vmbktmhvsc .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#vmbktmhvsc .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#vmbktmhvsc .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#vmbktmhvsc .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#vmbktmhvsc .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#vmbktmhvsc .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#vmbktmhvsc .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#vmbktmhvsc .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#vmbktmhvsc .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#vmbktmhvsc .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vmbktmhvsc .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#vmbktmhvsc .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vmbktmhvsc .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#vmbktmhvsc .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#vmbktmhvsc .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#vmbktmhvsc .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#vmbktmhvsc .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#vmbktmhvsc .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#vmbktmhvsc .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#vmbktmhvsc .gt_left {
+  text-align: left;
+}
+
+#vmbktmhvsc .gt_center {
+  text-align: center;
+}
+
+#vmbktmhvsc .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#vmbktmhvsc .gt_font_normal {
+  font-weight: normal;
+}
+
+#vmbktmhvsc .gt_font_bold {
+  font-weight: bold;
+}
+
+#vmbktmhvsc .gt_font_italic {
+  font-style: italic;
+}
+
+#vmbktmhvsc .gt_super {
+  font-size: 65%;
+}
+
+#vmbktmhvsc .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="vmbktmhvsc" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">stud.out</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">N</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Tau.sq</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Tau</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Cochran.Q</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Cochran.Q.p.val</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">I.sq</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr>
+      <td class="gt_row gt_center">Moral_CAR.SleepQualAcu</td>
+      <td class="gt_row gt_center">1</td>
+      <td class="gt_row gt_right">0.002</td>
+      <td class="gt_row gt_right">0.046</td>
+      <td class="gt_row gt_right">24.200</td>
+      <td class="gt_row gt_right">0.933</td>
+      <td class="gt_row gt_right">31.093</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">Moral_CAR.SleepQualCro</td>
+      <td class="gt_row gt_center">1</td>
+      <td class="gt_row gt_right">0.000</td>
+      <td class="gt_row gt_right">0.000</td>
+      <td class="gt_row gt_right">24.200</td>
+      <td class="gt_row gt_right">0.933</td>
+      <td class="gt_row gt_right">0.000</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">Moral_CAR.SleepQuantAcu</td>
+      <td class="gt_row gt_center">1</td>
+      <td class="gt_row gt_right">0.002</td>
+      <td class="gt_row gt_right">0.043</td>
+      <td class="gt_row gt_right">24.200</td>
+      <td class="gt_row gt_right">0.933</td>
+      <td class="gt_row gt_right">27.733</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">Moral_CAR.SleepQuantCro</td>
+      <td class="gt_row gt_center">1</td>
+      <td class="gt_row gt_right">0.000</td>
+      <td class="gt_row gt_right">0.000</td>
+      <td class="gt_row gt_right">24.200</td>
+      <td class="gt_row gt_right">0.933</td>
+      <td class="gt_row gt_right">0.000</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">Moral_DIL.SleepQualAcu</td>
+      <td class="gt_row gt_center">4</td>
+      <td class="gt_row gt_right">0.003</td>
+      <td class="gt_row gt_right">0.050</td>
+      <td class="gt_row gt_right">24.200</td>
+      <td class="gt_row gt_right">0.933</td>
+      <td class="gt_row gt_right">34.529</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">Moral_DIL.SleepQualCro</td>
+      <td class="gt_row gt_center">4</td>
+      <td class="gt_row gt_right">0.015</td>
+      <td class="gt_row gt_right">0.123</td>
+      <td class="gt_row gt_right">24.200</td>
+      <td class="gt_row gt_right">0.933</td>
+      <td class="gt_row gt_right">76.077</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">Moral_DIL.SleepQuantAcu</td>
+      <td class="gt_row gt_center">4</td>
+      <td class="gt_row gt_right">0.000</td>
+      <td class="gt_row gt_right">0.000</td>
+      <td class="gt_row gt_right">24.200</td>
+      <td class="gt_row gt_right">0.933</td>
+      <td class="gt_row gt_right">0.000</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">Moral_DIL.SleepQuantCro</td>
+      <td class="gt_row gt_center">4</td>
+      <td class="gt_row gt_right">0.000</td>
+      <td class="gt_row gt_right">0.021</td>
+      <td class="gt_row gt_right">24.200</td>
+      <td class="gt_row gt_right">0.933</td>
+      <td class="gt_row gt_right">8.564</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">Moral_SCA.SleepQualAcu</td>
+      <td class="gt_row gt_center">5</td>
+      <td class="gt_row gt_right">0.002</td>
+      <td class="gt_row gt_right">0.048</td>
+      <td class="gt_row gt_right">24.200</td>
+      <td class="gt_row gt_right">0.933</td>
+      <td class="gt_row gt_right">33.085</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">Moral_SCA.SleepQualCro</td>
+      <td class="gt_row gt_center">5</td>
+      <td class="gt_row gt_right">0.000</td>
+      <td class="gt_row gt_right">0.001</td>
+      <td class="gt_row gt_right">24.200</td>
+      <td class="gt_row gt_right">0.933</td>
+      <td class="gt_row gt_right">0.034</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">Moral_SCA.SleepQuantAcu</td>
+      <td class="gt_row gt_center">5</td>
+      <td class="gt_row gt_right">0.001</td>
+      <td class="gt_row gt_right">0.037</td>
+      <td class="gt_row gt_right">24.200</td>
+      <td class="gt_row gt_right">0.933</td>
+      <td class="gt_row gt_right">22.628</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">Moral_SCA.SleepQuantCro</td>
+      <td class="gt_row gt_center">5</td>
+      <td class="gt_row gt_right">0.003</td>
+      <td class="gt_row gt_right">0.051</td>
+      <td class="gt_row gt_right">24.200</td>
+      <td class="gt_row gt_right">0.933</td>
+      <td class="gt_row gt_right">35.546</td>
+    </tr>
+  </tbody>
+  
+  
+</table></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="primary-meta-analysis.html#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Overall heterogeneity is low. The highest heterogeneity is found for the association between moral dilemmas and chronic sleep quality. Despite this, effect sizes remained systematically low.</span></span>
+<span id="cb132-2"><a href="primary-meta-analysis.html#cb132-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb132-3"><a href="primary-meta-analysis.html#cb132-3" aria-hidden="true" tabindex="-1"></a><span class="fu">gt</span>(df.Results.Prim[df.Results.Prim<span class="sc">$</span>Outcome<span class="sc">==</span><span class="st">&quot;Dilemmas&quot;</span> <span class="sc">&amp;</span> df.Results.Prim<span class="sc">$</span>SleepIndicator<span class="sc">==</span><span class="st">&quot;Quality of Chronic Sleep&quot;</span>,])</span></code></pre></div>
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#phcczuechd .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#phcczuechd .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#phcczuechd .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#phcczuechd .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#phcczuechd .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#phcczuechd .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#phcczuechd .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#phcczuechd .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#phcczuechd .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#phcczuechd .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#phcczuechd .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#phcczuechd .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#phcczuechd .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#phcczuechd .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#phcczuechd .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#phcczuechd .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#phcczuechd .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#phcczuechd .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#phcczuechd .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#phcczuechd .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#phcczuechd .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#phcczuechd .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#phcczuechd .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#phcczuechd .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#phcczuechd .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#phcczuechd .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#phcczuechd .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#phcczuechd .gt_left {
+  text-align: left;
+}
+
+#phcczuechd .gt_center {
+  text-align: center;
+}
+
+#phcczuechd .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#phcczuechd .gt_font_normal {
+  font-weight: normal;
+}
+
+#phcczuechd .gt_font_bold {
+  font-weight: bold;
+}
+
+#phcczuechd .gt_font_italic {
+  font-style: italic;
+}
+
+#phcczuechd .gt_super {
+  font-size: 65%;
+}
+
+#phcczuechd .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="phcczuechd" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Study</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Outcome</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">SleepIndicator</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">N</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Raw.r</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">p.val</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Adj.p.val</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Adj.CIlow</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Adj.CIup</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Cochran.Q</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Cochran.Q.p.val</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">TOST</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">ES.ID</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr>
+      <td class="gt_row gt_left">1</td>
+      <td class="gt_row gt_left">Dilemmas</td>
+      <td class="gt_row gt_left">Quality of Chronic Sleep</td>
+      <td class="gt_row gt_center">122</td>
+      <td class="gt_row gt_right">0.02118691</td>
+      <td class="gt_row gt_right">NA</td>
+      <td class="gt_row gt_right">NA</td>
+      <td class="gt_row gt_right">-0.2048351</td>
+      <td class="gt_row gt_right">0.24506377</td>
+      <td class="gt_row gt_right">NA</td>
+      <td class="gt_row gt_right">NA</td>
+      <td class="gt_row gt_right">NA</td>
+      <td class="gt_row gt_center">2</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">4</td>
+      <td class="gt_row gt_left">Dilemmas</td>
+      <td class="gt_row gt_left">Quality of Chronic Sleep</td>
+      <td class="gt_row gt_center">99</td>
+      <td class="gt_row gt_right">-0.18580935</td>
+      <td class="gt_row gt_right">NA</td>
+      <td class="gt_row gt_right">NA</td>
+      <td class="gt_row gt_right">-0.4160570</td>
+      <td class="gt_row gt_right">0.06682812</td>
+      <td class="gt_row gt_right">NA</td>
+      <td class="gt_row gt_right">NA</td>
+      <td class="gt_row gt_right">NA</td>
+      <td class="gt_row gt_center">16</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">5</td>
+      <td class="gt_row gt_left">Dilemmas</td>
+      <td class="gt_row gt_left">Quality of Chronic Sleep</td>
+      <td class="gt_row gt_center">105</td>
+      <td class="gt_row gt_right">-0.07752629</td>
+      <td class="gt_row gt_right">NA</td>
+      <td class="gt_row gt_right">NA</td>
+      <td class="gt_row gt_right">-0.3140136</td>
+      <td class="gt_row gt_right">0.16801910</td>
+      <td class="gt_row gt_right">NA</td>
+      <td class="gt_row gt_right">NA</td>
+      <td class="gt_row gt_right">NA</td>
+      <td class="gt_row gt_center">27</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">6</td>
+      <td class="gt_row gt_left">Dilemmas</td>
+      <td class="gt_row gt_left">Quality of Chronic Sleep</td>
+      <td class="gt_row gt_center">99</td>
+      <td class="gt_row gt_right">0.01810028</td>
+      <td class="gt_row gt_right">NA</td>
+      <td class="gt_row gt_right">NA</td>
+      <td class="gt_row gt_right">-0.2324887</td>
+      <td class="gt_row gt_right">0.26643573</td>
+      <td class="gt_row gt_right">NA</td>
+      <td class="gt_row gt_right">NA</td>
+      <td class="gt_row gt_right">NA</td>
+      <td class="gt_row gt_center">35</td>
+    </tr>
+  </tbody>
+  
+  
+</table></div>
+</div>
+<div id="plot-of-the-primary-meta-analysis-results" class="section level2" number="7.5">
+<h2><span class="header-section-number">7.5</span> Plot of the primary meta-analysis results</h2>
+<p><strong>we scaled the size of the dots of each study by the inverse of its variance</strong></p>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="primary-meta-analysis.html#cb133-1" aria-hidden="true" tabindex="-1"></a>df.graph.prim<span class="ot">&lt;-</span>df.Results.Prim</span>
+<span id="cb133-2"><a href="primary-meta-analysis.html#cb133-2" aria-hidden="true" tabindex="-1"></a>df.graph.prim<span class="sc">$</span>Study<span class="ot">&lt;-</span> <span class="fu">factor</span>(df.graph.prim<span class="sc">$</span>Study)</span>
+<span id="cb133-3"><a href="primary-meta-analysis.html#cb133-3" aria-hidden="true" tabindex="-1"></a>df.graph.prim<span class="sc">$</span>Study <span class="ot">&lt;-</span> <span class="fu">factor</span>(df.graph.prim<span class="sc">$</span>Study,</span>
+<span id="cb133-4"><a href="primary-meta-analysis.html#cb133-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">levels=</span><span class="fu">rev</span>(<span class="fu">levels</span>(df.graph.prim<span class="sc">$</span>Study)))</span>
+<span id="cb133-5"><a href="primary-meta-analysis.html#cb133-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb133-6"><a href="primary-meta-analysis.html#cb133-6" aria-hidden="true" tabindex="-1"></a>var.studies<span class="ot">&lt;-</span><span class="dv">1</span><span class="sc">/</span>(<span class="fu">c</span>(<span class="fu">unique</span>(<span class="fu">round</span>((Meta.Prim<span class="sc">$</span>vi), <span class="at">digits=</span><span class="dv">4</span>))[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>], <span class="fu">unique</span>(<span class="fu">round</span>((Meta.Prim<span class="sc">$</span>vi), <span class="at">digits=</span><span class="dv">4</span>))[<span class="dv">4</span>]))</span>
+<span id="cb133-7"><a href="primary-meta-analysis.html#cb133-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb133-8"><a href="primary-meta-analysis.html#cb133-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb133-9"><a href="primary-meta-analysis.html#cb133-9" aria-hidden="true" tabindex="-1"></a>p<span class="ot">&lt;-</span><span class="fu">ggplot</span>(<span class="at">data=</span>df.graph.prim)<span class="sc">+</span></span>
+<span id="cb133-10"><a href="primary-meta-analysis.html#cb133-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span><span class="dv">0</span>, <span class="at">linetype=</span><span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb133-11"><a href="primary-meta-analysis.html#cb133-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> Study, <span class="at">y =</span> Raw.r, <span class="at">shape=</span>Outcome, </span>
+<span id="cb133-12"><a href="primary-meta-analysis.html#cb133-12" aria-hidden="true" tabindex="-1"></a>                 <span class="at">colour=</span>Study, <span class="at">fill=</span>Study, <span class="at">size=</span>Study),</span>
+<span id="cb133-13"><a href="primary-meta-analysis.html#cb133-13" aria-hidden="true" tabindex="-1"></a>             <span class="at">position=</span><span class="fu">position_dodge2</span>(<span class="at">width=</span><span class="dv">8</span>))<span class="sc">+</span> </span>
+<span id="cb133-14"><a href="primary-meta-analysis.html#cb133-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb133-15"><a href="primary-meta-analysis.html#cb133-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="at">position=</span><span class="fu">position_dodge2</span>(<span class="at">width=</span><span class="dv">8</span>), </span>
+<span id="cb133-16"><a href="primary-meta-analysis.html#cb133-16" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">aes</span>(<span class="at">x =</span> Study, <span class="at">y =</span> Raw.r, </span>
+<span id="cb133-17"><a href="primary-meta-analysis.html#cb133-17" aria-hidden="true" tabindex="-1"></a>                      <span class="at">ymin =</span> Adj.CIlow, <span class="at">ymax =</span> Adj.CIup,  <span class="at">shape=</span>Outcome,</span>
+<span id="cb133-18"><a href="primary-meta-analysis.html#cb133-18" aria-hidden="true" tabindex="-1"></a>                      <span class="at">linetype=</span>Study, <span class="at">colour=</span>Study, <span class="at">fill=</span>Study))<span class="sc">+</span></span>
+<span id="cb133-19"><a href="primary-meta-analysis.html#cb133-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb133-20"><a href="primary-meta-analysis.html#cb133-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&#39;&#39;</span>)<span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Correlation coefficient (95% Confidence Interval)&quot;</span>)<span class="sc">+</span></span>
+<span id="cb133-21"><a href="primary-meta-analysis.html#cb133-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>SleepIndicator,</span>
+<span id="cb133-22"><a href="primary-meta-analysis.html#cb133-22" aria-hidden="true" tabindex="-1"></a>               <span class="at">strip.position=</span><span class="st">&quot;top&quot;</span>,</span>
+<span id="cb133-23"><a href="primary-meta-analysis.html#cb133-23" aria-hidden="true" tabindex="-1"></a>               <span class="at">ncol=</span><span class="dv">2</span>, <span class="at">nrow=</span><span class="dv">2</span>,<span class="at">scales =</span> <span class="st">&quot;free_y&quot;</span>) <span class="sc">+</span></span>
+<span id="cb133-24"><a href="primary-meta-analysis.html#cb133-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()<span class="sc">+</span></span>
+<span id="cb133-25"><a href="primary-meta-analysis.html#cb133-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb133-26"><a href="primary-meta-analysis.html#cb133-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">&quot;right&quot;</span>,</span>
+<span id="cb133-27"><a href="primary-meta-analysis.html#cb133-27" aria-hidden="true" tabindex="-1"></a>        <span class="co"># plot.margin = unit(c(0.1, 0.1, 0.1, 0.1), &quot;cm&quot;),</span></span>
+<span id="cb133-28"><a href="primary-meta-analysis.html#cb133-28" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.text.y=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb133-29"><a href="primary-meta-analysis.html#cb133-29" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.ticks.y=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb133-30"><a href="primary-meta-analysis.html#cb133-30" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.text.x=</span><span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">10</span>, <span class="at">face=</span><span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb133-31"><a href="primary-meta-analysis.html#cb133-31" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title.y=</span><span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">12</span>,<span class="at">face=</span><span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb133-32"><a href="primary-meta-analysis.html#cb133-32" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title.x=</span><span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">12</span>,<span class="at">face=</span><span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb133-33"><a href="primary-meta-analysis.html#cb133-33" aria-hidden="true" tabindex="-1"></a>          <span class="at">strip.text.x =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="fl">0.5</span>,<span class="at">vjust =</span><span class="fl">0.5</span>,<span class="at">angle=</span><span class="dv">0</span>,</span>
+<span id="cb133-34"><a href="primary-meta-analysis.html#cb133-34" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">size=</span><span class="dv">11</span>),</span>
+<span id="cb133-35"><a href="primary-meta-analysis.html#cb133-35" aria-hidden="true" tabindex="-1"></a>          <span class="at">legend.background =</span> <span class="fu">element_rect</span>(<span class="at">size=</span><span class="fl">0.5</span>, <span class="at">linetype=</span><span class="st">&quot;solid&quot;</span>, </span>
+<span id="cb133-36"><a href="primary-meta-analysis.html#cb133-36" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">colour =</span><span class="st">&quot;black&quot;</span>),</span>
+<span id="cb133-37"><a href="primary-meta-analysis.html#cb133-37" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.box =</span> <span class="st">&quot;vertical&quot;</span>)<span class="sc">+</span></span>
+<span id="cb133-38"><a href="primary-meta-analysis.html#cb133-38" aria-hidden="true" tabindex="-1"></a>        <span class="co">#legend.title = element_text(size=10, face=&quot;bold&quot;),</span></span>
+<span id="cb133-39"><a href="primary-meta-analysis.html#cb133-39" aria-hidden="true" tabindex="-1"></a>        <span class="co"># legend.position = &quot;none&quot;)+</span></span>
+<span id="cb133-40"><a href="primary-meta-analysis.html#cb133-40" aria-hidden="true" tabindex="-1"></a>        <span class="co">#panel.spacing.x = unit(2.5, &quot;cm&quot;),</span></span>
+<span id="cb133-41"><a href="primary-meta-analysis.html#cb133-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_linetype_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;solid&quot;</span>, <span class="fu">rep</span>(<span class="st">&quot;solid&quot;</span>,<span class="at">each=</span><span class="dv">10</span>)))<span class="sc">+</span><span class="co">#longdash</span></span>
+<span id="cb133-42"><a href="primary-meta-analysis.html#cb133-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(<span class="at">name=</span><span class="st">&quot;&quot;</span>, </span>
+<span id="cb133-43"><a href="primary-meta-analysis.html#cb133-43" aria-hidden="true" tabindex="-1"></a>                     <span class="at">values=</span><span class="fu">c</span>(<span class="dv">22</span>, <span class="dv">23</span>, <span class="dv">16</span>,<span class="dv">17</span>),</span>
+<span id="cb133-44"><a href="primary-meta-analysis.html#cb133-44" aria-hidden="true" tabindex="-1"></a>                     <span class="at">guide=</span><span class="fu">guide_legend</span>(<span class="at">reverse=</span>T))  <span class="sc">+</span> </span>
+<span id="cb133-45"><a href="primary-meta-analysis.html#cb133-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(</span>
+<span id="cb133-46"><a href="primary-meta-analysis.html#cb133-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, </span>
+<span id="cb133-47"><a href="primary-meta-analysis.html#cb133-47" aria-hidden="true" tabindex="-1"></a>               <span class="st">&quot;#CC00E8&quot;</span>,</span>
+<span id="cb133-48"><a href="primary-meta-analysis.html#cb133-48" aria-hidden="true" tabindex="-1"></a>               <span class="st">&quot;#7B00CB&quot;</span>,</span>
+<span id="cb133-49"><a href="primary-meta-analysis.html#cb133-49" aria-hidden="true" tabindex="-1"></a>               <span class="st">&quot;#1C0082&quot;</span>,</span>
+<span id="cb133-50"><a href="primary-meta-analysis.html#cb133-50" aria-hidden="true" tabindex="-1"></a>               <span class="st">&quot;#016EB0&quot;</span>, </span>
+<span id="cb133-51"><a href="primary-meta-analysis.html#cb133-51" aria-hidden="true" tabindex="-1"></a>               <span class="st">&quot;#0390FE&quot;</span>,</span>
+<span id="cb133-52"><a href="primary-meta-analysis.html#cb133-52" aria-hidden="true" tabindex="-1"></a>               <span class="st">&quot;#60C3FF&quot;</span>), </span>
+<span id="cb133-53"><a href="primary-meta-analysis.html#cb133-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">name=</span><span class="st">&quot;&quot;</span>,</span>
+<span id="cb133-54"><a href="primary-meta-analysis.html#cb133-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;Pooled&quot;</span>,  </span>
+<span id="cb133-55"><a href="primary-meta-analysis.html#cb133-55" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;Study 6&quot;</span>,</span>
+<span id="cb133-56"><a href="primary-meta-analysis.html#cb133-56" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;Study 5&quot;</span>,</span>
+<span id="cb133-57"><a href="primary-meta-analysis.html#cb133-57" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;Study 4&quot;</span>, </span>
+<span id="cb133-58"><a href="primary-meta-analysis.html#cb133-58" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;Study 3&quot;</span>,</span>
+<span id="cb133-59"><a href="primary-meta-analysis.html#cb133-59" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;Study 2&quot;</span>,</span>
+<span id="cb133-60"><a href="primary-meta-analysis.html#cb133-60" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;Study 1&quot;</span>),</span>
+<span id="cb133-61"><a href="primary-meta-analysis.html#cb133-61" aria-hidden="true" tabindex="-1"></a>    <span class="at">guide=</span><span class="fu">guide_legend</span>(<span class="at">reverse=</span>T))   <span class="sc">+</span></span>
+<span id="cb133-62"><a href="primary-meta-analysis.html#cb133-62" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(</span>
+<span id="cb133-63"><a href="primary-meta-analysis.html#cb133-63" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, </span>
+<span id="cb133-64"><a href="primary-meta-analysis.html#cb133-64" aria-hidden="true" tabindex="-1"></a>              <span class="st">&quot;#CC00E8&quot;</span>,</span>
+<span id="cb133-65"><a href="primary-meta-analysis.html#cb133-65" aria-hidden="true" tabindex="-1"></a>              <span class="st">&quot;#7B00CB&quot;</span>,</span>
+<span id="cb133-66"><a href="primary-meta-analysis.html#cb133-66" aria-hidden="true" tabindex="-1"></a>              <span class="st">&quot;#1C0082&quot;</span>, </span>
+<span id="cb133-67"><a href="primary-meta-analysis.html#cb133-67" aria-hidden="true" tabindex="-1"></a>              <span class="st">&quot;#016EB0&quot;</span>, </span>
+<span id="cb133-68"><a href="primary-meta-analysis.html#cb133-68" aria-hidden="true" tabindex="-1"></a>              <span class="st">&quot;#0390FE&quot;</span>,</span>
+<span id="cb133-69"><a href="primary-meta-analysis.html#cb133-69" aria-hidden="true" tabindex="-1"></a>              <span class="st">&quot;#60C3FF&quot;</span>), </span>
+<span id="cb133-70"><a href="primary-meta-analysis.html#cb133-70" aria-hidden="true" tabindex="-1"></a>    <span class="at">name=</span><span class="st">&quot;&quot;</span>,</span>
+<span id="cb133-71"><a href="primary-meta-analysis.html#cb133-71" aria-hidden="true" tabindex="-1"></a>    <span class="at">guide=</span><span class="fu">guide_legend</span>(<span class="at">reverse=</span>T)) <span class="sc">+</span> <span class="co">#+</span></span>
+<span id="cb133-72"><a href="primary-meta-analysis.html#cb133-72" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_size_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="dv">6</span>,<span class="fu">rev</span>(var.studies<span class="sc">/</span><span class="dv">30</span>)))<span class="co">#c(1, rep(4, 6)) </span></span>
+<span id="cb133-73"><a href="primary-meta-analysis.html#cb133-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb133-74"><a href="primary-meta-analysis.html#cb133-74" aria-hidden="true" tabindex="-1"></a>p<span class="sc">+</span><span class="fu">guides</span>( <span class="at">shape=</span><span class="cn">FALSE</span>,<span class="at">fill =</span> <span class="cn">FALSE</span>,  <span class="at">size=</span><span class="cn">FALSE</span>,<span class="at">linetype=</span><span class="cn">FALSE</span>)<span class="co">#</span></span></code></pre></div>
+<pre><code>## Warning: Removed 8 rows containing missing values (geom_point).</code></pre>
+<p><img src="PBR_SupplementaryResults_files/figure-html/unnamed-chunk-84-1.png" width="768" /></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="study-6.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="sensitivity-analyses.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

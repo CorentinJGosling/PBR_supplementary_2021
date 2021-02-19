@@ -1,0 +1,175 @@
+
+# Study 3
+
+```{r}
+Data_Study3_Wide<-Data_Meta_Raw.wide[Data_Meta_Raw.wide$Study==3,]
+```
+
+## Data analysis
+
+**Run linear regressions for each sleep variable (IV) on endorsement of moral principles (DV)**
+```{r}
+QualCroLMS3<-lm(Moral_SCA~SleepQualCro, Data_Study3_Wide)
+QualAcuLMS3<-lm(Moral_SCA~SleepQualAcu,Data_Study3_Wide)
+QuantCroLMS3<-lm(Moral_SCA~SleepQuantCro, Data_Study3_Wide)
+QuantAcuLMS3<-lm(Moral_SCA~SleepQuantAcu, Data_Study3_Wide)
+```
+
+**Extract coefficients (unstandardized slopes, standard errors and p-values) from linear regression models **
+```{r}
+#Chronic Sleep Quality
+bQualCroS3<-round(summary(QualCroLMS3)$coefficients[2,1], digit=2)
+SEQualCroS3<- round(summary(QualCroLMS3)$coefficients[2,2] , digit=2)
+pQualCroS3<- round(ifelse(summary(QualCroLMS3)$coefficients[2,4]*4<.99, summary(QualCroLMS3)$coefficients[2,4]*4, .99), digit=2)
+
+#Acute Sleep Quality
+bQualAcuS3<- round(summary(QualAcuLMS3)$coefficients[2,1] , digit=2)
+SEQualAcuS3 <- round(summary(QualAcuLMS3)$coefficients[2,2] , digit=2)
+pQualAcuS3<- round(ifelse(summary(QualAcuLMS3)$coefficients[2,4]*4<.99, summary(QualAcuLMS3)$coefficients[2,4]*4, .99), digit=2)
+
+#Chronic Sleep Quantity
+bQuantCroS3<- round(summary(QuantCroLMS3)$coefficients[2,1] , digit=2)
+SEQuantCroS3 <- round(summary(QuantCroLMS3)$coefficients[2,2] , digit=2)
+pQuantCroS3<- round(ifelse(summary(QuantCroLMS3)$coefficients[2,4]*4<.99, summary(QuantCroLMS3)$coefficients[2,4]*4, .99), digit=2)
+
+#Acute Sleep Quantity
+bQuantAcuS3<- round(summary(QuantAcuLMS3)$coefficients[2,1] , digit=2)
+SEQuantAcuS3 <- round(summary(QuantAcuLMS3)$coefficients[2,2] , digit=2)
+pQuantAcuS3<- round(ifelse(summary(QuantAcuLMS3)$coefficients[2,4]*4<.99, summary(QuantAcuLMS3)$coefficients[2,4]*4, .99), digit=2)
+
+```
+
+**Create datasets to display regression summary in plots**
+```{r}
+ResumQualCroS3<- paste0("b=",bQualCroS3,", ", "SE=",SEQualCroS3,", ","p=",pQualCroS3)
+ResumQualAcuS3<- paste0("b=",bQualAcuS3,", ", "SE=",SEQualAcuS3,", ","p=",pQualAcuS3)
+ResumQuantCroS3<- paste0("b=",bQuantCroS3,", ", "SE=",SEQuantCroS3,", ","p=",pQuantCroS3)
+ResumQuantAcuS3<- paste0("b=",bQuantAcuS3,", ", "SE=",SEQuantAcuS3,", ","p=",pQuantAcuS3)
+
+annotationQualCroS3 <- data.frame(x = 5, y = 43,  label = ResumQualCroS3)
+annotationQualAcuS3 <- data.frame(x = 5, y = 43,  label = ResumQualAcuS3)
+annotationQuantCroS3 <- data.frame(x =5, y = 43,  label = ResumQuantCroS3)
+annotationQuantAcuS3 <- data.frame(x = 5, y = 43,  label = ResumQuantAcuS3)
+
+annotationS3<-cbind(
+  rbind(annotationQualCroS3, 
+        annotationQualAcuS3, 
+        annotationQuantCroS3, 
+        annotationQuantAcuS3),
+  SleepType=c(
+        "Quality of Chronic Sleep", 
+        "Quality of Acute Sleep", 
+        "Quantity of Chronic Sleep", 
+        "Quantity of Acute Sleep"))
+```
+
+
+**Prepare data for plots**
+```{r}
+Data_PlotS3<- Data_Study3_Wide %>%
+  pivot_longer(
+    cols=c(SleepQualCro, SleepQualAcu, SleepQuantCro, SleepQuantAcu),
+    names_to="SleepType") %>%
+  rename("SleepValue"=value) %>%
+  mutate(
+    SleepLength=case_when(
+      SleepType=="SleepQualCro" | SleepType=="SleepQuantCro"~"Chronic",
+      SleepType=="SleepQualAcu" | SleepType=="SleepQuantAcu"~"Acute"),
+    SleepQuanthist=case_when(
+      SleepType=="SleepQualCro" | SleepType=="SleepQualAcu"~"Sleep Quality",
+      SleepType=="SleepQuantCro" | SleepType=="SleepQuantAcu"~"Sleep Quantity"))
+
+Data_PlotS3$SleepType<-dplyr::recode(Data_PlotS3$SleepType, 
+        "SleepQualCro" = "Quality of Chronic Sleep",
+        "SleepQualAcu" = "Quality of Acute Sleep",
+        "SleepQuantCro" = "Quantity of Chronic Sleep",
+        "SleepQuantAcu" = "Quantity of Acute Sleep")
+
+```
+
+**N in each sleep quantity category**
+```{r}
+Dist.Quantity.ChronicS3<-Data_Study3_Wide %>% 
+    dplyr::group_by(SleepQuantCro) %>% 
+      summarise(
+        N=n()) %>% 
+          spread(SleepQuantCro, N) %>% 
+  as.data.frame()
+row.names(Dist.Quantity.ChronicS3)<-"Quantity Chronic"
+
+Dist.Quantity.AcuteS3<-Data_Study3_Wide %>% 
+    dplyr::group_by(SleepQuantAcu) %>% 
+      summarise(
+        N=n()) %>% 
+          spread(SleepQuantAcu, N) %>% 
+  as.data.frame()
+row.names(Dist.Quantity.AcuteS3)<-"Quantity Acute"
+
+bind_rows(Dist.Quantity.AcuteS3, Dist.Quantity.ChronicS3)
+
+```
+
+## Summary of Study 3 results
+
+**Put results in a table**
+```{r}
+SleepMarker<-c("Quality Chronic","Quality Acute","Quantity Chronic","Quantity Acute")
+bS3<-c(bQualCroS3,bQualAcuS3,bQuantCroS3,bQuantAcuS3)
+SES3<-c(SEQualCroS3,SEQualAcuS3,SEQuantCroS3,SEQuantAcuS3)
+pvalS3<-c(pQualCroS3,pQualAcuS3,pQuantCroS3,pQuantAcuS3)
+NS3<-c(length(QualCroLMS3$fitted.values),
+     length(QualAcuLMS3$fitted.values),
+     length(QuantCroLMS3$fitted.values),
+     length(QuantAcuLMS3$fitted.values))
+ResultsStudy3<-data.frame("Sleep Indicator"=SleepMarker, "Unstandardized Slope"=bS3, "Standard Errors"=SES3, "p values"=pvalS3, "N"=NS3)
+gt(ResultsStudy3)
+```
+
+## Plot Study 3 results
+
+**Plot distribution for each sleep indicator**
+```{r}
+DistQualityS3<-ggplot(Data_PlotS3, aes(x=SleepValue, fill=factor(SleepLength))) + 
+  geom_density(alpha=0.5, size=0.5,adjust = 2) + 
+  scale_fill_manual(values=c("#193B94", "#BDCAEE", "#193B94", "#BDCAEE")) +
+  theme_bw() + 
+  ylab("Density") + xlab("") +
+  facet_wrap(~factor(SleepQuanthist), scale="free_x") + 
+  guides(fill=guide_legend("Sleep Length")) +
+  theme(
+    axis.title.y = element_text(size = 11, hjust = 0.5, face="bold"),
+    axis.title.x = element_text(face="bold", size = 11, hjust = 0.5),
+    legend.position="top",
+    legend.title = element_text(colour="black", size=10, face="bold")) 
+DistQualityS3
+```
+
+**Plot distribution for the scores to the moral scale**
+```{r}
+DistMoralS3<-ggplot(Data_Study3_Raw, aes(x=Moral_SCA, fill="#193B94")) + 
+  geom_density(alpha=0.5, size=0.5,adjust = 2) + 
+  theme_bw() + 
+  ylab("Density") + xlab("Moral Scale") +
+  guides(fill="none") +
+  theme(
+    axis.title.y = element_text(size = 11, hjust = 0.5, face="bold"),
+    axis.title.x = element_text(face="bold", size = 11, hjust = 0.5))
+  
+DistMoralS3
+```
+
+**Scatterplots**
+```{r}
+ggplot(Data_PlotS3, aes(x=SleepValue, y=Moral_SCA)) + 
+       geom_jitter(alpha=0.6, color="#545454", size=1.2) + 
+       # geom_line(aes(y= fit), colour="#0019D0", size=1.2) + 
+       # geom_ribbon( aes(ymin = lwr, ymax = upr), fill = "#697BFC", alpha = .3)+
+       geom_smooth(method="lm")+
+       facet_wrap(~factor(SleepType), scales="free_x") +
+       theme_bw() + ylab("Utilitirianism") + xlab("") + 
+       theme(axis.title.y = element_text(size = 11, hjust = 0.5, face="bold"), 
+             axis.title.x = element_text(face="bold", size = 11, hjust = 0.5)) +
+       guides(size=FALSE, colour=FALSE, fill=FALSE) + 
+       geom_label(data=annotationS3, aes( x=x, y=y, label=label), 
+                  color="black",  size=3.5 , angle=45, alpha=7/10, inherit.aes = FALSE)
+```

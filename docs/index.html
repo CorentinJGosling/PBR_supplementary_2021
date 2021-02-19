@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Psychonomics Bulletin and Review - Supplementary Materials - R Code &amp; Results</title>
+  <meta name="description" content="This books is designed to share the code underlying the main analyses and to present supplemental results of Tremolire &amp; Gosling (2021)" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Psychonomics Bulletin and Review - Supplementary Materials - R Code &amp; Results" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This books is designed to share the code underlying the main analyses and to present supplemental results of Tremolire &amp; Gosling (2021)" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Psychonomics Bulletin and Review - Supplementary Materials - R Code &amp; Results" />
+  
+  <meta name="twitter:description" content="This books is designed to share the code underlying the main analyses and to present supplemental results of Tremolire &amp; Gosling (2021)" />
+  
+
+<meta name="author" content="Trémolière B &amp; Gosling CJ" />
+
+
+<meta name="date" content="2021-02-19" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="study-1.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">PBR : Supplementary results</a></li>
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="1" data-path="study-1.html"><a href="study-1.html"><i class="fa fa-check"></i><b>1</b> Study 1</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="study-1.html"><a href="study-1.html#data-analysis"><i class="fa fa-check"></i><b>1.1</b> Data analysis</a></li>
+<li class="chapter" data-level="1.2" data-path="study-1.html"><a href="study-1.html#summary-of-study-1-results"><i class="fa fa-check"></i><b>1.2</b> Summary of Study 1 results</a></li>
+<li class="chapter" data-level="1.3" data-path="study-1.html"><a href="study-1.html#plot-study-1-results"><i class="fa fa-check"></i><b>1.3</b> Plot Study 1 results</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="study-2.html"><a href="study-2.html"><i class="fa fa-check"></i><b>2</b> Study 2</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="study-1.html"><a href="study-1.html#data-analysis"><i class="fa fa-check"></i><b>2.1</b> Data analysis</a></li>
+<li class="chapter" data-level="2.2" data-path="study-2.html"><a href="study-2.html#summary-of-study-2-results"><i class="fa fa-check"></i><b>2.2</b> Summary of Study 2 results</a></li>
+<li class="chapter" data-level="2.3" data-path="study-2.html"><a href="study-2.html#plot-study-2-results"><i class="fa fa-check"></i><b>2.3</b> Plot Study 2 Results</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="study-3.html"><a href="study-3.html"><i class="fa fa-check"></i><b>3</b> Study 3</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="study-1.html"><a href="study-1.html#data-analysis"><i class="fa fa-check"></i><b>3.1</b> Data analysis</a></li>
+<li class="chapter" data-level="3.2" data-path="study-3.html"><a href="study-3.html#summary-of-study-3-results"><i class="fa fa-check"></i><b>3.2</b> Summary of Study 3 results</a></li>
+<li class="chapter" data-level="3.3" data-path="study-3.html"><a href="study-3.html#plot-study-3-results"><i class="fa fa-check"></i><b>3.3</b> Plot Study 3 results</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="study-4.html"><a href="study-4.html"><i class="fa fa-check"></i><b>4</b> Study 4</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="study-1.html"><a href="study-1.html#data-analysis"><i class="fa fa-check"></i><b>4.1</b> Data analysis</a></li>
+<li class="chapter" data-level="4.2" data-path="study-4.html"><a href="study-4.html#summary-of-study-4-results"><i class="fa fa-check"></i><b>4.2</b> Summary of Study 4 results</a></li>
+<li class="chapter" data-level="4.3" data-path="study-4.html"><a href="study-4.html#plots-of-study-4-results"><i class="fa fa-check"></i><b>4.3</b> Plots of Study 4 results</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="study-5.html"><a href="study-5.html"><i class="fa fa-check"></i><b>5</b> Study 5</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="study-1.html"><a href="study-1.html#data-analysis"><i class="fa fa-check"></i><b>5.1</b> Data analysis</a></li>
+<li class="chapter" data-level="5.2" data-path="study-5.html"><a href="study-5.html#summary-of-study-5-results"><i class="fa fa-check"></i><b>5.2</b> Summary of Study 5 results</a></li>
+<li class="chapter" data-level="5.3" data-path="study-5.html"><a href="study-5.html#plots-of-study-5-results"><i class="fa fa-check"></i><b>5.3</b> Plots of Study 5 results</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="study-6.html"><a href="study-6.html"><i class="fa fa-check"></i><b>6</b> Study 6</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="study-1.html"><a href="study-1.html#data-analysis"><i class="fa fa-check"></i><b>6.1</b> Data analysis</a></li>
+<li class="chapter" data-level="6.2" data-path="study-6.html"><a href="study-6.html#summary-of-study-6-results"><i class="fa fa-check"></i><b>6.2</b> Summary of Study 6 results</a></li>
+<li class="chapter" data-level="6.3" data-path="study-6.html"><a href="study-6.html#plots-of-study-6-results"><i class="fa fa-check"></i><b>6.3</b> Plots of Study 6 results</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="primary-meta-analysis.html"><a href="primary-meta-analysis.html"><i class="fa fa-check"></i><b>7</b> Primary Meta-analysis</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="primary-meta-analysis.html"><a href="primary-meta-analysis.html#functions-performing-data-analysis-and-facilitating-data-reporting"><i class="fa fa-check"></i><b>7.1</b> Functions performing data analysis and facilitating data reporting**</a></li>
+<li class="chapter" data-level="7.2" data-path="primary-meta-analysis.html"><a href="primary-meta-analysis.html#primary-analysis"><i class="fa fa-check"></i><b>7.2</b> Primary Analysis</a></li>
+<li class="chapter" data-level="7.3" data-path="primary-meta-analysis.html"><a href="primary-meta-analysis.html#summary-of-the-results-of-the-primary-meta-analysis-and-of-the-individual-studies"><i class="fa fa-check"></i><b>7.3</b> Summary of the results of the primary meta-analysis and of the individual studies</a></li>
+<li class="chapter" data-level="7.4" data-path="primary-meta-analysis.html"><a href="primary-meta-analysis.html#heterogeneity"><i class="fa fa-check"></i><b>7.4</b> Heterogeneity</a></li>
+<li class="chapter" data-level="7.5" data-path="primary-meta-analysis.html"><a href="primary-meta-analysis.html#plot-of-the-primary-meta-analysis-results"><i class="fa fa-check"></i><b>7.5</b> Plot of the primary meta-analysis results</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="sensitivity-analyses.html"><a href="sensitivity-analyses.html"><i class="fa fa-check"></i><b>8</b> Sensitivity analyses</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="sensitivity-analyses.html"><a href="sensitivity-analyses.html#sensitivity-analysis-1-refitting-primary-model-but-with-a-cs-structure"><i class="fa fa-check"></i><b>8.1</b> Sensitivity analysis 1 : Refitting primary model but with a CS structure</a></li>
+<li class="chapter" data-level="8.2" data-path="sensitivity-analyses.html"><a href="sensitivity-analyses.html#sensitivity-analysis-2-by-fitting-separate-models-but-with-an-unstructed-variance-structure"><i class="fa fa-check"></i><b>8.2</b> Sensitivity Analysis 2 : By fitting separate models but with an unstructed variance structure</a></li>
+<li class="chapter" data-level="8.3" data-path="sensitivity-analyses.html"><a href="sensitivity-analyses.html#sensitivity-analysis-3-one-stage-meta-analysis"><i class="fa fa-check"></i><b>8.3</b> Sensitivity analysis 3 : One-stage meta-analysis</a></li>
+<li class="chapter" data-level="8.4" data-path="sensitivity-analyses.html"><a href="sensitivity-analyses.html#sensitivity-analyses-4-and-5-excluding-outliers"><i class="fa fa-check"></i><b>8.4</b> Sensitivity analyses 4 and 5 : Excluding outliers</a></li>
+<li class="chapter" data-level="8.5" data-path="sensitivity-analyses.html"><a href="sensitivity-analyses.html#sensitivity-analysis-6-short-durations"><i class="fa fa-check"></i><b>8.5</b> Sensitivity analysis 6 : Short durations</a></li>
+<li class="chapter" data-level="8.6" data-path="sensitivity-analyses.html"><a href="sensitivity-analyses.html#sensitivity-analysis-7-all-participants"><i class="fa fa-check"></i><b>8.6</b> Sensitivity analysis 7 : all participants</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="summary-results.html"><a href="summary-results.html"><i class="fa fa-check"></i><b>9</b> Summary results</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="summary-results.html"><a href="summary-results.html#quality-of-acute-sleep"><i class="fa fa-check"></i><b>9.1</b> Quality of Acute Sleep</a></li>
+<li class="chapter" data-level="9.2" data-path="summary-results.html"><a href="summary-results.html#quality-of-chronic-sleep"><i class="fa fa-check"></i><b>9.2</b> Quality of Chronic Sleep</a></li>
+<li class="chapter" data-level="9.3" data-path="summary-results.html"><a href="summary-results.html#quantity-of-acute-sleep"><i class="fa fa-check"></i><b>9.3</b> Quantity of Acute Sleep</a></li>
+<li class="chapter" data-level="9.4" data-path="summary-results.html"><a href="summary-results.html#quantity-of-chronic-sleep"><i class="fa fa-check"></i><b>9.4</b> Quantity of Chronic Sleep</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="post-hoc-exploratory-analyses.html"><a href="post-hoc-exploratory-analyses.html"><i class="fa fa-check"></i><b>10</b> Post hoc exploratory analyses</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Psychonomics Bulletin and Review - Supplementary Materials - R Code &amp; Results</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Psychonomics Bulletin and Review - Supplementary Materials - R Code &amp; Results</h1>
+<p class="author"><em>Trémolière B &amp; Gosling CJ</em></p>
+<p class="date"><em>2021-02-19</em></p>
+</div>
+<div id="introduction" class="section level1 unnumbered">
+<h1>Introduction</h1>
+<p>This document shares the code underlying the results reported in Trémolière &amp; Gosling (2021).
+Raw data are available in supplementary materials. Any question about this supplementary materials should be sent at <a href="mailto:bastien.tremoliere@unimes.fr" class="email">bastien.tremoliere@unimes.fr</a>.</p>
+<p><strong>To reproduce the described analyses you should have: </strong></p>
+<p><em>1. These packages installed and loaded</em></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&quot;knitr&quot;</span>, <span class="st">&quot;geepack&quot;</span> ,<span class="st">&quot;gt&quot;</span>, <span class="st">&quot;ggplot2&quot;</span>, <span class="st">&quot;tidyr&quot;</span>, <span class="st">&quot;dplyr&quot;</span>, <span class="st">&quot;car&quot;</span>, <span class="st">&quot;lavaan&quot;</span>, <span class="st">&quot;metafor&quot;</span>, <span class="st">&quot;lme4&quot;</span>, <span class="st">&quot;lmerTest&quot;</span>, <span class="st">&quot;stringr&quot;</span>, <span class="st">&quot;ggplot2&quot;</span>, <span class="st">&quot;DescTools&quot;</span>, <span class="st">&quot;corrplot&quot;</span>)) </span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="index.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr);<span class="fu">library</span>(geepack); <span class="fu">library</span>(gt); <span class="fu">library</span>(ggplot2); <span class="fu">library</span>(tidyr); <span class="fu">library</span>(dplyr);<span class="fu">library</span>(car);<span class="fu">library</span>(lavaan); <span class="fu">library</span>(metafor); <span class="fu">library</span>(kableExtra); <span class="fu">library</span>(gt);<span class="fu">library</span>(lme4);<span class="fu">library</span>(lmerTest); <span class="fu">library</span>(DescTools);<span class="fu">library</span>(stringr); <span class="fu">library</span>(corrplot)</span></code></pre></div>
+<p><em>2. The datasets of the individual studies loaded</em></p>
+<p>If you want to reproduce our analyses, load the raw data provided in supplementary materials using this code.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="index.html#cb3-1" aria-hidden="true" tabindex="-1"></a>Data_Study1_sleep_moral <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="fu">file.choose</span>())</span>
+<span id="cb3-2"><a href="index.html#cb3-2" aria-hidden="true" tabindex="-1"></a>Data_Study2_sleep_moral <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="fu">file.choose</span>())</span>
+<span id="cb3-3"><a href="index.html#cb3-3" aria-hidden="true" tabindex="-1"></a>Data_Study3_sleep_moral <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="fu">file.choose</span>())</span>
+<span id="cb3-4"><a href="index.html#cb3-4" aria-hidden="true" tabindex="-1"></a>Data_Study4_sleep_moral <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="fu">file.choose</span>())</span>
+<span id="cb3-5"><a href="index.html#cb3-5" aria-hidden="true" tabindex="-1"></a>Data_Study5_sleep_moral <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="fu">file.choose</span>())</span>
+<span id="cb3-6"><a href="index.html#cb3-6" aria-hidden="true" tabindex="-1"></a>Data_Study6_sleep_moral <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="fu">file.choose</span>())</span></code></pre></div>
+<p><strong>Scoring and combining the datasets from primary studies</strong></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="index.html#cb4-1" aria-hidden="true" tabindex="-1"></a>Data_Study1_Raw <span class="ot">&lt;-</span> Data_Study1_sleep_moral <span class="sc">%&gt;%</span> </span>
+<span id="cb4-2"><a href="index.html#cb4-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb4-3"><a href="index.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Check for missing Data</span></span>
+<span id="cb4-4"><a href="index.html#cb4-4" aria-hidden="true" tabindex="-1"></a>   <span class="at">CCA =</span> <span class="fu">case_when</span>(</span>
+<span id="cb4-5"><a href="index.html#cb4-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">is.na</span>(Moral_DIL) <span class="sc">|</span> <span class="fu">is.na</span>(SleepQualCro) <span class="sc">|</span> <span class="fu">is.na</span>(SleepQualAcu) <span class="sc">|</span> <span class="fu">is.na</span>(SleepQuantCro) <span class="sc">|</span> </span>
+<span id="cb4-6"><a href="index.html#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">is.na</span>(SleepQuantAcu) <span class="sc">~</span> <span class="dv">0</span>, </span>
+<span id="cb4-7"><a href="index.html#cb4-7" aria-hidden="true" tabindex="-1"></a>      <span class="sc">!</span><span class="fu">is.na</span>(Moral_DIL) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(SleepQualCro) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(SleepQualAcu) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(SleepQuantCro) <span class="sc">&amp;</span></span>
+<span id="cb4-8"><a href="index.html#cb4-8" aria-hidden="true" tabindex="-1"></a>        <span class="sc">!</span><span class="fu">is.na</span>(SleepQuantAcu) <span class="sc">~</span> <span class="dv">1</span>),</span>
+<span id="cb4-9"><a href="index.html#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">#Detect participants failing at attention check</span></span>
+<span id="cb4-10"><a href="index.html#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">Attention_check=</span><span class="fu">case_when</span>(</span>
+<span id="cb4-11"><a href="index.html#cb4-11" aria-hidden="true" tabindex="-1"></a>      Tromp <span class="sc">==</span> <span class="dv">2</span>  <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb4-12"><a href="index.html#cb4-12" aria-hidden="true" tabindex="-1"></a>      Tromp <span class="sc">!=</span> <span class="dv">2</span> <span class="sc">~</span> <span class="dv">0</span>),</span>
+<span id="cb4-13"><a href="index.html#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">SleepEfficiency.criteria =</span> <span class="dv">1</span>) </span>
+<span id="cb4-14"><a href="index.html#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="index.html#cb4-15" aria-hidden="true" tabindex="-1"></a>Data_Study2_Raw <span class="ot">&lt;-</span> Data_Study2_sleep_moral <span class="sc">%&gt;%</span> </span>
+<span id="cb4-16"><a href="index.html#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb4-17"><a href="index.html#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co">#Check for missing Data</span></span>
+<span id="cb4-18"><a href="index.html#cb4-18" aria-hidden="true" tabindex="-1"></a>   <span class="at">CCA =</span> <span class="fu">case_when</span>(</span>
+<span id="cb4-19"><a href="index.html#cb4-19" aria-hidden="true" tabindex="-1"></a>      <span class="fu">is.na</span>(Moral_SCA) <span class="sc">|</span> <span class="fu">is.na</span>(SleepQualCro) <span class="sc">|</span> <span class="fu">is.na</span>(SleepQualAcu) <span class="sc">|</span> <span class="fu">is.na</span>(SleepQuantCro) <span class="sc">|</span> </span>
+<span id="cb4-20"><a href="index.html#cb4-20" aria-hidden="true" tabindex="-1"></a>        <span class="fu">is.na</span>(SleepQuantAcu) <span class="sc">~</span> <span class="dv">0</span>, </span>
+<span id="cb4-21"><a href="index.html#cb4-21" aria-hidden="true" tabindex="-1"></a>      <span class="sc">!</span><span class="fu">is.na</span>(Moral_SCA) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(SleepQualCro) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(SleepQualAcu) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(SleepQuantCro) <span class="sc">&amp;</span></span>
+<span id="cb4-22"><a href="index.html#cb4-22" aria-hidden="true" tabindex="-1"></a>        <span class="sc">!</span><span class="fu">is.na</span>(SleepQuantAcu) <span class="sc">~</span> <span class="dv">1</span>),</span>
+<span id="cb4-23"><a href="index.html#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="co">#Detect participants failing at attention check</span></span>
+<span id="cb4-24"><a href="index.html#cb4-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">Attention_check =</span> <span class="fu">case_when</span>(</span>
+<span id="cb4-25"><a href="index.html#cb4-25" aria-hidden="true" tabindex="-1"></a>      Tromp <span class="sc">==</span> <span class="dv">2</span>  <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb4-26"><a href="index.html#cb4-26" aria-hidden="true" tabindex="-1"></a>      Tromp <span class="sc">!=</span> <span class="dv">2</span> <span class="sc">~</span> <span class="dv">0</span>),</span>
+<span id="cb4-27"><a href="index.html#cb4-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">SleepEfficiency.criteria =</span> <span class="dv">1</span>)</span>
+<span id="cb4-28"><a href="index.html#cb4-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-29"><a href="index.html#cb4-29" aria-hidden="true" tabindex="-1"></a>Data_Study3_Raw <span class="ot">&lt;-</span> Data_Study3_sleep_moral <span class="sc">%&gt;%</span> </span>
+<span id="cb4-30"><a href="index.html#cb4-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb4-31"><a href="index.html#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="co">#Check for missing Data</span></span>
+<span id="cb4-32"><a href="index.html#cb4-32" aria-hidden="true" tabindex="-1"></a>   <span class="at">CCA =</span> <span class="fu">case_when</span>(</span>
+<span id="cb4-33"><a href="index.html#cb4-33" aria-hidden="true" tabindex="-1"></a>      <span class="fu">is.na</span>(Moral_SCA) <span class="sc">|</span> <span class="fu">is.na</span>(SleepQualCro) <span class="sc">|</span> <span class="fu">is.na</span>(SleepQualAcu) <span class="sc">|</span> <span class="fu">is.na</span>(SleepQuantCro) <span class="sc">|</span> </span>
+<span id="cb4-34"><a href="index.html#cb4-34" aria-hidden="true" tabindex="-1"></a>        <span class="fu">is.na</span>(SleepQuantAcu) <span class="sc">~</span> <span class="dv">0</span>, </span>
+<span id="cb4-35"><a href="index.html#cb4-35" aria-hidden="true" tabindex="-1"></a>      <span class="sc">!</span><span class="fu">is.na</span>(Moral_SCA) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(SleepQualCro) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(SleepQualAcu) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(SleepQuantCro) <span class="sc">&amp;</span></span>
+<span id="cb4-36"><a href="index.html#cb4-36" aria-hidden="true" tabindex="-1"></a>        <span class="sc">!</span><span class="fu">is.na</span>(SleepQuantAcu) <span class="sc">~</span> <span class="dv">1</span>),</span>
+<span id="cb4-37"><a href="index.html#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="co">#Attention check and sleep efficiency criterion set to 1 since there are none in the task</span></span>
+<span id="cb4-38"><a href="index.html#cb4-38" aria-hidden="true" tabindex="-1"></a>  <span class="at">Attention_check =</span> <span class="dv">1</span>,</span>
+<span id="cb4-39"><a href="index.html#cb4-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">SleepEfficiency.criteria =</span> <span class="dv">1</span>)</span>
+<span id="cb4-40"><a href="index.html#cb4-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-41"><a href="index.html#cb4-41" aria-hidden="true" tabindex="-1"></a>Data_Study4_Raw <span class="ot">&lt;-</span> Data_Study4_sleep_moral <span class="sc">%&gt;%</span></span>
+<span id="cb4-42"><a href="index.html#cb4-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb4-43"><a href="index.html#cb4-43" aria-hidden="true" tabindex="-1"></a><span class="co">#Check for missing Data</span></span>
+<span id="cb4-44"><a href="index.html#cb4-44" aria-hidden="true" tabindex="-1"></a>   <span class="at">CCA =</span> <span class="fu">case_when</span>(</span>
+<span id="cb4-45"><a href="index.html#cb4-45" aria-hidden="true" tabindex="-1"></a>      <span class="fu">is.na</span>(Moral_DIL) <span class="sc">|</span><span class="fu">is.na</span>(Moral_SCA) <span class="sc">|</span> <span class="fu">is.na</span>(Moral_CAR) <span class="sc">|</span> <span class="fu">is.na</span>(SleepQualCro) <span class="sc">|</span> <span class="fu">is.na</span>(SleepQualAcu)  <span class="sc">|</span> <span class="fu">is.na</span>(SleepQuantCro) <span class="sc">|</span> <span class="fu">is.na</span>(SleepQuantAcu) <span class="sc">~</span><span class="dv">0</span>,</span>
+<span id="cb4-46"><a href="index.html#cb4-46" aria-hidden="true" tabindex="-1"></a>      <span class="sc">!</span><span class="fu">is.na</span>(Moral_DIL) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(Moral_SCA) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(Moral_CAR) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(SleepQualCro)</span>
+<span id="cb4-47"><a href="index.html#cb4-47" aria-hidden="true" tabindex="-1"></a>      <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(SleepQualAcu) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(SleepQuantCro) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(SleepQuantAcu) <span class="sc">~</span><span class="dv">1</span>),</span>
+<span id="cb4-48"><a href="index.html#cb4-48" aria-hidden="true" tabindex="-1"></a><span class="co">#Detect participants failing at attention check</span></span>
+<span id="cb4-49"><a href="index.html#cb4-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">Attention_check=</span><span class="fu">case_when</span>(</span>
+<span id="cb4-50"><a href="index.html#cb4-50" aria-hidden="true" tabindex="-1"></a>      Tromp <span class="sc">==</span> <span class="dv">0</span>  <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb4-51"><a href="index.html#cb4-51" aria-hidden="true" tabindex="-1"></a>      Tromp <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="dv">0</span>))</span>
+<span id="cb4-52"><a href="index.html#cb4-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-53"><a href="index.html#cb4-53" aria-hidden="true" tabindex="-1"></a>Data_Study5_Raw <span class="ot">&lt;-</span> Data_Study5_sleep_moral <span class="sc">%&gt;%</span> </span>
+<span id="cb4-54"><a href="index.html#cb4-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb4-55"><a href="index.html#cb4-55" aria-hidden="true" tabindex="-1"></a><span class="co">#Check for missing Data</span></span>
+<span id="cb4-56"><a href="index.html#cb4-56" aria-hidden="true" tabindex="-1"></a>   <span class="at">CCA =</span> <span class="fu">case_when</span>(</span>
+<span id="cb4-57"><a href="index.html#cb4-57" aria-hidden="true" tabindex="-1"></a>      <span class="fu">is.na</span>(Moral_DIL) <span class="sc">|</span><span class="fu">is.na</span>(Moral_SCA) <span class="sc">|</span> <span class="fu">is.na</span>(SleepQualCro) <span class="sc">|</span> <span class="fu">is.na</span>(SleepQualAcu)</span>
+<span id="cb4-58"><a href="index.html#cb4-58" aria-hidden="true" tabindex="-1"></a>        <span class="sc">|</span> <span class="fu">is.na</span>(SleepQuantCro) <span class="sc">|</span> <span class="fu">is.na</span>(SleepQuantAcu) <span class="sc">~</span><span class="dv">0</span>, </span>
+<span id="cb4-59"><a href="index.html#cb4-59" aria-hidden="true" tabindex="-1"></a>      <span class="sc">!</span><span class="fu">is.na</span>(Moral_DIL) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(Moral_SCA) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(SleepQualCro) <span class="sc">&amp;</span> </span>
+<span id="cb4-60"><a href="index.html#cb4-60" aria-hidden="true" tabindex="-1"></a>        <span class="sc">!</span><span class="fu">is.na</span>(SleepQualAcu) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(SleepQuantCro) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(SleepQuantAcu) <span class="sc">~</span><span class="dv">1</span>),</span>
+<span id="cb4-61"><a href="index.html#cb4-61" aria-hidden="true" tabindex="-1"></a><span class="co">#Attention check set to 1 since there are none in the task</span></span>
+<span id="cb4-62"><a href="index.html#cb4-62" aria-hidden="true" tabindex="-1"></a>   <span class="at">Attention_check =</span> <span class="dv">1</span>)</span>
+<span id="cb4-63"><a href="index.html#cb4-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-64"><a href="index.html#cb4-64" aria-hidden="true" tabindex="-1"></a>Data_Study6_Raw <span class="ot">&lt;-</span> Data_Study6_sleep_moral <span class="sc">%&gt;%</span> </span>
+<span id="cb4-65"><a href="index.html#cb4-65" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb4-66"><a href="index.html#cb4-66" aria-hidden="true" tabindex="-1"></a><span class="co">#Check for missing Data</span></span>
+<span id="cb4-67"><a href="index.html#cb4-67" aria-hidden="true" tabindex="-1"></a>   <span class="at">CCA=</span><span class="fu">case_when</span>(</span>
+<span id="cb4-68"><a href="index.html#cb4-68" aria-hidden="true" tabindex="-1"></a>      <span class="fu">is.na</span>(Moral_DIL) <span class="sc">|</span><span class="fu">is.na</span>(Moral_SCA) <span class="sc">|</span> <span class="fu">is.na</span>(SleepQualCro) <span class="sc">|</span> <span class="fu">is.na</span>(SleepQualAcu) </span>
+<span id="cb4-69"><a href="index.html#cb4-69" aria-hidden="true" tabindex="-1"></a>        <span class="sc">|</span> <span class="fu">is.na</span>(SleepQuantCro) <span class="sc">|</span> <span class="fu">is.na</span>(SleepQuantAcu) <span class="sc">~</span><span class="dv">0</span>, </span>
+<span id="cb4-70"><a href="index.html#cb4-70" aria-hidden="true" tabindex="-1"></a>      <span class="sc">!</span><span class="fu">is.na</span>(Moral_DIL) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(Moral_SCA) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(SleepQualCro) <span class="sc">&amp;</span> </span>
+<span id="cb4-71"><a href="index.html#cb4-71" aria-hidden="true" tabindex="-1"></a>        <span class="sc">!</span><span class="fu">is.na</span>(SleepQualAcu) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(SleepQuantCro) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(SleepQuantAcu) <span class="sc">~</span><span class="dv">1</span>),</span>
+<span id="cb4-72"><a href="index.html#cb4-72" aria-hidden="true" tabindex="-1"></a><span class="co">#Detect participants failing at attention check</span></span>
+<span id="cb4-73"><a href="index.html#cb4-73" aria-hidden="true" tabindex="-1"></a>    <span class="at">Attention_check=</span><span class="fu">case_when</span>(</span>
+<span id="cb4-74"><a href="index.html#cb4-74" aria-hidden="true" tabindex="-1"></a>      Tromp <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb4-75"><a href="index.html#cb4-75" aria-hidden="true" tabindex="-1"></a>      Tromp <span class="sc">!=</span> <span class="dv">1</span> <span class="sc">~</span> <span class="dv">0</span>))</span>
+<span id="cb4-76"><a href="index.html#cb4-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-77"><a href="index.html#cb4-77" aria-hidden="true" tabindex="-1"></a><span class="co"># For each dataset, we select only the required columns, we create an outcome column describing the type of outcome used in the study, we create unique participant identifiers, and we set the minimal duration under which the task could not be correctly performed</span></span>
+<span id="cb4-78"><a href="index.html#cb4-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-79"><a href="index.html#cb4-79" aria-hidden="true" tabindex="-1"></a>Data_MetaS1 <span class="ot">&lt;-</span> Data_Study1_Raw <span class="sc">%&gt;%</span> </span>
+<span id="cb4-80"><a href="index.html#cb4-80" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(ResponseId, Moral_DIL, SleepQualCro, SleepQualAcu, SleepQuantCro, SleepQuantAcu,</span>
+<span id="cb4-81"><a href="index.html#cb4-81" aria-hidden="true" tabindex="-1"></a>          Age_correct, Attention_check, CCA, Duration, SleepEfficiency.criteria, </span>
+<span id="cb4-82"><a href="index.html#cb4-82" aria-hidden="true" tabindex="-1"></a>          CRT_TOT, Num_TOT, AOT_TOT, Psych_TOT, Narc_TOT, Mach_TOT) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-83"><a href="index.html#cb4-83" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb4-84"><a href="index.html#cb4-84" aria-hidden="true" tabindex="-1"></a>    <span class="at">Outcome=</span><span class="st">&quot;Dilemmas&quot;</span>, <span class="at">Study=</span><span class="st">&quot;1&quot;</span>,</span>
+<span id="cb4-85"><a href="index.html#cb4-85" aria-hidden="true" tabindex="-1"></a>    <span class="at">ID=</span><span class="fu">paste0</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(Data_Study1_Raw), <span class="st">&quot;_S1&quot;</span>),</span>
+<span id="cb4-86"><a href="index.html#cb4-86" aria-hidden="true" tabindex="-1"></a>    <span class="at">ResponseId=</span><span class="fu">as.character</span>(ResponseId),</span>
+<span id="cb4-87"><a href="index.html#cb4-87" aria-hidden="true" tabindex="-1"></a>    <span class="at">Duration.min=</span><span class="dv">200</span></span>
+<span id="cb4-88"><a href="index.html#cb4-88" aria-hidden="true" tabindex="-1"></a>         )</span>
+<span id="cb4-89"><a href="index.html#cb4-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-90"><a href="index.html#cb4-90" aria-hidden="true" tabindex="-1"></a>Data_MetaS2 <span class="ot">&lt;-</span> Data_Study2_Raw <span class="sc">%&gt;%</span> </span>
+<span id="cb4-91"><a href="index.html#cb4-91" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(ResponseId,Moral_SCA, SleepQualCro, SleepQualAcu, SleepQuantCro, SleepQuantAcu,</span>
+<span id="cb4-92"><a href="index.html#cb4-92" aria-hidden="true" tabindex="-1"></a>         Age_correct, Attention_check, CCA, Duration, SleepEfficiency.criteria,</span>
+<span id="cb4-93"><a href="index.html#cb4-93" aria-hidden="true" tabindex="-1"></a>         CRT_TOT, Num_TOT, AOT_TOT, Psych_TOT, Narc_TOT, Mach_TOT)<span class="sc">%&gt;%</span> </span>
+<span id="cb4-94"><a href="index.html#cb4-94" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb4-95"><a href="index.html#cb4-95" aria-hidden="true" tabindex="-1"></a>    <span class="at">Outcome =</span> <span class="st">&quot;Scale&quot;</span>, </span>
+<span id="cb4-96"><a href="index.html#cb4-96" aria-hidden="true" tabindex="-1"></a>    <span class="at">Study =</span> <span class="st">&quot;2&quot;</span>,</span>
+<span id="cb4-97"><a href="index.html#cb4-97" aria-hidden="true" tabindex="-1"></a>    <span class="at">ID =</span> <span class="fu">paste0</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(Data_Study2_Raw), <span class="st">&quot;_S2&quot;</span>),</span>
+<span id="cb4-98"><a href="index.html#cb4-98" aria-hidden="true" tabindex="-1"></a>    <span class="at">ResponseId=</span><span class="fu">as.character</span>(ResponseId),</span>
+<span id="cb4-99"><a href="index.html#cb4-99" aria-hidden="true" tabindex="-1"></a>    <span class="at">Duration.min =</span> <span class="dv">150</span></span>
+<span id="cb4-100"><a href="index.html#cb4-100" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb4-101"><a href="index.html#cb4-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-102"><a href="index.html#cb4-102" aria-hidden="true" tabindex="-1"></a>Data_MetaS3 <span class="ot">&lt;-</span> Data_Study3_Raw <span class="sc">%&gt;%</span> </span>
+<span id="cb4-103"><a href="index.html#cb4-103" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(ResponseId,Moral_SCA, SleepQualCro, SleepQualAcu, SleepQuantCro, SleepQuantAcu,</span>
+<span id="cb4-104"><a href="index.html#cb4-104" aria-hidden="true" tabindex="-1"></a>         Age_correct, CCA, Duration, Attention_check, SleepEfficiency.criteria,</span>
+<span id="cb4-105"><a href="index.html#cb4-105" aria-hidden="true" tabindex="-1"></a>         CRT_TOT, Num_TOT, AOT_TOT, Psych_TOT, Narc_TOT, Mach_TOT)<span class="sc">%&gt;%</span> </span>
+<span id="cb4-106"><a href="index.html#cb4-106" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb4-107"><a href="index.html#cb4-107" aria-hidden="true" tabindex="-1"></a>    <span class="at">Outcome =</span> <span class="st">&quot;Scale&quot;</span>, <span class="at">Study =</span> <span class="st">&quot;3&quot;</span>,</span>
+<span id="cb4-108"><a href="index.html#cb4-108" aria-hidden="true" tabindex="-1"></a>    <span class="at">ID =</span> <span class="fu">paste0</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(Data_Study3_Raw), <span class="st">&quot;_S3&quot;</span>),</span>
+<span id="cb4-109"><a href="index.html#cb4-109" aria-hidden="true" tabindex="-1"></a>    <span class="at">ResponseId=</span><span class="fu">as.character</span>(ResponseId),</span>
+<span id="cb4-110"><a href="index.html#cb4-110" aria-hidden="true" tabindex="-1"></a>    <span class="at">Duration.min =</span> <span class="dv">150</span></span>
+<span id="cb4-111"><a href="index.html#cb4-111" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb4-112"><a href="index.html#cb4-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-113"><a href="index.html#cb4-113" aria-hidden="true" tabindex="-1"></a>Data_MetaS4.wide <span class="ot">&lt;-</span> Data_Study4_Raw <span class="sc">%&gt;%</span> </span>
+<span id="cb4-114"><a href="index.html#cb4-114" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(ResponseId,Moral_DIL, Moral_SCA, Moral_CAR, SleepQualCro, SleepQualAcu, SleepQuantCro, SleepQuantAcu, Age_correct, Attention_check, CCA, Duration, SleepEfficiency.criteria)<span class="sc">%&gt;%</span> </span>
+<span id="cb4-115"><a href="index.html#cb4-115" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb4-116"><a href="index.html#cb4-116" aria-hidden="true" tabindex="-1"></a>    <span class="at">Study =</span> <span class="st">&quot;4&quot;</span>, </span>
+<span id="cb4-117"><a href="index.html#cb4-117" aria-hidden="true" tabindex="-1"></a>    <span class="at">ID =</span> <span class="fu">paste0</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(Data_Study4_Raw), <span class="st">&quot;_S4&quot;</span>),</span>
+<span id="cb4-118"><a href="index.html#cb4-118" aria-hidden="true" tabindex="-1"></a>    <span class="at">ResponseId=</span><span class="fu">as.character</span>(ResponseId),</span>
+<span id="cb4-119"><a href="index.html#cb4-119" aria-hidden="true" tabindex="-1"></a>    <span class="at">Duration.min =</span> <span class="dv">200</span></span>
+<span id="cb4-120"><a href="index.html#cb4-120" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb4-121"><a href="index.html#cb4-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-122"><a href="index.html#cb4-122" aria-hidden="true" tabindex="-1"></a>Data_MetaS4 <span class="ot">&lt;-</span> Data_MetaS4.wide <span class="sc">%&gt;%</span></span>
+<span id="cb4-123"><a href="index.html#cb4-123" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols=</span><span class="fu">c</span>(<span class="st">&quot;Moral_DIL&quot;</span>, <span class="st">&quot;Moral_SCA&quot;</span>, <span class="st">&quot;Moral_CAR&quot;</span>), <span class="at">values_to=</span><span class="st">&quot;Moral_TOT&quot;</span>,</span>
+<span id="cb4-124"><a href="index.html#cb4-124" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to=</span><span class="st">&quot;Outcome_transit&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-125"><a href="index.html#cb4-125" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Outcome=</span><span class="fu">case_when</span>(</span>
+<span id="cb4-126"><a href="index.html#cb4-126" aria-hidden="true" tabindex="-1"></a>           Outcome_transit<span class="sc">==</span><span class="st">&quot;Moral_DIL&quot;</span><span class="sc">~</span><span class="st">&quot;Dilemmas&quot;</span>,</span>
+<span id="cb4-127"><a href="index.html#cb4-127" aria-hidden="true" tabindex="-1"></a>           Outcome_transit<span class="sc">==</span><span class="st">&quot;Moral_SCA&quot;</span><span class="sc">~</span><span class="st">&quot;Scale&quot;</span>,</span>
+<span id="cb4-128"><a href="index.html#cb4-128" aria-hidden="true" tabindex="-1"></a>           Outcome_transit<span class="sc">==</span><span class="st">&quot;Moral_CAR&quot;</span><span class="sc">~</span><span class="st">&quot;Autonomouscars&quot;</span>))</span>
+<span id="cb4-129"><a href="index.html#cb4-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-130"><a href="index.html#cb4-130" aria-hidden="true" tabindex="-1"></a>Data_MetaS5.wide<span class="ot">&lt;-</span>Data_Study5_Raw <span class="sc">%&gt;%</span> </span>
+<span id="cb4-131"><a href="index.html#cb4-131" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(ResponseId,Moral_DIL, Moral_SCA, SleepQualCro, SleepQualAcu, SleepQuantCro, SleepQuantAcu,Age_correct, CCA, Duration, Attention_check, SleepEfficiency.criteria) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-132"><a href="index.html#cb4-132" aria-hidden="true" tabindex="-1"></a>   dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Study=</span><span class="st">&quot;5&quot;</span>,</span>
+<span id="cb4-133"><a href="index.html#cb4-133" aria-hidden="true" tabindex="-1"></a>         <span class="at">ID=</span><span class="fu">paste0</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(Data_Study5_Raw), <span class="st">&quot;_S5&quot;</span>),</span>
+<span id="cb4-134"><a href="index.html#cb4-134" aria-hidden="true" tabindex="-1"></a>         <span class="at">ResponseId=</span><span class="fu">as.character</span>(ResponseId),</span>
+<span id="cb4-135"><a href="index.html#cb4-135" aria-hidden="true" tabindex="-1"></a>         <span class="at">Duration.min=</span><span class="dv">150</span>,</span>
+<span id="cb4-136"><a href="index.html#cb4-136" aria-hidden="true" tabindex="-1"></a>         )</span>
+<span id="cb4-137"><a href="index.html#cb4-137" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-138"><a href="index.html#cb4-138" aria-hidden="true" tabindex="-1"></a>Data_MetaS5<span class="ot">&lt;-</span> Data_MetaS5.wide <span class="sc">%&gt;%</span></span>
+<span id="cb4-139"><a href="index.html#cb4-139" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols=</span><span class="fu">c</span>(<span class="st">&quot;Moral_DIL&quot;</span>, <span class="st">&quot;Moral_SCA&quot;</span>), <span class="at">values_to=</span><span class="st">&quot;Moral_TOT&quot;</span>, <span class="at">names_to=</span><span class="st">&quot;Outcome_transit&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-140"><a href="index.html#cb4-140" aria-hidden="true" tabindex="-1"></a>   dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Outcome=</span><span class="fu">case_when</span>(</span>
+<span id="cb4-141"><a href="index.html#cb4-141" aria-hidden="true" tabindex="-1"></a>           Outcome_transit<span class="sc">==</span><span class="st">&quot;Moral_DIL&quot;</span><span class="sc">~</span><span class="st">&quot;Dilemmas&quot;</span>,</span>
+<span id="cb4-142"><a href="index.html#cb4-142" aria-hidden="true" tabindex="-1"></a>           Outcome_transit<span class="sc">==</span><span class="st">&quot;Moral_SCA&quot;</span><span class="sc">~</span><span class="st">&quot;Scale&quot;</span>))</span>
+<span id="cb4-143"><a href="index.html#cb4-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-144"><a href="index.html#cb4-144" aria-hidden="true" tabindex="-1"></a>Data_MetaS6.wide<span class="ot">&lt;-</span>Data_Study6_Raw <span class="sc">%&gt;%</span> </span>
+<span id="cb4-145"><a href="index.html#cb4-145" aria-hidden="true" tabindex="-1"></a>   dplyr<span class="sc">::</span><span class="fu">select</span>(ResponseId,Moral_DIL, Moral_SCA, SleepQualCro, SleepQualAcu, SleepQuantCro, SleepQuantAcu, Age_correct, CCA,Attention_check, Duration, SleepEfficiency.criteria) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-146"><a href="index.html#cb4-146" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Study=</span><span class="st">&quot;6&quot;</span>,</span>
+<span id="cb4-147"><a href="index.html#cb4-147" aria-hidden="true" tabindex="-1"></a>         <span class="at">ID=</span><span class="fu">paste0</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(Data_Study6_Raw), <span class="st">&quot;_S6&quot;</span>),</span>
+<span id="cb4-148"><a href="index.html#cb4-148" aria-hidden="true" tabindex="-1"></a>         <span class="at">ResponseId=</span><span class="fu">as.character</span>(ResponseId),</span>
+<span id="cb4-149"><a href="index.html#cb4-149" aria-hidden="true" tabindex="-1"></a>         <span class="at">Duration.min=</span><span class="dv">150</span></span>
+<span id="cb4-150"><a href="index.html#cb4-150" aria-hidden="true" tabindex="-1"></a>         ) </span>
+<span id="cb4-151"><a href="index.html#cb4-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-152"><a href="index.html#cb4-152" aria-hidden="true" tabindex="-1"></a>Data_MetaS6<span class="ot">&lt;-</span> Data_MetaS6.wide <span class="sc">%&gt;%</span></span>
+<span id="cb4-153"><a href="index.html#cb4-153" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols=</span><span class="fu">c</span>(<span class="st">&quot;Moral_DIL&quot;</span>, <span class="st">&quot;Moral_SCA&quot;</span>), <span class="at">values_to=</span><span class="st">&quot;Moral_TOT&quot;</span>, <span class="at">names_to=</span><span class="st">&quot;Outcome_transit&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-154"><a href="index.html#cb4-154" aria-hidden="true" tabindex="-1"></a>   dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Outcome=</span><span class="fu">case_when</span>(</span>
+<span id="cb4-155"><a href="index.html#cb4-155" aria-hidden="true" tabindex="-1"></a>           Outcome_transit<span class="sc">==</span><span class="st">&quot;Moral_DIL&quot;</span><span class="sc">~</span><span class="st">&quot;Dilemmas&quot;</span>,</span>
+<span id="cb4-156"><a href="index.html#cb4-156" aria-hidden="true" tabindex="-1"></a>           Outcome_transit<span class="sc">==</span><span class="st">&quot;Moral_SCA&quot;</span><span class="sc">~</span><span class="st">&quot;Scale&quot;</span>))</span></code></pre></div>
+<p><strong>List of the combined datasets </strong></p>
+<p><em>Wide dataset: 1 row per participant</em></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="index.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we create 3 datasets with one row per participant</span></span>
+<span id="cb5-2"><a href="index.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># one dataset with all participants</span></span>
+<span id="cb5-3"><a href="index.html#cb5-3" aria-hidden="true" tabindex="-1"></a>Data_Meta_Raw_transit.wide<span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
+<span id="cb5-4"><a href="index.html#cb5-4" aria-hidden="true" tabindex="-1"></a>  Data_MetaS1, Data_MetaS2, Data_MetaS3, Data_MetaS4.wide, Data_MetaS5.wide, Data_MetaS6.wide)</span>
+<span id="cb5-5"><a href="index.html#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="index.html#cb5-6" aria-hidden="true" tabindex="-1"></a>Data_Meta_Raw_transit.wide<span class="sc">$</span>Exclusion <span class="ot">&lt;-</span> <span class="fu">case_when</span>(</span>
+<span id="cb5-7"><a href="index.html#cb5-7" aria-hidden="true" tabindex="-1"></a>  Data_Meta_Raw_transit.wide<span class="sc">$</span>CCA <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> Data_Meta_Raw_transit.wide<span class="sc">$</span>SleepEfficiency.criteria <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span></span>
+<span id="cb5-8"><a href="index.html#cb5-8" aria-hidden="true" tabindex="-1"></a>    Data_Meta_Raw_transit.wide<span class="sc">$</span>SleepQuantCro <span class="sc">&gt;=</span> <span class="dv">2</span> <span class="sc">&amp;</span> Data_Meta_Raw_transit.wide<span class="sc">$</span>SleepQuantCro <span class="sc">&lt;=</span> <span class="dv">16</span> <span class="sc">&amp;</span></span>
+<span id="cb5-9"><a href="index.html#cb5-9" aria-hidden="true" tabindex="-1"></a>    Data_Meta_Raw_transit.wide<span class="sc">$</span>SleepQuantAcu <span class="sc">&gt;=</span> <span class="dv">0</span> <span class="sc">&amp;</span> Data_Meta_Raw_transit.wide<span class="sc">$</span>Attention_check <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="dv">0</span>,</span>
+<span id="cb5-10"><a href="index.html#cb5-10" aria-hidden="true" tabindex="-1"></a>  Data_Meta_Raw_transit.wide<span class="sc">$</span>CCA <span class="sc">!=</span> <span class="dv">1</span> <span class="sc">|</span> Data_Meta_Raw_transit.wide<span class="sc">$</span>SleepEfficiency.criteria <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span></span>
+<span id="cb5-11"><a href="index.html#cb5-11" aria-hidden="true" tabindex="-1"></a>    Data_Meta_Raw_transit.wide<span class="sc">$</span>SleepQuantCro <span class="sc">&lt;</span> <span class="dv">2</span> <span class="sc">|</span> Data_Meta_Raw_transit.wide<span class="sc">$</span>SleepQuantCro <span class="sc">&gt;</span> <span class="dv">16</span> <span class="sc">|</span></span>
+<span id="cb5-12"><a href="index.html#cb5-12" aria-hidden="true" tabindex="-1"></a>    Data_Meta_Raw_transit.wide<span class="sc">$</span>SleepQuantAcu <span class="sc">&lt;</span> <span class="dv">0</span> <span class="sc">|</span> Data_Meta_Raw_transit.wide<span class="sc">$</span>Attention_check <span class="sc">!=</span> <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>)</span>
+<span id="cb5-13"><a href="index.html#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="index.html#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co"># one dataset with participants who have no missing values </span></span>
+<span id="cb5-15"><a href="index.html#cb5-15" aria-hidden="true" tabindex="-1"></a>Data_Meta_Raw.wide_CCA <span class="ot">&lt;-</span> <span class="fu">filter</span>(Data_Meta_Raw_transit.wide,CCA<span class="sc">==</span><span class="dv">1</span>) </span>
+<span id="cb5-16"><a href="index.html#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co"># one dataset with participants who have who have no missing values and correct sleep efficiency ratio  </span></span>
+<span id="cb5-17"><a href="index.html#cb5-17" aria-hidden="true" tabindex="-1"></a>Data_Meta_Raw.wide_CCA_excl1 <span class="ot">&lt;-</span> <span class="fu">filter</span>(Data_Meta_Raw.wide_CCA, SleepEfficiency.criteria <span class="sc">==</span><span class="dv">1</span>)</span>
+<span id="cb5-18"><a href="index.html#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co"># one dataset with participants who have who have no missing values, correct sleep efficiency ratio and credible sleep quantity</span></span>
+<span id="cb5-19"><a href="index.html#cb5-19" aria-hidden="true" tabindex="-1"></a>Data_Meta_Raw.wide_CCA_excl2 <span class="ot">&lt;-</span> <span class="fu">filter</span>(Data_Meta_Raw.wide_CCA_excl1, </span>
+<span id="cb5-20"><a href="index.html#cb5-20" aria-hidden="true" tabindex="-1"></a>                                       SleepQuantCro <span class="sc">&gt;=</span> <span class="dv">2</span> <span class="sc">&amp;</span> SleepQuantCro <span class="sc">&lt;=</span> <span class="dv">16</span> <span class="sc">&amp;</span></span>
+<span id="cb5-21"><a href="index.html#cb5-21" aria-hidden="true" tabindex="-1"></a>                                       SleepQuantAcu <span class="sc">&gt;=</span> <span class="dv">0</span>)</span>
+<span id="cb5-22"><a href="index.html#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="co"># one dataset with participants who have who have no missing values, correct sleep efficiency ratio, credible sleep quantity and correct attentional check</span></span>
+<span id="cb5-23"><a href="index.html#cb5-23" aria-hidden="true" tabindex="-1"></a>Data_Meta_Raw.wide<span class="ot">&lt;-</span><span class="fu">filter</span>(Data_Meta_Raw.wide_CCA_excl2, Attention_check<span class="sc">==</span><span class="dv">1</span>) </span></code></pre></div>
+<p><em>Semi-long dataset: 1 row per outcome per participant</em></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="index.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we create a dataset with one row per outcome per participant</span></span>
+<span id="cb6-2"><a href="index.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># For example, in a study with 3 outcomes, a participants will have 3 rows</span></span>
+<span id="cb6-3"><a href="index.html#cb6-3" aria-hidden="true" tabindex="-1"></a>Data_Meta_Raw_transit1.Slong<span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
+<span id="cb6-4"><a href="index.html#cb6-4" aria-hidden="true" tabindex="-1"></a>  Data_MetaS1, Data_MetaS2, Data_MetaS3, Data_MetaS4, Data_MetaS5, Data_MetaS6)</span>
+<span id="cb6-5"><a href="index.html#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="index.html#cb6-6" aria-hidden="true" tabindex="-1"></a>Data_Meta_Raw_transit.Slong <span class="ot">&lt;-</span>Data_Meta_Raw_transit1.Slong <span class="sc">%&gt;%</span></span>
+<span id="cb6-7"><a href="index.html#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb6-8"><a href="index.html#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb6-9"><a href="index.html#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">Study.out.delim=</span><span class="fu">paste0</span>(Study,<span class="st">&quot;_&quot;</span>, Outcome),</span>
+<span id="cb6-10"><a href="index.html#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">Moral_tot=</span><span class="fu">sum</span>(Moral_DIL, Moral_SCA, Moral_TOT, <span class="at">na.rm=</span>T))</span>
+<span id="cb6-11"><a href="index.html#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="index.html#cb6-12" aria-hidden="true" tabindex="-1"></a>Data_Meta_Raw.Slong <span class="ot">&lt;-</span> <span class="fu">filter</span>(Data_Meta_Raw_transit.Slong, </span>
+<span id="cb6-13"><a href="index.html#cb6-13" aria-hidden="true" tabindex="-1"></a>                              Attention_check<span class="sc">==</span><span class="dv">1</span> <span class="sc">&amp;</span> CCA<span class="sc">==</span><span class="dv">1</span> <span class="sc">&amp;</span> </span>
+<span id="cb6-14"><a href="index.html#cb6-14" aria-hidden="true" tabindex="-1"></a>                                SleepEfficiency.criteria <span class="sc">==</span><span class="dv">1</span> <span class="sc">&amp;</span></span>
+<span id="cb6-15"><a href="index.html#cb6-15" aria-hidden="true" tabindex="-1"></a>                                SleepQuantCro <span class="sc">&gt;=</span> <span class="dv">2</span> <span class="sc">&amp;</span> SleepQuantCro <span class="sc">&lt;=</span> <span class="dv">16</span> <span class="sc">&amp;</span> SleepQuantAcu <span class="sc">&gt;=</span> <span class="dv">0</span>)</span></code></pre></div>
+<p><em>Long dataset: 1 row per outcome and per sleep indicator per participant</em></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="index.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we create a dataset with one row per outcome and per sleep indicator per participant</span></span>
+<span id="cb7-2"><a href="index.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># For example, in a study with 3 outcomes, a participants will have 3*4 = 12 rows since 4 sleep indicators are included in every studies</span></span>
+<span id="cb7-3"><a href="index.html#cb7-3" aria-hidden="true" tabindex="-1"></a>Data_Meta_Raw.long <span class="ot">&lt;-</span> Data_Meta_Raw.Slong <span class="sc">%&gt;%</span></span>
+<span id="cb7-4"><a href="index.html#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols=</span><span class="fu">starts_with</span>(<span class="st">&quot;SleepQu&quot;</span>), <span class="at">values_to=</span><span class="st">&quot;Sleep&quot;</span>, <span class="at">names_to=</span><span class="st">&quot;SleepType&quot;</span>)</span></code></pre></div>
+<p><strong>Demographic characteristics of the sample</strong></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="index.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we work on raw datasets regardless the missing values or the correctness of the attention check</span></span>
+<span id="cb8-2"><a href="index.html#cb8-2" aria-hidden="true" tabindex="-1"></a>list_data_demographics <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb8-3"><a href="index.html#cb8-3" aria-hidden="true" tabindex="-1"></a>  Data_Study1_Raw, Data_Study2_Raw, Data_Study3_Raw, Data_Study4_Raw, Data_Study5_Raw, Data_Study6_Raw</span>
+<span id="cb8-4"><a href="index.html#cb8-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-5"><a href="index.html#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="index.html#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">#  we create a function extracting the total number of participants, the number of participants with no missing value and the participants with a correct attentional check in each study. We also extracted the percentage of female.</span></span>
+<span id="cb8-7"><a href="index.html#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="index.html#cb8-8" aria-hidden="true" tabindex="-1"></a>DEMOFUNCTION<span class="ot">&lt;-</span><span class="cf">function</span>(x){</span>
+<span id="cb8-9"><a href="index.html#cb8-9" aria-hidden="true" tabindex="-1"></a>  N.TOT <span class="ot">=</span> <span class="fu">nrow</span>(x)</span>
+<span id="cb8-10"><a href="index.html#cb8-10" aria-hidden="true" tabindex="-1"></a>  N.CCA <span class="ot">=</span> <span class="fu">nrow</span>(x) <span class="sc">-</span> <span class="fu">nrow</span>(<span class="fu">subset</span>(x, CCA<span class="sc">==</span><span class="dv">1</span>))</span>
+<span id="cb8-11"><a href="index.html#cb8-11" aria-hidden="true" tabindex="-1"></a>  N.excl.eff <span class="ot">=</span> <span class="fu">nrow</span>(<span class="fu">subset</span>(x, CCA<span class="sc">==</span><span class="dv">1</span>)) <span class="sc">-</span> <span class="fu">nrow</span>(<span class="fu">subset</span>(x, CCA <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> SleepEfficiency.criteria <span class="sc">==</span> <span class="dv">1</span>))</span>
+<span id="cb8-12"><a href="index.html#cb8-12" aria-hidden="true" tabindex="-1"></a>  N.excl.quant <span class="ot">=</span> <span class="fu">nrow</span>(<span class="fu">subset</span>(x, CCA <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> SleepEfficiency.criteria <span class="sc">==</span> <span class="dv">1</span>)) <span class="sc">-</span> <span class="fu">nrow</span>(<span class="fu">subset</span>(x, CCA <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> SleepEfficiency.criteria <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> SleepQuantCro <span class="sc">&gt;=</span> <span class="dv">2</span> <span class="sc">&amp;</span> SleepQuantCro <span class="sc">&lt;=</span> <span class="dv">16</span> <span class="sc">&amp;</span> SleepQuantAcu <span class="sc">&gt;</span> <span class="dv">0</span>))</span>
+<span id="cb8-13"><a href="index.html#cb8-13" aria-hidden="true" tabindex="-1"></a>  N.attcheck <span class="ot">=</span> <span class="fu">nrow</span>(<span class="fu">subset</span>(x, CCA <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> SleepEfficiency.criteria <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> SleepQuantCro <span class="sc">&gt;=</span> <span class="dv">2</span> <span class="sc">&amp;</span> SleepQuantCro <span class="sc">&lt;=</span> <span class="dv">16</span> <span class="sc">&amp;</span> SleepQuantAcu <span class="sc">&gt;</span> <span class="dv">0</span>)) <span class="sc">-</span> <span class="fu">nrow</span>(<span class="fu">subset</span>(x, CCA <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> SleepEfficiency.criteria <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> </span>
+<span id="cb8-14"><a href="index.html#cb8-14" aria-hidden="true" tabindex="-1"></a>                               SleepQuantCro <span class="sc">&gt;=</span> <span class="dv">2</span> <span class="sc">&amp;</span> SleepQuantCro <span class="sc">&lt;=</span> <span class="dv">16</span> <span class="sc">&amp;</span> SleepQuantAcu <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;</span></span>
+<span id="cb8-15"><a href="index.html#cb8-15" aria-hidden="true" tabindex="-1"></a>                               Attention_check <span class="sc">==</span> <span class="dv">1</span>))</span>
+<span id="cb8-16"><a href="index.html#cb8-16" aria-hidden="true" tabindex="-1"></a>  N.Analysis <span class="ot">=</span> <span class="fu">nrow</span>(<span class="fu">subset</span>(x, CCA <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> SleepEfficiency.criteria <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> </span>
+<span id="cb8-17"><a href="index.html#cb8-17" aria-hidden="true" tabindex="-1"></a>                               SleepQuantCro <span class="sc">&gt;=</span> <span class="dv">2</span> <span class="sc">&amp;</span> SleepQuantCro <span class="sc">&lt;=</span> <span class="dv">16</span> <span class="sc">&amp;</span> SleepQuantAcu <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;</span></span>
+<span id="cb8-18"><a href="index.html#cb8-18" aria-hidden="true" tabindex="-1"></a>                               Attention_check <span class="sc">==</span> <span class="dv">1</span>))</span>
+<span id="cb8-19"><a href="index.html#cb8-19" aria-hidden="true" tabindex="-1"></a>  Perc.Female <span class="ot">=</span> <span class="dv">1</span><span class="sc">-</span><span class="fu">nrow</span>(<span class="fu">subset</span>(x, Gender <span class="sc">==</span> <span class="dv">1</span>))<span class="sc">/</span><span class="fu">nrow</span>(x)</span>
+<span id="cb8-20"><a href="index.html#cb8-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cbind</span>(N.TOT, N.CCA, N.excl.eff, N.excl.quant, N.attcheck, N.Analysis, Perc.Female)</span>
+<span id="cb8-21"><a href="index.html#cb8-21" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb8-22"><a href="index.html#cb8-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-23"><a href="index.html#cb8-23" aria-hidden="true" tabindex="-1"></a>data_demographics<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="fu">do.call</span>(rbind, <span class="fu">lapply</span>(list_data_demographics, DEMOFUNCTION)))</span>
+<span id="cb8-24"><a href="index.html#cb8-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-25"><a href="index.html#cb8-25" aria-hidden="true" tabindex="-1"></a>Data_presentation <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb8-26"><a href="index.html#cb8-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">Study=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,</span>
+<span id="cb8-27"><a href="index.html#cb8-27" aria-hidden="true" tabindex="-1"></a>  data_demographics) </span>
+<span id="cb8-28"><a href="index.html#cb8-28" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-29"><a href="index.html#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(Data_presentation)<span class="ot">&lt;-</span><span class="fu">c</span>(</span>
+<span id="cb8-30"><a href="index.html#cb8-30" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Study&quot;</span>,</span>
+<span id="cb8-31"><a href="index.html#cb8-31" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Total number of participants&quot;</span>,</span>
+<span id="cb8-32"><a href="index.html#cb8-32" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Number of participants with missing values&quot;</span>,</span>
+<span id="cb8-33"><a href="index.html#cb8-33" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Number of participants with an incorrect sleep efficiency ratio&quot;</span>,</span>
+<span id="cb8-34"><a href="index.html#cb8-34" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Number of participants with a uncredible sleep quantity&quot;</span>,</span>
+<span id="cb8-35"><a href="index.html#cb8-35" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Number of participants with an incorrect attentional check&quot;</span>,</span>
+<span id="cb8-36"><a href="index.html#cb8-36" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Number of participants retained in final analysis&quot;</span>,</span>
+<span id="cb8-37"><a href="index.html#cb8-37" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;% of female&quot;</span>)</span>
+<span id="cb8-38"><a href="index.html#cb8-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-39"><a href="index.html#cb8-39" aria-hidden="true" tabindex="-1"></a><span class="fu">gt</span>(Data_presentation)</span></code></pre></div>
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#ylncqxpvcz .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#ylncqxpvcz .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ylncqxpvcz .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#ylncqxpvcz .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#ylncqxpvcz .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ylncqxpvcz .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ylncqxpvcz .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#ylncqxpvcz .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#ylncqxpvcz .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#ylncqxpvcz .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#ylncqxpvcz .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#ylncqxpvcz .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ylncqxpvcz .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ylncqxpvcz .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#ylncqxpvcz .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#ylncqxpvcz .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#ylncqxpvcz .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#ylncqxpvcz .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ylncqxpvcz .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#ylncqxpvcz .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ylncqxpvcz .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#ylncqxpvcz .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#ylncqxpvcz .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ylncqxpvcz .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ylncqxpvcz .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#ylncqxpvcz .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ylncqxpvcz .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#ylncqxpvcz .gt_left {
+  text-align: left;
+}
+
+#ylncqxpvcz .gt_center {
+  text-align: center;
+}
+
+#ylncqxpvcz .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#ylncqxpvcz .gt_font_normal {
+  font-weight: normal;
+}
+
+#ylncqxpvcz .gt_font_bold {
+  font-weight: bold;
+}
+
+#ylncqxpvcz .gt_font_italic {
+  font-style: italic;
+}
+
+#ylncqxpvcz .gt_super {
+  font-size: 65%;
+}
+
+#ylncqxpvcz .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="ylncqxpvcz" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Study</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Total number of participants</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Number of participants with missing values</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Number of participants with an incorrect sleep efficiency ratio</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Number of participants with a uncredible sleep quantity</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Number of participants with an incorrect attentional check</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Number of participants retained in final analysis</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">% of female</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr>
+      <td class="gt_row gt_center">1</td>
+      <td class="gt_row gt_right">124</td>
+      <td class="gt_row gt_right">0</td>
+      <td class="gt_row gt_right">0</td>
+      <td class="gt_row gt_right">0</td>
+      <td class="gt_row gt_right">2</td>
+      <td class="gt_row gt_right">122</td>
+      <td class="gt_row gt_right">0.4032258</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">2</td>
+      <td class="gt_row gt_right">115</td>
+      <td class="gt_row gt_right">0</td>
+      <td class="gt_row gt_right">0</td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">9</td>
+      <td class="gt_row gt_right">105</td>
+      <td class="gt_row gt_right">0.4086957</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">3</td>
+      <td class="gt_row gt_right">54</td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">0</td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">0</td>
+      <td class="gt_row gt_right">52</td>
+      <td class="gt_row gt_right">0.8703704</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">4</td>
+      <td class="gt_row gt_right">123</td>
+      <td class="gt_row gt_right">6</td>
+      <td class="gt_row gt_right">5</td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">12</td>
+      <td class="gt_row gt_right">99</td>
+      <td class="gt_row gt_right">0.3658537</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">5</td>
+      <td class="gt_row gt_right">121</td>
+      <td class="gt_row gt_right">16</td>
+      <td class="gt_row gt_right">0</td>
+      <td class="gt_row gt_right">0</td>
+      <td class="gt_row gt_right">0</td>
+      <td class="gt_row gt_right">105</td>
+      <td class="gt_row gt_right">0.7107438</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">6</td>
+      <td class="gt_row gt_right">105</td>
+      <td class="gt_row gt_right">2</td>
+      <td class="gt_row gt_right">0</td>
+      <td class="gt_row gt_right">0</td>
+      <td class="gt_row gt_right">4</td>
+      <td class="gt_row gt_right">99</td>
+      <td class="gt_row gt_right">0.7523810</td>
+    </tr>
+  </tbody>
+  
+  
+</table></div>
+<p><strong>Mean values and SD for each of the independent and dependent variable across studies</strong></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="index.html#cb9-1" aria-hidden="true" tabindex="-1"></a>MeanFUNCTION <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb9-2"><a href="index.html#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cbind</span>(</span>
+<span id="cb9-3"><a href="index.html#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">m.dil=</span><span class="fu">paste0</span>(<span class="fu">round</span>(<span class="fu">mean</span>(x<span class="sc">$</span>Moral_DIL),<span class="at">digits=</span><span class="dv">2</span>), <span class="st">&quot; (&quot;</span>, <span class="fu">round</span>(<span class="fu">sd</span>(x<span class="sc">$</span>Moral_DIL),<span class="at">digits=</span><span class="dv">2</span>), <span class="st">&quot;)&quot;</span>), </span>
+<span id="cb9-4"><a href="index.html#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">m.sca=</span><span class="fu">paste0</span>(<span class="fu">round</span>(<span class="fu">mean</span>(x<span class="sc">$</span>Moral_SCA),<span class="at">digits=</span><span class="dv">2</span>),<span class="st">&quot; (&quot;</span>,<span class="fu">round</span>(<span class="fu">sd</span>(x<span class="sc">$</span>Moral_SCA),<span class="at">digits=</span><span class="dv">2</span>), <span class="st">&quot;)&quot;</span>),</span>
+<span id="cb9-5"><a href="index.html#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">m.car=</span><span class="fu">paste0</span>(<span class="fu">round</span>(<span class="fu">mean</span>(x<span class="sc">$</span>Moral_CAR),<span class="at">digits=</span><span class="dv">2</span>),<span class="st">&quot; (&quot;</span>, <span class="fu">round</span>(<span class="fu">sd</span>(x<span class="sc">$</span>Moral_CAR),<span class="at">digits=</span><span class="dv">2</span>), <span class="st">&quot;)&quot;</span>),</span>
+<span id="cb9-6"><a href="index.html#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">m.sleepquantcro=</span><span class="fu">paste0</span>(<span class="fu">round</span>(<span class="fu">mean</span>(x<span class="sc">$</span>SleepQuantCro),<span class="at">digits=</span><span class="dv">2</span>),<span class="st">&quot; (&quot;</span>, <span class="fu">round</span>(<span class="fu">sd</span>(x<span class="sc">$</span>SleepQuantCro),<span class="at">digits=</span><span class="dv">2</span>), <span class="st">&quot;)&quot;</span>),</span>
+<span id="cb9-7"><a href="index.html#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">m.sleepquantacu=</span><span class="fu">paste0</span>(<span class="fu">round</span>(<span class="fu">mean</span>(x<span class="sc">$</span>SleepQuantAcu),<span class="at">digits=</span><span class="dv">2</span>),<span class="st">&quot; (&quot;</span>, <span class="fu">round</span>(<span class="fu">sd</span>(x<span class="sc">$</span>SleepQuantAcu),<span class="at">digits=</span><span class="dv">2</span>), <span class="st">&quot;)&quot;</span>),</span>
+<span id="cb9-8"><a href="index.html#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">m.sleepqualcro=</span><span class="fu">paste0</span>(<span class="fu">round</span>(<span class="fu">mean</span>(x<span class="sc">$</span>SleepQualCro),<span class="at">digits=</span><span class="dv">2</span>),<span class="st">&quot; (&quot;</span>, <span class="fu">round</span>(<span class="fu">sd</span>(x<span class="sc">$</span>SleepQualCro),<span class="at">digits=</span><span class="dv">2</span>),<span class="st">&quot;)&quot;</span>),</span>
+<span id="cb9-9"><a href="index.html#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">m.sleepqualacu=</span><span class="fu">paste0</span>(<span class="fu">round</span>(<span class="fu">mean</span>(x<span class="sc">$</span>SleepQualAcu),<span class="at">digits=</span><span class="dv">2</span>),<span class="st">&quot; (&quot;</span>, <span class="fu">round</span>(<span class="fu">sd</span>(x<span class="sc">$</span>SleepQualAcu),<span class="at">digits=</span><span class="dv">2</span>), <span class="st">&quot;)&quot;</span>)</span>
+<span id="cb9-10"><a href="index.html#cb9-10" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb9-11"><a href="index.html#cb9-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-12"><a href="index.html#cb9-12" aria-hidden="true" tabindex="-1"></a>MeanFUNCTION2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb9-13"><a href="index.html#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cbind</span>(</span>
+<span id="cb9-14"><a href="index.html#cb9-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">A=</span><span class="fu">min</span>(x<span class="sc">$</span>SleepQuantAcu),</span>
+<span id="cb9-15"><a href="index.html#cb9-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">B=</span><span class="fu">min</span>(x<span class="sc">$</span>SleepQualCro),</span>
+<span id="cb9-16"><a href="index.html#cb9-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">C=</span><span class="fu">min</span>(x<span class="sc">$</span>SleepQualAcu)</span>
+<span id="cb9-17"><a href="index.html#cb9-17" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb9-18"><a href="index.html#cb9-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-19"><a href="index.html#cb9-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-20"><a href="index.html#cb9-20" aria-hidden="true" tabindex="-1"></a>data_mean <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb9-21"><a href="index.html#cb9-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cbind</span>(</span>
+<span id="cb9-22"><a href="index.html#cb9-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">Study =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, </span>
+<span id="cb9-23"><a href="index.html#cb9-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">do.call</span>(rbind, <span class="fu">lapply</span>(<span class="fu">split</span>(Data_Meta_Raw.wide, Data_Meta_Raw.wide<span class="sc">$</span>Study), </span>
+<span id="cb9-24"><a href="index.html#cb9-24" aria-hidden="true" tabindex="-1"></a>                          MeanFUNCTION))))</span>
+<span id="cb9-25"><a href="index.html#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(data_mean)<span class="ot">&lt;-</span></span>
+<span id="cb9-26"><a href="index.html#cb9-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(</span>
+<span id="cb9-27"><a href="index.html#cb9-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Study&quot;</span>,</span>
+<span id="cb9-28"><a href="index.html#cb9-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Mean score (SD) at sacrificial dilemmas&quot;</span>,</span>
+<span id="cb9-29"><a href="index.html#cb9-29" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Mean score (SD) at moral scale&quot;</span>,</span>
+<span id="cb9-30"><a href="index.html#cb9-30" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Mean score (SD) at autonomours car dilemmas&quot;</span>,</span>
+<span id="cb9-31"><a href="index.html#cb9-31" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Mean quantity (SD) of chronic sleep (hours)&quot;</span>,</span>
+<span id="cb9-32"><a href="index.html#cb9-32" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Mean quantity (SD) of acute sleep (hours)&quot;</span>,</span>
+<span id="cb9-33"><a href="index.html#cb9-33" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Mean quality (SD) of chronic sleep&quot;</span>,</span>
+<span id="cb9-34"><a href="index.html#cb9-34" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Mean quality (SD) of acute sleep&quot;</span>)</span>
+<span id="cb9-35"><a href="index.html#cb9-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-36"><a href="index.html#cb9-36" aria-hidden="true" tabindex="-1"></a><span class="fu">gt</span>(data_mean)</span></code></pre></div>
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#odwpveqelv .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#odwpveqelv .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#odwpveqelv .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#odwpveqelv .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#odwpveqelv .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#odwpveqelv .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#odwpveqelv .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#odwpveqelv .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#odwpveqelv .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#odwpveqelv .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#odwpveqelv .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#odwpveqelv .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#odwpveqelv .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#odwpveqelv .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#odwpveqelv .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#odwpveqelv .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#odwpveqelv .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#odwpveqelv .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#odwpveqelv .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#odwpveqelv .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#odwpveqelv .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#odwpveqelv .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#odwpveqelv .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#odwpveqelv .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#odwpveqelv .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#odwpveqelv .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#odwpveqelv .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#odwpveqelv .gt_left {
+  text-align: left;
+}
+
+#odwpveqelv .gt_center {
+  text-align: center;
+}
+
+#odwpveqelv .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#odwpveqelv .gt_font_normal {
+  font-weight: normal;
+}
+
+#odwpveqelv .gt_font_bold {
+  font-weight: bold;
+}
+
+#odwpveqelv .gt_font_italic {
+  font-style: italic;
+}
+
+#odwpveqelv .gt_super {
+  font-size: 65%;
+}
+
+#odwpveqelv .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="odwpveqelv" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Study</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Mean score (SD) at sacrificial dilemmas</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Mean score (SD) at moral scale</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Mean score (SD) at autonomours car dilemmas</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Mean quantity (SD) of chronic sleep (hours)</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Mean quantity (SD) of acute sleep (hours)</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Mean quality (SD) of chronic sleep</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Mean quality (SD) of acute sleep</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr>
+      <td class="gt_row gt_center">1</td>
+      <td class="gt_row gt_center">49.81 (29.6)</td>
+      <td class="gt_row gt_center">NA (NA)</td>
+      <td class="gt_row gt_center">NA (NA)</td>
+      <td class="gt_row gt_center">6.68 (1.32)</td>
+      <td class="gt_row gt_center">6.52 (1.46)</td>
+      <td class="gt_row gt_center">6.19 (2.24)</td>
+      <td class="gt_row gt_center">6.28 (2.52)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">2</td>
+      <td class="gt_row gt_center">NA (NA)</td>
+      <td class="gt_row gt_center">34.1 (4.4)</td>
+      <td class="gt_row gt_center">NA (NA)</td>
+      <td class="gt_row gt_center">7.02 (0.98)</td>
+      <td class="gt_row gt_center">6.89 (1.27)</td>
+      <td class="gt_row gt_center">6.42 (2.16)</td>
+      <td class="gt_row gt_center">6.84 (2.18)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">3</td>
+      <td class="gt_row gt_center">NA (NA)</td>
+      <td class="gt_row gt_center">37.08 (3.98)</td>
+      <td class="gt_row gt_center">NA (NA)</td>
+      <td class="gt_row gt_center">7.13 (1.48)</td>
+      <td class="gt_row gt_center">7.29 (1.68)</td>
+      <td class="gt_row gt_center">5.23 (2.06)</td>
+      <td class="gt_row gt_center">5.63 (2.28)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">4</td>
+      <td class="gt_row gt_center">58.51 (25.94)</td>
+      <td class="gt_row gt_center">33.55 (4.11)</td>
+      <td class="gt_row gt_center">0.82 (0.19)</td>
+      <td class="gt_row gt_center">7.19 (1.09)</td>
+      <td class="gt_row gt_center">7 (1.32)</td>
+      <td class="gt_row gt_center">14.29 (3.69)</td>
+      <td class="gt_row gt_center">6.77 (2.19)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">5</td>
+      <td class="gt_row gt_center">43.05 (23.07)</td>
+      <td class="gt_row gt_center">36.75 (4.38)</td>
+      <td class="gt_row gt_center">NA (NA)</td>
+      <td class="gt_row gt_center">8.22 (1.23)</td>
+      <td class="gt_row gt_center">8.21 (1.95)</td>
+      <td class="gt_row gt_center">15.78 (2.84)</td>
+      <td class="gt_row gt_center">17.26 (2.24)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_center">6</td>
+      <td class="gt_row gt_center">34.18 (24.03)</td>
+      <td class="gt_row gt_center">34.81 (3.36)</td>
+      <td class="gt_row gt_center">NA (NA)</td>
+      <td class="gt_row gt_center">7.89 (1.05)</td>
+      <td class="gt_row gt_center">7.77 (1.25)</td>
+      <td class="gt_row gt_center">15.89 (2.67)</td>
+      <td class="gt_row gt_center">17.33 (1.83)</td>
+    </tr>
+  </tbody>
+  
+  
+</table></div>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="study-1.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,640 @@
+# Sensitivity analyses
+
+## Sensitivity analysis 1 : Refitting primary model but with a CS structure
+```{r}
+# Sensitivity analysis 1 : with a CS structure
+Meta.S1<-rma.mv(yi,V.Prim, 
+                  mods=~Predictor-1, 
+                  random = ~ Out.Pred | Study, 
+                  struct="CS", 
+                  data=ES.Prim, level=100-(5/4))
+
+df.Meta.Res1.S1<-as.data.frame(ExtractMetaFUNCTION(Meta.S1))
+
+df.Meta.S1<- df.Meta.Res1.S1 %>% 
+  dplyr::mutate(
+    Study="Pooled Effect Size",
+    Outcome="All outcomes",
+    SleepIndicator=c("Quality of Acute Sleep", "Quality of Chronic Sleep",
+                     "Quantity of Acute Sleep","Quantity of Chronic Sleep"),
+    Adj.p.val=case_when(
+      Adj.p.val>.99~.99,
+      Adj.p.val<=.99~Adj.p.val),
+    N=sum(N.prim)) %>%
+  rowwise() %>%
+  dplyr::mutate(TOST=max(TOST1, TOST2)) %>%
+  dplyr::select(-c(TOST1,TOST2))
+
+df.Meta.S1<-df.Meta.S1[,c(8:11,1:7,12)]
+
+
+#Summary of the meta analysis
+gt(df.Meta.S1)%>% 
+  fmt_number(
+    columns = 5:12,
+    decimals = 3)%>%
+  cols_merge(
+    columns=vars(Adj.CIlow, Adj.CIup),
+    hide_columns = vars(Adj.CIup),
+    pattern = "[{1}, {2}]") %>%
+  cols_merge(
+    columns=vars(Cochran.Q, Cochran.Q.p.val),
+    hide_columns = vars(Cochran.Q.p.val),
+    pattern = "{1}, p={2}") %>%
+  cols_label(
+    Raw.r = "Pearson's r",
+    Adj.CIlow = "Adjusted 95% CI",
+    p.val= "p-value",
+    Adj.p.val="Adjusted p-value",
+    Cochran.Q="Cochran's Q") %>% 
+  cols_align(
+    align = "center")
+```
+
+## Sensitivity Analysis 2 : By fitting separate models but with an unstructed variance structure
+```{r}
+# Obtaining 4 variance-covariance matrix, one for each sleep indicator
+
+List.Varcovar.QualAcu<-lapply(List.Varcovar.prim_transit1, QualAcuPredictFUNCTION)
+List.Varcovar.QualCro<-lapply(List.Varcovar.prim_transit1, QualCroPredictFUNCTION)
+List.Varcovar.QuantAcu<-lapply(List.Varcovar.prim_transit1, QuantAcuPredictFUNCTION)
+List.Varcovar.QuantCro<-lapply(List.Varcovar.prim_transit1, QuantCroPredictFUNCTION)
+
+V.QualAcu=bldiag(list(
+  List.Varcovar.QualAcu[[1]], 
+  List.Varcovar.QualAcu[[2]],
+  List.Varcovar.QualAcu[[3]],
+  List.Varcovar.QualAcu[[4]], 
+  List.Varcovar.QualAcu[[5]],
+  List.Varcovar.QualAcu[[6]]))
+V.QualCro=bldiag(list(
+  List.Varcovar.QualCro[[1]], 
+  List.Varcovar.QualCro[[2]],
+  List.Varcovar.QualCro[[3]],
+  List.Varcovar.QualCro[[4]], 
+  List.Varcovar.QualCro[[5]],
+  List.Varcovar.QualCro[[6]]))
+V.QuantAcu=bldiag(list(
+  List.Varcovar.QuantAcu[[1]], 
+  List.Varcovar.QuantAcu[[2]],
+  List.Varcovar.QuantAcu[[3]],
+  List.Varcovar.QuantAcu[[4]], 
+  List.Varcovar.QuantAcu[[5]],
+  List.Varcovar.QuantAcu[[6]]))
+V.QuantCro=bldiag(list(
+  List.Varcovar.QuantCro[[1]], 
+  List.Varcovar.QuantCro[[2]],
+  List.Varcovar.QuantCro[[3]],
+  List.Varcovar.QuantCro[[4]], 
+  List.Varcovar.QuantCro[[5]],
+  List.Varcovar.QuantCro[[6]]))
+
+# Perform 4 separate meta-analyses 
+
+Meta.S2.QualAcu<-rma.mv(yi,
+                V.QualAcu,  
+                random = ~ Outcome | Study, 
+                struct="UN", 
+                data=ES.Prim[ES.Prim$Predictor=="SleepQualAcu",],
+                level=100-(5/4))
+Meta.S2.QualCro<-rma.mv(yi,
+                V.QualCro,  
+                random = ~ Outcome | Study, 
+                struct="UN", 
+                data=ES.Prim[ES.Prim$Predictor=="SleepQualCro",],
+                level=100-(5/4))
+Meta.S2.QuantAcu<-rma.mv(yi,
+                V.QuantAcu,  
+                random = ~ Outcome | Study, 
+                struct="UN", 
+                data=ES.Prim[ES.Prim$Predictor=="SleepQuantAcu",],
+                level=100-(5/4))
+Meta.S2.QuantCro<-rma.mv(yi,
+                V.QuantCro,  
+                random = ~ Outcome | Study, 
+                struct="UN", 
+                data=ES.Prim[ES.Prim$Predictor=="SleepQuantCro",],
+                level=100-(5/4))
+
+#Summary of the meta analyses
+
+List.Meta.S2<-list(Meta.S2.QualAcu, Meta.S2.QualCro, Meta.S2.QuantAcu, Meta.S2.QuantCro)
+df.Meta.Res1.S2<-as.data.frame(do.call(rbind, lapply(List.Meta.S2, ExtractMetaFUNCTION)))
+
+df.Meta.S2<- df.Meta.Res1.S2 %>% 
+  dplyr::mutate(
+    Study="Pooled Effect Size",
+    Outcome="All outcomes",
+    SleepIndicator=c("Quality of Acute Sleep", "Quality of Chronic Sleep",
+                     "Quantity of Acute Sleep","Quantity of Chronic Sleep"),
+    Adj.p.val=case_when(
+      Adj.p.val>.99~.99,
+      Adj.p.val<=.99~Adj.p.val),
+    N=sum(N.prim)) %>%
+  rowwise() %>%
+  dplyr::mutate(TOST=max(TOST1, TOST2)) %>%
+  dplyr::select(-c(TOST1,TOST2))
+
+df.Meta.S2<-df.Meta.S2[,c(8:11,1:7,12)]
+
+gt(df.Meta.S2)%>% 
+  fmt_number(
+    columns = 5:12,
+    decimals = 3)%>%
+  cols_merge(
+    columns=vars(Adj.CIlow, Adj.CIup),
+    hide_columns = vars(Adj.CIup),
+    pattern = "[{1}, {2}]") %>%
+  cols_merge(
+    columns=vars(Cochran.Q, Cochran.Q.p.val),
+    hide_columns = vars(Cochran.Q.p.val),
+    pattern = "{1}, p={2}") %>%
+  cols_label(
+    Raw.r = "Pearson's r",
+    Adj.CIlow = "Adjusted 95% CI",
+    p.val= "p-value",
+    Adj.p.val="Adjusted p-value",
+    Cochran.Q="Cochran's Q") %>% 
+  cols_align(
+    align = "center")
+```
+
+## Sensitivity analysis 3 : One-stage meta-analysis
+```{r}
+Meta.S3<-lmerTest::lmer(Moral_TOT ~ SleepType+SleepType:Sleep-1 + (Sleep:SleepType:Outcome-1|Study),
+             data=Data_Meta_Raw.long)
+
+df.Meta.S3<-broom.mixed::tidy(Meta.S3, conf.int = TRUE, conf.level = 1-0.05/4, effects = "fixed")
+```
+
+## Sensitivity analyses 4 and 5 : Excluding outliers
+
+**Function To locate influential points and high leverage using (respectively) cook's distance and hat values**
+```{r}
+IdentifyOutlier<-function(x){
+  #obtain hat values for each sleep-outcome association
+  hatvalues(lm(Moral_tot~SleepQualCro, data=x))->x$HatQualCro
+  hatvalues(lm(Moral_tot~SleepQualAcu, data=x))->x$HatQualAcu
+  hatvalues(lm(Moral_tot~SleepQuantCro, data=x))->x$HatQuantCro
+  hatvalues(lm(Moral_tot~SleepQuantAcu, data=x))->x$HatQuantAcu
+
+  #obtain cooks' distance for each sleep-outcome association
+  cooks.distance(lm(Moral_tot~SleepQualCro, data=x))->x$CookQualCro
+  cooks.distance(lm(Moral_tot~SleepQualAcu, data=x))->x$CookQualAcu
+  cooks.distance(lm(Moral_tot~SleepQuantCro, data=x))->x$CookQuantCro
+  cooks.distance(lm(Moral_tot~SleepQuantCro, data=x))->x$CookQuantAcu
+
+  #Identify large hat values (cut off = 3*mean(hat values)
+  ifelse(x$HatQualCro>=3*mean(x$HatQualCro), 1, 0)->x$HatQualCroOUT
+  ifelse(x$HatQualCro>=3*mean(x$HatQualAcu), 1, 0)->x$HatQualAcuOUT
+  ifelse(x$HatQualCro>=3*mean(x$HatQuantCro), 1, 0)->x$HatQuantCroOUT
+  ifelse(x$HatQualCro>=3*mean(x$HatQuantAcu), 1, 0)->x$HatQuantAcuOUT
+  
+  #Identify large cooks' distance (cut off = 4/sample size)
+  ifelse(x$CookQualCro>=4/nrow(x), 1, 0)->x$CookQualCroOUT
+  ifelse(x$CookQualCro>=4/nrow(x), 1, 0)->x$CookQualAcuOUT
+  ifelse(x$CookQualCro>=4/nrow(x), 1, 0)->x$CookQuantCroOUT
+  ifelse(x$CookQualCro>=4/nrow(x), 1, 0)->x$CookQuantAcuOUT
+  x}
+```
+
+
+**Exclusion of participants with a high cook's distance**
+```{r}
+Data_Meta_Raw.Slong.split.empty<-split(Data_Meta_Raw.Slong,
+                                  list(Data_Meta_Raw.Slong$Study,
+                                       Data_Meta_Raw.Slong$Outcome))
+ 
+Data_Meta_Raw.Slong.split<-Filter(function(x) dim(x)[1] > 0,
+                                   Data_Meta_Raw.Slong.split.empty)
+
+Data_Meta_S4_transit1<-lapply(Data_Meta_Raw.Slong.split, IdentifyOutlier)
+Data_Meta_S4_transit2<-do.call(rbind,Data_Meta_S4_transit1)
+
+
+#if a participant has a cooks' distance > to the cut off for one sleep-outcome association, he will be considered as an outlier in all associations) 
+ID.Cook<-subset(Data_Meta_S4_transit2$ResponseId,
+                  Data_Meta_S4_transit2$CookQualAcuOUT==1 |
+                  Data_Meta_S4_transit2$CookQualCroOUT==1 |
+                  Data_Meta_S4_transit2$CookQuantAcuOUT==1 |
+                  Data_Meta_S4_transit2$CookQuantCroOUT==1)
+
+```
+
+```{r}
+# Exclude influential participants
+Data_Meta_Cook<-filter(Data_Meta_Raw.wide, !(ResponseId %in% ID.Cook)) 
+
+# Split the dataset with influential participants excluded
+Data_Meta_Cook.split<-split(Data_Meta_Cook, Data_Meta_Cook$Study)
+
+# Obtain sample size for each study
+N.Cook<-sapply(Data_Meta_Cook.split, nrow)
+
+# Preparation of the general dataset and obtaining sample size once influential participants  have been excluded
+Cor.matrix.Cook<-lapply(Data_Meta_Cook.split, CorFUNCTION)
+
+List.Cor.Varcovar.Cook<-mapply(RmatFUNCTION, Cor.matrix.Cook, N.Cook, SIMPLIFY=FALSE)
+
+# Obtaining effect size for each study, each outcome and each sleep indicator (k=40)
+ES.Cook_transit<-do.call(rbind, lapply(List.Cor.Varcovar.Cook, function(x) x$dat))
+
+ES.Cook_transit1<-data.frame(cbind(
+  stud.out=row.names(ES.Cook_transit), ES.Cook_transit))
+
+ES.Cook_transit2<-separate(ES.Cook_transit1, stud.out,
+                          into=c("Study"))
+
+ES.Cook<-ES.Cook_transit2 %>%
+  rename("Outcome"=var1,
+         "Predictor"=var2,
+         "Out.Pred"=var1var2) %>% 
+  mutate(
+    Asso.of.int=case_when(
+      str_detect(Outcome, "Sleep") & str_detect(Predictor, "Moral") ~ 1,
+      str_detect(Outcome, "Moral") & str_detect(Predictor, "Sleep") ~ 1)) %>%
+  filter(Asso.of.int==1)
+
+ES.Cook$N<-rep(N.Cook, c(1*4,1*4,1*4,3*4,2*4,2*4))
+
+#Variance-covariance matrix for each study (N=6)
+List.Varcovar.Cook_transit1<-lapply(List.Cor.Varcovar.Cook, function(x) x$V)
+
+List.Varcovar.Cook<-lapply(List.Varcovar.Cook_transit1, FourPredictFUNCTION)
+
+V.Cook=bldiag(list(
+  List.Varcovar.Cook[[1]], 
+  List.Varcovar.Cook[[2]],
+  List.Varcovar.Cook[[3]],
+  List.Varcovar.Cook[[4]], 
+  List.Varcovar.Cook[[5]],
+  List.Varcovar.Cook[[6]]))
+
+# the HCS structure did not achieve convergence. We used a CS structure instead.
+Meta.Cook<-rma.mv(yi,V.Cook, 
+                  mods=~Predictor-1, 
+                  random = ~ Out.Pred | Study, 
+                  struct="CS", 
+                  data=ES.Cook, level=100-(5/4))
+```
+
+**Exclusion of participants with a large hat value**
+```{r}
+#if a participant has an hat value > to the cut off for one sleep-outcome association, he will be  considered as an outlier in all associations)
+ID.Hat<-subset(Data_Meta_S4_transit2$ResponseId,
+                  Data_Meta_S4_transit2$HatQualAcuOUT==1 |
+                  Data_Meta_S4_transit2$HatQualCroOUT==1 |
+                  Data_Meta_S4_transit2$HatQuantAcuOUT==1 |
+                  Data_Meta_S4_transit2$HatQuantCroOUT==1)
+
+# Exclude influential participants
+Data_Meta_Hat<-filter(Data_Meta_Raw.wide, !(ResponseId %in% ID.Hat)) 
+
+# Split the dataset with influential participants excluded
+Data_Meta_Hat.split<-split(Data_Meta_Hat, Data_Meta_Hat$Study)
+
+# Obtain sample size for each study
+N.Hat<-sapply(Data_Meta_Hat.split, nrow)
+
+# Preparation of the general dataset and obtaining sample size once influential participants  have been excluded
+Cor.matrix.Hat<-lapply(Data_Meta_Hat.split, CorFUNCTION)
+
+List.Cor.Varcovar.Hat<-mapply(RmatFUNCTION, Cor.matrix.Hat, N.Hat, SIMPLIFY=FALSE)
+
+
+
+#Obtaining cffect size for each study, each outcome and each sleep indicator (k=40)
+ES.Hat_transit<-do.call(rbind, lapply(List.Cor.Varcovar.Hat, function(x) x$dat))
+
+ES.Hat_transit1<-data.frame(cbind(
+  stud.out=row.names(ES.Hat_transit), ES.Hat_transit))
+
+ES.Hat_transit2<-separate(ES.Hat_transit1, stud.out,
+                          into=c("Study"))
+
+ES.Hat<-ES.Hat_transit2 %>%
+  rename("Outcome"=var1,
+         "Predictor"=var2,
+         "Out.Pred"=var1var2) %>% 
+  mutate(
+    Asso.of.int=case_when(
+      str_detect(Outcome, "Sleep") & str_detect(Predictor, "Moral") ~ 1,
+      str_detect(Outcome, "Moral") & str_detect(Predictor, "Sleep") ~ 1)) %>%
+  filter(Asso.of.int==1)
+
+ES.Hat$N<-rep(N.Hat, c(1*4,1*4,1*4,3*4,2*4,2*4))
+
+#Variance-covariance matrix for each study (N=6)
+List.Varcovar.Hat_transit1<-lapply(List.Cor.Varcovar.Hat, function(x) x$V)
+
+List.Varcovar.Hat<-lapply(List.Varcovar.Hat_transit1, FourPredictFUNCTION)
+
+V.Hat=bldiag(list(
+  List.Varcovar.Hat[[1]], 
+  List.Varcovar.Hat[[2]],
+  List.Varcovar.Hat[[3]],
+  List.Varcovar.Hat[[4]], 
+  List.Varcovar.Hat[[5]],
+  List.Varcovar.Hat[[6]]))
+
+Meta.Hat<-rma.mv(yi,V.Hat, 
+                  mods=~Predictor-1, 
+                  random = ~ Out.Pred | Study, 
+                  struct="HCS", 
+                  data=ES.Hat, level=100-(5/4))
+```
+**Results of the meta-analysis when influential points are removed from individual studies (Cooks' distance)**
+```{r}
+df.Meta.Res1.Cook<-as.data.frame(ExtractMetaFUNCTION(Meta.Cook))
+
+df.Meta.S4<- df.Meta.Res1.Cook %>% 
+  dplyr::mutate(
+    Study="Pooled Effect Size",
+    Outcome="All outcomes",
+    SleepIndicator=c("Quality of Acute Sleep", "Quality of Chronic Sleep",
+                     "Quantity of Acute Sleep","Quantity of Chronic Sleep"),
+    Adj.p.val=case_when(
+      Adj.p.val>.99~.99,
+      Adj.p.val<=.99~Adj.p.val),
+    N=sum(N.Cook)) %>%
+  rowwise() %>%
+  dplyr::mutate(TOST=max(TOST1, TOST2)) %>%
+  dplyr::select(-c(TOST1,TOST2))
+
+df.Meta.S4<-df.Meta.S4[,c(8:11,1:7,12)]
+
+#Summary of the meta analysis
+gt(df.Meta.S4)%>% 
+  fmt_number(
+    columns = 5:12,
+    decimals = 3)%>%
+  cols_merge(
+    columns=vars(Adj.CIlow, Adj.CIup),
+    hide_columns = vars(Adj.CIup),
+    pattern = "[{1}, {2}]") %>%
+  cols_merge(
+    columns=vars(Cochran.Q, Cochran.Q.p.val),
+    hide_columns = vars(Cochran.Q.p.val),
+    pattern = "{1}, p={2}") %>%
+  cols_label(
+    Raw.r = "Pearson's r",
+    Adj.CIlow = "Adjusted 95% CI",
+    p.val= "p-value",
+    Adj.p.val="Adjusted p-value",
+    Cochran.Q="Cochran's Q") %>% 
+  cols_align(
+    align = "center")
+```
+**Results of the meta-analysis when participants with an atypical leverage are removed from individual studies (Hat value)**
+```{r}
+df.Meta.Res1.Hat<-as.data.frame(ExtractMetaFUNCTION(Meta.Hat))
+
+df.Meta.S5<- df.Meta.Res1.Hat %>% 
+  dplyr::mutate(
+    Study="Pooled Effect Size",
+    Outcome="All outcomes",
+    SleepIndicator=c("Quality of Acute Sleep", "Quality of Chronic Sleep",
+                     "Quantity of Acute Sleep","Quantity of Chronic Sleep"),
+    Adj.p.val=case_when(
+      Adj.p.val>.99~.99,
+      Adj.p.val<=.99~Adj.p.val),
+    N=sum(N.Hat)) %>%
+  rowwise() %>%
+  dplyr::mutate(TOST=max(TOST1, TOST2)) %>%
+  dplyr::select(-c(TOST1,TOST2))
+
+df.Meta.S5<-df.Meta.S5[,c(8:11,1:7,12)]
+
+#Summary of the meta analysis
+gt(df.Meta.S5)%>% 
+  fmt_number(
+    columns = 5:12,
+    decimals = 3)%>%
+  cols_merge(
+    columns=vars(Adj.CIlow, Adj.CIup),
+    hide_columns = vars(Adj.CIup),
+    pattern = "[{1}, {2}]") %>%
+  cols_merge(
+    columns=vars(Cochran.Q, Cochran.Q.p.val),
+    hide_columns = vars(Cochran.Q.p.val),
+    pattern = "{1}, p={2}") %>%
+  cols_label(
+    Raw.r = "Pearson's r",
+    Adj.CIlow = "Adjusted 95% CI",
+    p.val= "p-value",
+    Adj.p.val="Adjusted p-value",
+    Cochran.Q="Cochran's Q") %>% 
+  cols_align(
+    align = "center")
+```
+
+
+## Sensitivity analysis 6 : Short durations
+
+```{r}
+#  We removed participants with a task duration lower to a set limit
+Data_Meta_Raw.wide.duration<-Data_Meta_Raw.wide %>%
+  mutate(
+    DurationMinOUT=case_when(
+      Duration<=Duration.min~1,
+      Duration>Duration.min~0)) %>%
+  filter(DurationMinOUT==0)
+
+
+Data_Meta_S6<-split(Data_Meta_Raw.wide.duration, Data_Meta_Raw.wide.duration$Study)
+
+#Obtaining sample size for each dataset
+N.S6<-sapply(Data_Meta_S6, nrow)
+
+
+#Obtention of Correlation matrix and Variance-Covariance matrix for each study
+Cor.matrix.S6<-lapply(Data_Meta_S6, CorFUNCTION)
+
+List.Cor.Varcovar.S6<-mapply(RmatFUNCTION, Cor.matrix.S6, N.S6, SIMPLIFY=FALSE)
+
+#Effect size for each study, each outcome and each sleep indicator (k=40)
+ES.S6_transit<-do.call(rbind, lapply(List.Cor.Varcovar.S6, function(x) x$dat))
+
+ES.S6_transit1<-data.frame(cbind(
+  stud.out=row.names(ES.S6_transit), ES.S6_transit))
+
+ES.S6_transit2<-separate(ES.S6_transit1, stud.out,
+                          into=c("Study"))
+
+ES.S6<-ES.S6_transit2 %>%
+  rename("Outcome"=var1,
+         "Predictor"=var2,
+         "Out.Pred"=var1var2) %>% 
+  mutate(
+    Asso.of.int=case_when(
+      str_detect(Outcome, "Sleep") & str_detect(Predictor, "Moral") ~ 1,
+      str_detect(Outcome, "Moral") & str_detect(Predictor, "Sleep") ~ 1)) %>%
+  filter(Asso.of.int==1)
+
+ES.S6$N<-rep(N.S6, c(1*4,1*4,1*4,3*4,2*4,2*4))
+
+#Variance-covariance matrix for each study (N=6)
+List.Varcovar.S6_transit1<-lapply(List.Cor.Varcovar.S6, function(x) x$V)
+
+List.Varcovar.S6<-lapply(List.Varcovar.S6_transit1, FourPredictFUNCTION)
+
+V.S6=bldiag(list(
+  List.Varcovar.S6[[1]], 
+  List.Varcovar.S6[[2]],
+  List.Varcovar.S6[[3]],
+  List.Varcovar.S6[[4]], 
+  List.Varcovar.S6[[5]],
+  List.Varcovar.S6[[6]]))
+
+Meta.S6<-rma.mv(yi,V.S6, 
+                  mods=~Predictor-1, 
+                  random = ~ Out.Pred | Study, 
+                  struct="HCS", 
+                  data=ES.S6, level=100-(5/4))
+
+
+#Meta-analyses
+df.Meta.Res1.S6<-as.data.frame(ExtractMetaFUNCTION(Meta.S6))
+
+df.Meta.S6<- df.Meta.Res1.S6 %>% 
+  dplyr::mutate(
+    Study="Pooled Effect Size",
+    Outcome="All outcomes",
+    SleepIndicator=c("Quality of Acute Sleep", "Quality of Chronic Sleep",
+                     "Quantity of Acute Sleep","Quantity of Chronic Sleep"),
+    Adj.p.val=case_when(
+      Adj.p.val>.99~.99,
+      Adj.p.val<=.99~Adj.p.val),
+    N=sum(N.S6)) %>%
+  rowwise() %>%
+  dplyr::mutate(TOST=max(TOST1, TOST2)) %>%
+  dplyr::select(-c(TOST1,TOST2))
+
+df.Meta.S6<-df.Meta.S6[,c(8:11,1:7,12)]
+
+#Summary of the meta analysis
+gt(df.Meta.S6)%>% 
+  fmt_number(
+    columns = 5:12,
+    decimals = 3)%>%
+  cols_merge(
+    columns=vars(Adj.CIlow, Adj.CIup),
+    hide_columns = vars(Adj.CIup),
+    pattern = "[{1}, {2}]") %>%
+  cols_merge(
+    columns=vars(Cochran.Q, Cochran.Q.p.val),
+    hide_columns = vars(Cochran.Q.p.val),
+    pattern = "{1}, p={2}") %>%
+  cols_label(
+    Raw.r = "Pearson's r",
+    Adj.CIlow = "Adjusted 95% CI",
+    p.val= "p-value",
+    Adj.p.val="Adjusted p-value",
+    Cochran.Q="Cochran's Q") %>% 
+  cols_align(
+    align = "center")
+```
+
+
+## Sensitivity analysis 7 : all participants
+
+```{r}
+# we filter the raw datasets to remove only participants with a missing value
+Data_Meta_Raw.wide.total<-filter(Data_Meta_Raw_transit.wide, CCA==1) 
+
+Data_Meta_S7<-split(Data_Meta_Raw.wide.total, Data_Meta_Raw.wide.total$Study)
+
+
+#Obtaining sample size for each dataset
+N.S7<-sapply(Data_Meta_S7, nrow)
+
+
+#Obtention of Correlation matrix and Variance-Covariance matrix for each study
+Cor.matrix.S7<-lapply(Data_Meta_S7, CorFUNCTION)
+
+List.Cor.Varcovar.S7<-mapply(RmatFUNCTION, Cor.matrix.S7, N.S7, SIMPLIFY=FALSE)
+
+#Effect size for each study, each outcome and each sleep indicator (k=40)
+ES.S7_transit<-do.call(rbind, lapply(List.Cor.Varcovar.S7, function(x) x$dat))
+
+ES.S7_transit1<-data.frame(cbind(
+  stud.out=row.names(ES.S7_transit), ES.S7_transit))
+
+ES.S7_transit2<-separate(ES.S7_transit1, stud.out,
+                          into=c("Study"))
+
+ES.S7<-ES.S7_transit2 %>%
+  rename("Outcome"=var1,
+         "Predictor"=var2,
+         "Out.Pred"=var1var2) %>% 
+  mutate(
+    Asso.of.int=case_when(
+      str_detect(Outcome, "Sleep") & str_detect(Predictor, "Moral") ~ 1,
+      str_detect(Outcome, "Moral") & str_detect(Predictor, "Sleep") ~ 1)) %>%
+  filter(Asso.of.int==1)
+
+ES.S7$N<-rep(N.S7, c(1*4,1*4,1*4,3*4,2*4,2*4))
+
+#Variance-covariance matrix for each study (N=6)
+List.Varcovar.S7_transit1<-lapply(List.Cor.Varcovar.S7, function(x) x$V)
+
+List.Varcovar.S7<-lapply(List.Varcovar.S7_transit1, FourPredictFUNCTION)
+
+V.S7=bldiag(list(
+  List.Varcovar.S7[[1]], 
+  List.Varcovar.S7[[2]],
+  List.Varcovar.S7[[3]],
+  List.Varcovar.S7[[4]], 
+  List.Varcovar.S7[[5]],
+  List.Varcovar.S7[[6]]))
+
+Meta.S7<-rma.mv(yi,V.S7, 
+                  mods=~Predictor-1, 
+                  random = ~ Out.Pred | Study, 
+                  struct="HCS", 
+                  data=ES.S7, level=100-(5/4))
+
+
+#Meta-analyses
+df.Meta.Res1.S7<-as.data.frame(ExtractMetaFUNCTION(Meta.S7))
+
+df.Meta.S7<- df.Meta.Res1.S7 %>% 
+  dplyr::mutate(
+    Study="Pooled Effect Size",
+    Outcome="All outcomes",
+    SleepIndicator=c("Quality of Acute Sleep", "Quality of Chronic Sleep",
+                     "Quantity of Acute Sleep","Quantity of Chronic Sleep"),
+    Adj.p.val=case_when(
+      Adj.p.val>.99~.99,
+      Adj.p.val<=.99~Adj.p.val),
+    N=sum(N.S7)) %>%
+  rowwise() %>%
+  dplyr::mutate(TOST=max(TOST1, TOST2)) %>%
+  dplyr::select(-c(TOST1,TOST2))
+
+df.Meta.S7<-df.Meta.S7[,c(8:11,1:7,12)]
+
+#Summary of the meta analysis
+gt(df.Meta.S7)%>% 
+  fmt_number(
+    columns = 5:12,
+    decimals = 3)%>%
+  cols_merge(
+    columns=vars(Adj.CIlow, Adj.CIup),
+    hide_columns = vars(Adj.CIup),
+    pattern = "[{1}, {2}]") %>%
+  cols_merge(
+    columns=vars(Cochran.Q, Cochran.Q.p.val),
+    hide_columns = vars(Cochran.Q.p.val),
+    pattern = "{1}, p={2}") %>%
+  cols_label(
+    Raw.r = "Pearson's r",
+    Adj.CIlow = "Adjusted 95% CI",
+    p.val= "p-value",
+    Adj.p.val="Adjusted p-value",
+    Cochran.Q="Cochran's Q") %>% 
+  cols_align(
+    align = "center")
+```
+
+

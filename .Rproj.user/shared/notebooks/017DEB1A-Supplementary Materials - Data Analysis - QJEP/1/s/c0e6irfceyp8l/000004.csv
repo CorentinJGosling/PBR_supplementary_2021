@@ -1,0 +1,5 @@
+"0","DataQJEPraw[Outcome == ""One people""] <- ""One person""
+"
+"2","Error in `[<-.data.frame`(`*tmp*`, Outcome == ""One people"", value = ""One person"") : 
+  objet 'Outcome' introuvable
+"

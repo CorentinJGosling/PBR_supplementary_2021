@@ -1,0 +1,233 @@
+# Study 4
+```{r}
+Data_Study4_Wide<-Data_Meta_Raw.wide[Data_Meta_Raw.wide$Study==4,]
+```
+
+## Data analysis
+
+**Planned statistical analysis: Run SEM for each sleep variable (IV) on endorsement of moral principles (DV)**
+```{r}
+#Primary Analysis
+Model_QualCroSEMS4<-
+'MoralTOT=~Moral_DIL+Moral_SCA+Moral_CAR
+MoralTOT~SleepQualCro'
+fitQualCro<-sem(Model_QualCroSEMS4, data=Data_Study4_Wide, estimator="MLR")
+
+#Secondary Analyses
+Model_QualAcuSEMS4<-
+'MoralTOT=~Moral_DIL+Moral_SCA+Moral_CAR
+MoralTOT~SleepQualAcu'
+fitQualAcu<-sem(Model_QualAcuSEMS4, data=Data_Study4_Wide, estimator="MLR")
+
+
+Model_QuantCroSEMS4<-
+'MoralTOT=~Moral_DIL+Moral_SCA+Moral_CAR
+MoralTOT~SleepQuantCro'
+fitQuantCro<-sem(Model_QuantCroSEMS4, data=Data_Study4_Wide, estimator="MLR")
+
+
+Model_QuantAcuSEMS4<-
+'MoralTOT=~Moral_DIL+Moral_SCA+Moral_CAR
+MoralTOT~SleepQuantAcu'
+fitQuantAcu<-sem(Model_QuantAcuSEMS4, data=Data_Study4_Wide, estimator="MLR")
+
+
+summary(fitQualCro)
+summary(fitQualAcu)
+summary(fitQuantCro)
+summary(fitQualCro)
+
+```
+
+**Alternative statistical analysis: using a composite variable as the dependent variable instead of a latent variable**
+```{r}
+# creation of the composite variable
+Data_Study4_Wide$MoralZ_DIL<- scale(Data_Study4_Wide$Moral_DIL,
+                                   center = TRUE, scale = TRUE)
+
+Data_Study4_Wide$MoralZ_SCA<- scale(Data_Study4_Wide$Moral_SCA,
+                                   center = TRUE, scale = TRUE)
+
+Data_Study4_Wide$MoralZ_CAR<- scale(Data_Study4_Wide$Moral_CAR,
+                                   center = TRUE, scale = TRUE)
+
+Data_Study4_Wide$MoralZ<-with(Data_Study4_Wide, MoralZ_DIL+MoralZ_SCA+MoralZ_CAR)
+
+# univariate regression
+QualCroLMS4<-lm(MoralZ~SleepQualCro, Data_Study4_Wide)
+QualAcuLMS4<-lm(MoralZ~SleepQualAcu, Data_Study4_Wide)
+QuantCroLMS4<-lm(MoralZ~SleepQuantCro,Data_Study4_Wide)
+QuantAcuLMS4<-lm(MoralZ~SleepQuantAcu, Data_Study4_Wide)
+```
+
+
+**Extract coefficients (unstandardized slopes, standard errors and p-values) from linear regression models **
+```{r}
+#Chronic Sleep Quality
+bQualCroS4<-round(summary(QualCroLMS4)$coefficients[2,1], digit=2)
+SEQualCroS4<- round(summary(QualCroLMS4)$coefficients[2,2] , digit=2)
+pQualCroS4<- round(summary(QualCroLMS4)$coefficients[2,4], digit=2)
+
+#Acute Sleep Quality
+bQualAcuS4<- round(summary(QualAcuLMS4)$coefficients[2,1] , digit=2)
+SEQualAcuS4 <- round(summary(QualAcuLMS4)$coefficients[2,2] , digit=2)
+pQualAcuS4<- round(ifelse(summary(QualAcuLMS4)$coefficients[2,4]*3<.99, summary(QualAcuLMS4)$coefficients[2,4]*3, .99), digit=2)
+
+#Chronic Sleep Quantity
+bQuantCroS4<- round(summary(QuantCroLMS4)$coefficients[2,1] , digit=2)
+SEQuantCroS4 <- round(summary(QuantCroLMS4)$coefficients[2,2] , digit=2)
+pQuantCroS4<- round(ifelse(summary(QuantCroLMS4)$coefficients[2,4]*4<.99, summary(QuantCroLMS4)$coefficients[2,4]*3, .99), digit=2)
+
+#Acute Sleep Quantity
+bQuantAcuS4<- round(summary(QuantAcuLMS4)$coefficients[2,1] , digit=2)
+SEQuantAcuS4 <- round(summary(QuantAcuLMS4)$coefficients[2,2] , digit=2)
+pQuantAcuS4<- round(ifelse(summary(QuantAcuLMS4)$coefficients[2,4]*3<.99, summary(QuantAcuLMS4)$coefficients[2,4]*3, .99), digit=2)
+
+```
+
+**Create datasets to display regression summary on the plots**
+```{r}
+ResumQualCroS4<- paste0("b=",bQualCroS4,", ", "SE=",SEQualCroS4,", ","p=",pQualCroS4)
+ResumQualAcuS4<- paste0("b=",bQualAcuS4,", ", "SE=",SEQualAcuS4,", ","p=",pQualAcuS4)
+ResumQuantCroS4<- paste0("b=",bQuantCroS4,", ", "SE=",SEQuantCroS4,", ","p=",pQuantCroS4)
+ResumQuantAcuS4<- paste0("b=",bQuantAcuS4,", ", "SE=",SEQuantAcuS4,", ","p=",pQuantAcuS4)
+
+annotationQualCroS4 <- data.frame(x = 9, y = 5.5,  label = ResumQualCroS4)
+annotationQualAcuS4 <- data.frame(x = 6, y = 5.5,  label = ResumQualAcuS4)
+annotationQuantCroS4 <- data.frame(x =6, y = 5.5,  label = ResumQuantCroS4)
+annotationQuantAcuS4 <- data.frame(x = 6, y = 5.5,  label = ResumQuantAcuS4)
+
+annotationS4<-cbind(
+  rbind(annotationQualCroS4,
+        annotationQualAcuS4,
+        annotationQuantCroS4,
+        annotationQuantAcuS4),
+  SleepType=c(
+        "Quality of Chronic Sleep",
+        "Quality of Acute Sleep",
+        "Quantity of Chronic Sleep",
+        "Quantity of Acute Sleep"))
+```
+
+
+**Prepare data for plots**
+```{r}
+Data_PlotS4<- Data_Study4_Wide %>%
+  pivot_longer(
+    cols=c(SleepQualCro, SleepQualAcu, SleepQuantCro, SleepQuantAcu),
+    names_to="SleepType") %>%
+  rename("SleepValue"=value) %>%
+  mutate(
+    SleepLength=case_when(
+      SleepType=="SleepQualCro" | SleepType=="SleepQuantCro"~"Chronic",
+      SleepType=="SleepQualAcu" | SleepType=="SleepQuantAcu"~"Acute"),
+    SleepQuanthist=case_when(
+      SleepType=="SleepQualCro" | SleepType=="SleepQualAcu"~"Sleep Quality",
+      SleepType=="SleepQuantCro" | SleepType=="SleepQuantAcu"~"Sleep Quantity"))
+
+Data_PlotS4$SleepType<-dplyr::recode(Data_PlotS4$SleepType,
+        "SleepQualCro" = "Quality of Chronic Sleep",
+        "SleepQualAcu" = "Quality of Acute Sleep",
+        "SleepQuantCro" = "Quantity of Chronic Sleep",
+        "SleepQuantAcu" = "Quantity of Acute Sleep")
+
+
+Data_MoralS4<- Data_Study4_Wide %>%
+  pivot_longer(
+    cols=c(Moral_DIL, Moral_SCA, Moral_CAR),
+    names_to="Outcome_moral") %>%
+  rename("MoralValue"=value)
+
+Data_MoralS4$Outcome_moral<-dplyr::recode(Data_MoralS4$Outcome_moral,
+        "Moral_DIL" = "Dilemmas",
+        "Moral_SCA" = "Scale",
+        "Moral_CAR" = "Autonomous cars")
+```
+
+
+**N in each sleep quantity category**
+```{r}
+Dist.Quantity.ChronicS4<-Data_Study4_Wide %>%
+    dplyr::group_by(SleepQuantCro) %>%
+      summarise(
+        N=n()) %>%
+          spread(SleepQuantCro, N) %>%
+  as.data.frame()
+row.names(Dist.Quantity.ChronicS4)<-"Quantity Chronic"
+
+Dist.Quantity.AcuteS4<-Data_Study4_Wide %>%
+    dplyr::group_by(SleepQuantAcu) %>%
+      summarise(
+        N=n()) %>%
+          spread(SleepQuantAcu, N) %>%
+  as.data.frame()
+row.names(Dist.Quantity.AcuteS4)<-"Quantity Acute"
+
+bind_rows(Dist.Quantity.AcuteS4, Dist.Quantity.ChronicS4)
+
+```
+
+## Summary of Study 4 results
+
+**Put results in a table**
+```{r}
+SleepMarker<-c("Quality Chronic","Quality Acute","Quantity Chronic","Quantity Acute")
+bS4<-c(bQualCroS4,bQualAcuS4,bQuantCroS4,bQuantAcuS4)
+SES4<-c(SEQualCroS4,SEQualAcuS4,SEQuantCroS4,SEQuantAcuS4)
+pvalS4<-c(pQualCroS4,pQualAcuS4,pQuantCroS4,pQuantAcuS4)
+NS4<-c(length(QualCroLMS4$fitted.values),
+     length(QualAcuLMS4$fitted.values),
+     length(QuantCroLMS4$fitted.values),
+     length(QuantAcuLMS4$fitted.values))
+
+ResultsStudy4<-data.frame("Sleep Indicator"=SleepMarker, "Unstandardized Slope"=bS4, "Standard Errors"=SES4, "p values"=pvalS4, "N"=NS4)
+gt(ResultsStudy4)
+```
+
+## Plots of Study 4 results
+
+**Plot distribution for each sleep indicator**
+```{r}
+DistQualityS4<-ggplot(Data_PlotS4, aes(x=SleepValue, fill=factor(SleepLength))) +
+  geom_density(alpha=0.5, size=0.5,adjust = 2) +
+  scale_fill_manual(values=c("#193B94", "#BDCAEE", "#193B94", "#BDCAEE")) +
+  theme_bw() +
+  ylab("Density") + xlab("") +
+  facet_wrap(~factor(SleepQuanthist), scale="free_x") +
+  guides(fill=guide_legend("Sleep Length")) +
+  theme(
+    axis.title.y = element_text(size = 11, hjust = 0.5, face="bold"),
+    axis.title.x = element_text(face="bold", size = 11, hjust = 0.5),
+    legend.position="top",
+    legend.title = element_text(colour="black", size=10, face="bold"))
+DistQualityS4
+```
+
+**Plot distribution for the scores to the sacrificial dilemmas, moral scale and autonomous car dilemmas**
+```{r}
+DistMoralS4<-ggplot(Data_MoralS4, aes(x=MoralValue, fill=factor(Outcome_moral))) + 
+  geom_density(alpha=0.5, size=0.5,adjust = 2) + 
+  theme_bw() + 
+  ylab("Density") + xlab("Moral Scale") +
+  facet_wrap(~factor(Outcome_moral), scale="free") +
+  guides(fill="none") +
+  theme(
+    axis.title.y = element_text(size = 11, hjust = 0.5, face="bold"),
+    axis.title.x = element_text(face="bold", size = 11, hjust = 0.5))
+  
+DistMoralS4
+```
+
+**Scatterplots**
+```{r}
+ggplot(Data_PlotS4, aes(x=SleepValue, y=MoralZ)) +
+       geom_jitter(alpha=0.6, color="#545454", size=1.2) +
+       geom_smooth(method="lm")+
+       facet_wrap(~factor(SleepType), scales="free_x") +
+       theme_bw() + ylab("Utilitirianism") + xlab("") +
+       theme(axis.title.y = element_text(size = 11, hjust = 0.5, face="bold"),
+             axis.title.x = element_text(face="bold", size = 11, hjust = 0.5)) +
+       guides(size=FALSE, colour=FALSE, fill=FALSE) +
+       geom_label(data=annotationS4, aes( x=x, y=y, label=label),
+                  color="black",  size=3.5 , angle=45, alpha=7/10, inherit.aes = FALSE)
+```

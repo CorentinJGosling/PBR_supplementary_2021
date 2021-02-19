@@ -1,0 +1,303 @@
+# Summary results
+
+```{r}
+df.summary.brut1<-bind_rows(
+  cbind(df.Meta.Prim, Analysis=rep("Primary", 4)),
+  cbind(df.Meta.S1, Analysis=rep("S1: CS structure", 4)),
+  cbind(df.Meta.S2, Analysis=rep("S2: Separate Meta-analyses", 4)),
+  cbind(df.Meta.S4, Analysis=rep("S4: Cook's distance", 4)),
+  cbind(df.Meta.S5, Analysis=rep("S5: High leverage", 4)),
+  cbind(df.Meta.S6, Analysis=rep("S6: Without short duration", 4)),
+  cbind(df.Meta.S7, Analysis=rep("S7: On all participants", 4))
+)
+
+
+df.summary.brut2<- df.summary.brut1 %>%
+  mutate(
+    Raw.r=round(as.numeric(Raw.r), digits=2),
+    Adj.CIlow=round(Adj.CIlow, digits=2),
+    Adj.CIup=round(Adj.CIup, digits=2),
+    p.val=round(p.val , digits=2),
+    Adj.p.val=round( Adj.p.val, digits=2),
+    Cochran.Q=round( Cochran.Q, digits=2),
+    Cochran.Q.p.val=round( Cochran.Q.p.val, digits=2),
+    TOST=round(TOST, digits=2))
+      
+df.Meta.S3.recode<- data.frame(
+  Study=rep("Pooled Effect Size",4),
+  Outcome=rep("All outcomes",4),
+    SleepIndicator=c("Quality of Acute Sleep", "Quality of Chronic Sleep",
+                     "Quantity of Acute Sleep","Quantity of Chronic Sleep"),
+    N=rep(sum(N.prim),4),
+    Raw.r=paste0("b=", round(df.Meta.S3$estimate[5:8],2)),
+    p.val=round(df.Meta.S3$p.value[5:8],2),
+    Adj.CIlow=round(df.Meta.S3$estimate[5:8]-df.Meta.S3$std.error[5:8]*qnorm(1-0.05/(2*4)),2),
+    Adj.CIup=round(df.Meta.S3$estimate[5:8]+df.Meta.S3$std.error[5:8]*qnorm(1-0.05/(2*4)),2),
+    Cochran.Q=rep(NA_real_, 4),
+    Cochran.Q.p.val=rep(NA_real_, 4),
+    TOST=rep(NA_real_, 4),
+    Analysis=rep("S3: One-stage model",4))
+
+
+S3.Adj.p.val<- case_when(
+      df.Meta.S3.recode$p.val*4>.99~.99,
+      df.Meta.S3.recode$p.val*4<=.99~4*as.numeric(df.Meta.S3.recode$p.val))
+
+df.Meta.S3.1<-cbind(df.Meta.S3.recode[,1:6], Adj.p.val=S3.Adj.p.val, df.Meta.S3.recode[,7:12])
+
+
+df.summary<-rbind(
+  df.summary.brut2[1:12,], 
+  df.Meta.S3.1, 
+  df.summary.brut2[13:nrow(df.summary.brut2),]) %>% 
+  dplyr::select(SleepIndicator, Analysis, N, Raw.r, Adj.CIlow, Adj.CIup, p.val, Adj.p.val, TOST)
+
+# df.summary <- df.summary.brut3 %>%
+#   dplyr::select(SleepIndicator, Analysis, N, Raw.r, Adj.CIlow, Adj.CIup, p.val, Adj.p.val, TOST) %>% 
+#   arrange(SleepIndicator,Analysis) 
+
+#for Acute Sleep Quality
+QualAcu.sum<-gt(df.summary[df.summary$SleepIndicator=="Quality of Acute Sleep",]) %>%
+  #fmt_number(
+  #  columns = 4:8,#ncol(df.compare),
+   # decimals = 2) %>%
+  cols_merge(
+    columns=vars(Adj.CIlow, Adj.CIup),
+    hide_columns = vars(Adj.CIup),
+    pattern = "[{1}, {2}]") %>%
+  cols_merge(
+    columns=vars(Raw.r, Adj.CIlow),
+    hide_columns = vars(Adj.CIlow),
+    pattern = "{1} {2}") %>%
+  # cols_merge(
+  #   columns=vars(Cochran.Q, Cochran.Q.p.val),
+  #   hide_columns = vars(Cochran.Q.p.val),
+  #   pattern = "Q={1}, p={2}") %>%
+    cols_merge(
+    columns=vars(p.val, Adj.p.val),
+    hide_columns = vars(Adj.p.val),
+    pattern = "{1} / {2}") %>%
+  tab_footnote(
+    footnote = "95% CIs are corrected with a Bonferroni procedure",
+    locations = cells_column_labels(
+      columns = vars(Raw.r))) %>% 
+    tab_footnote(
+    footnote = "Adjusted p-values are corrected with a Bonferroni procedure",
+    locations = cells_column_labels(
+      columns = vars(p.val))) %>%
+  cols_label(
+    SleepIndicator=html("Sleep<br>Indicator"),
+    Raw.r = html("Pearson's r<br>[95% CI]"),
+    p.val= html("p-values<br>raw/adjusted")) %>% 
+ tab_style(
+   style= cell_text(size=12),
+   locations=
+     cells_body(everything())) %>%
+ tab_style(
+   style= cell_text(weight = "bold",size=12),
+   locations=
+      cells_column_labels(everything())) %>%
+ tab_style(
+    style = cell_text(color = "red"),
+    locations = cells_body(
+      columns = vars(p.val),
+      rows = p.val <= .05)) %>% 
+  cols_align(
+    align = "center")
+
+
+#for Chronic Sleep Quality
+QualCro.sum<-gt(df.summary[df.summary$SleepIndicator=="Quality of Chronic Sleep",]) %>%
+  # fmt_number(
+  #   columns = 4:ncol(df.compare),
+  #   decimals = 2) %>%
+  cols_merge(
+    columns=vars(Adj.CIlow, Adj.CIup),
+    hide_columns = vars(Adj.CIup),
+    pattern = "[{1}, {2}]") %>%
+  cols_merge(
+    columns=vars(Raw.r, Adj.CIlow),
+    hide_columns = vars(Adj.CIlow),
+    pattern = "{1} {2}") %>%
+  # cols_merge(
+    # columns=vars(Cochran.Q, Cochran.Q.p.val),
+    # hide_columns = vars(Cochran.Q.p.val),
+    # pattern = "Q={1}, p={2}") %>%
+    cols_merge(
+    columns=vars(p.val, Adj.p.val),
+    hide_columns = vars(Adj.p.val),
+    pattern = "{1} / {2}") %>%
+  tab_footnote(
+    footnote = "95% CIs are corrected with a Bonferroni procedure",
+    locations = cells_column_labels(
+      columns = vars(Raw.r))) %>% 
+    tab_footnote(
+    footnote = "Adjusted p-values are corrected with a Bonferroni procedure",
+    locations = cells_column_labels(
+      columns = vars(p.val))) %>%
+  cols_label(
+    SleepIndicator=html("Sleep<br>Indicator"),
+    Raw.r = html("Pearson's r<br>[95% CI]"),
+    p.val= html("p-values<br>raw/adjusted")) %>% 
+ tab_style(
+   style= cell_text(size=12),
+   locations=
+     cells_body(everything())) %>%
+ tab_style(
+   style= cell_text(weight = "bold",size=12),
+   locations=
+      cells_column_labels(everything())) %>%
+ tab_style(
+    style = cell_text(color = "red"),
+    locations = cells_body(
+      columns = vars(p.val),
+      rows = p.val <= .05)) %>% 
+  cols_align(
+    align = "center")
+
+#for Acute Sleep Quantity
+QuantAcu.sum<-gt(df.summary[df.summary$SleepIndicator=="Quantity of Acute Sleep",]) %>%
+  # fmt_number(
+  #   columns = 4:ncol(df.compare),
+  #   decimals = 2) %>%
+  cols_merge(
+    columns=vars(Adj.CIlow, Adj.CIup),
+    hide_columns = vars(Adj.CIup),
+    pattern = "[{1}, {2}]") %>%
+  cols_merge(
+    columns=vars(Raw.r, Adj.CIlow),
+    hide_columns = vars(Adj.CIlow),
+    pattern = "{1} {2}") %>%
+  # cols_merge(
+  #   columns=vars(Cochran.Q, Cochran.Q.p.val),
+  #   hide_columns = vars(Cochran.Q.p.val),
+  #   pattern = "Q={1}, p={2}") %>%
+    cols_merge(
+    columns=vars(p.val, Adj.p.val),
+    hide_columns = vars(Adj.p.val),
+    pattern = "{1} / {2}") %>%
+  tab_footnote(
+    footnote = "95% CIs are corrected with a Bonferroni procedure",
+    locations = cells_column_labels(
+      columns = vars(Raw.r))) %>% 
+    tab_footnote(
+    footnote = "Adjusted p-values are corrected with a Bonferroni procedure",
+    locations = cells_column_labels(
+      columns = vars(p.val))) %>%
+  cols_label(
+    SleepIndicator=html("Sleep<br>Indicator"),
+    Raw.r = html("Pearson's r<br>[95% CI]"),
+    p.val= html("p-values<br>raw/adjusted")) %>% 
+ tab_style(
+   style= cell_text(size=12),
+   locations=
+     cells_body(everything())) %>%
+ tab_style(
+   style= cell_text(weight = "bold",size=12),
+   locations=
+      cells_column_labels(everything())) %>%
+ tab_style(
+    style = cell_text(color = "red"),
+    locations = cells_body(
+      columns = vars(p.val),
+      rows = p.val <= .05)) %>% 
+  cols_align(
+    align = "center")
+
+#for Chronic Sleep Quantity
+QuantCro.sum<-gt(df.summary[df.summary$SleepIndicator=="Quantity of Chronic Sleep",]) %>%
+  # fmt_number(
+  #   columns = 4:ncol(df.compare),
+  #   decimals = 2) %>%
+  cols_merge(
+    columns=vars(Adj.CIlow, Adj.CIup),
+    hide_columns = vars(Adj.CIup),
+    pattern = "[{1}, {2}]") %>%
+  cols_merge(
+    columns=vars(Raw.r, Adj.CIlow),
+    hide_columns = vars(Adj.CIlow),
+    pattern = "{1} {2}") %>%
+  # cols_merge(
+  #   columns=vars(Cochran.Q, Cochran.Q.p.val),
+  #   hide_columns = vars(Cochran.Q.p.val),
+  #   pattern = "Q={1}, p={2}") %>%
+    cols_merge(
+    columns=vars(p.val, Adj.p.val),
+    hide_columns = vars(Adj.p.val),
+    pattern = "{1} / {2}") %>%
+  tab_footnote(
+    footnote = "95% CIs are corrected with a Bonferroni procedure",
+    locations = cells_column_labels(
+      columns = vars(Raw.r))) %>% 
+    tab_footnote(
+    footnote = "Adjusted p-values are corrected with a Bonferroni procedure",
+    locations = cells_column_labels(
+      columns = vars(p.val))) %>%
+  cols_label(
+    SleepIndicator=html("Sleep<br>Indicator"),
+    Raw.r = html("Pearson's r<br>[95% CI]"),
+    p.val= html("p-values<br>raw/adjusted")) %>% 
+ tab_style(
+   style= cell_text(size=12),
+   locations=
+     cells_body(everything())) %>%
+ tab_style(
+   style= cell_text(weight = "bold",size=12),
+   locations=
+      cells_column_labels(everything())) %>%
+ tab_style(
+    style = cell_text(color = "red"),
+    locations = cells_body(
+      columns = vars(p.val),
+      rows = p.val <= .05)) %>% 
+  cols_align(
+    align = "center")
+```
+
+## Quality of Acute Sleep
+```{r}
+QualAcu.sum
+```
+
+## Quality of Chronic Sleep
+```{r}
+QualCro.sum
+```
+
+## Quantity of Acute Sleep
+```{r}
+QuantAcu.sum
+```
+
+## Quantity of Chronic Sleep
+```{r}
+QuantCro.sum
+```
+
+
+
+```
+
+```{r, include=FALSE, echo=FALSE}
+QualAcu.sum%>%
+  gtsave(
+    "QualAcu.rtf", expand = 1,
+    # path = tempdir()
+  )
+QualCro.sum%>%
+  gtsave(
+    "QualCro.rtf", expand = 1,
+    # path = tempdir()
+  )
+QuantAcu.sum%>%
+  gtsave(
+    "QuantAcu.rtf", expand = 1,
+    # path = tempdir()
+  )
+QuantCro.sum%>%
+  gtsave(
+    "QuantCro.rtf", expand = 1,
+    # path = tempdir()
+  )
+
+```

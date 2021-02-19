@@ -1,0 +1,6 @@
+"0","Data_Study1_sleep_moral <- read.delim(""C:/Users/coren/Documents/PBR_supp/Data/Data-Study1-PBR.txt"")"
+"0","Data_Study2_sleep_moral <- read.delim(""C:/Users/coren/Documents/PBR_supp/Data/Data-Study2-PBR.txt"")"
+"0","Data_Study3_sleep_moral <- read.delim(""C:/Users/coren/Documents/PBR_supp/Data/Data-Study3-PBR.txt"")"
+"0","Data_Study4_sleep_moral <- read.delim(""C:/Users/coren/Documents/PBR_supp/Data/Data-Study4-PBR.txt"")"
+"0","Data_Study5_sleep_moral <- read.delim(""C:/Users/coren/Documents/PBR_supp/Data/Data-Study5-PBR.txt"")"
+"0","Data_Study6_sleep_moral <- read.delim(""C:/Users/coren/Documents/PBR_supp/Data/Data-Study6-PBR.txt"")"
