@@ -52,15 +52,8 @@ df.summary<-rbind(
   df.summary.brut2[13:nrow(df.summary.brut2),]) %>% 
   dplyr::select(SleepIndicator, Analysis, N, Raw.r, Adj.CIlow, Adj.CIup, p.val, Adj.p.val, TOST)
 
-# df.summary <- df.summary.brut3 %>%
-#   dplyr::select(SleepIndicator, Analysis, N, Raw.r, Adj.CIlow, Adj.CIup, p.val, Adj.p.val, TOST) %>% 
-#   arrange(SleepIndicator,Analysis) 
-
 #for Acute Sleep Quality
 QualAcu.sum<-gt(df.summary[df.summary$SleepIndicator=="Quality of Acute Sleep",]) %>%
-  #fmt_number(
-  #  columns = 4:8,#ncol(df.compare),
-   # decimals = 2) %>%
   cols_merge(
     columns=vars(Adj.CIlow, Adj.CIup),
     hide_columns = vars(Adj.CIup),

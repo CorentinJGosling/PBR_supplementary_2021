@@ -145,8 +145,5 @@ ggplot(Data_ScatterS6, aes(x=SleepValue, y=MoralValue2,
              axis.title.x = element_text(face="bold", size = 11, hjust = 0.5)) +
        guides(size=FALSE, colour=FALSE) + 
        scale_fill_manual(values=c("red","#193B94"))+
-       scale_color_manual(values=c("red","#193B94"))+
-       geom_label(data=annotationS6, aes( x=x, y=y, label=label), 
-                  color="black",  size=3.5 , angle=45, alpha=7/10, 
-                  inherit.aes = FALSE)
+       scale_color_manual(values=c("red","#193B94"))
 ```
