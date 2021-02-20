@@ -1,6 +1,6 @@
 # Study 4
 ```{r}
-Data_Study4_Wide<-Data_Meta_Raw.wide[Data_Meta_Raw.wide$Study==4,]
+Data_Study4_Wide <- subset(Data_Meta_Raw.wide, Study == 4)
 ```
 
 ## Data analysis
@@ -61,54 +61,18 @@ QuantAcuLMS4<-lm(MoralZ~SleepQuantAcu, Data_Study4_Wide)
 ```
 
 
-**Extract coefficients (unstandardized slopes, standard errors and p-values) from linear regression models **
+**Extract coefficients from linear regression models **
 ```{r}
-#Chronic Sleep Quality
-bQualCroS4<-round(summary(QualCroLMS4)$coefficients[2,1], digit=2)
-SEQualCroS4<- round(summary(QualCroLMS4)$coefficients[2,2] , digit=2)
-pQualCroS4<- round(summary(QualCroLMS4)$coefficients[2,4], digit=2)
-
-#Acute Sleep Quality
-bQualAcuS4<- round(summary(QualAcuLMS4)$coefficients[2,1] , digit=2)
-SEQualAcuS4 <- round(summary(QualAcuLMS4)$coefficients[2,2] , digit=2)
-pQualAcuS4<- round(ifelse(summary(QualAcuLMS4)$coefficients[2,4]*3<.99, summary(QualAcuLMS4)$coefficients[2,4]*3, .99), digit=2)
-
-#Chronic Sleep Quantity
-bQuantCroS4<- round(summary(QuantCroLMS4)$coefficients[2,1] , digit=2)
-SEQuantCroS4 <- round(summary(QuantCroLMS4)$coefficients[2,2] , digit=2)
-pQuantCroS4<- round(ifelse(summary(QuantCroLMS4)$coefficients[2,4]*4<.99, summary(QuantCroLMS4)$coefficients[2,4]*3, .99), digit=2)
-
-#Acute Sleep Quantity
-bQuantAcuS4<- round(summary(QuantAcuLMS4)$coefficients[2,1] , digit=2)
-SEQuantAcuS4 <- round(summary(QuantAcuLMS4)$coefficients[2,2] , digit=2)
-pQuantAcuS4<- round(ifelse(summary(QuantAcuLMS4)$coefficients[2,4]*3<.99, summary(QuantAcuLMS4)$coefficients[2,4]*3, .99), digit=2)
-
+results_S4 <- rbind(
+  tidy(QualCroLMS4)[2,],
+  tidy(QualAcuLMS4)[2,],
+  tidy(QuantCroLMS4)[2,],
+  tidy(QuantAcuLMS4)[2,]) %>%
+  mutate(
+    p.value = case_when(
+      p.value*4 < 1 ~ p.value*4,
+      p.value*4 >= 1 ~ 1))
 ```
-
-**Create datasets to display regression summary on the plots**
-```{r}
-ResumQualCroS4<- paste0("b=",bQualCroS4,", ", "SE=",SEQualCroS4,", ","p=",pQualCroS4)
-ResumQualAcuS4<- paste0("b=",bQualAcuS4,", ", "SE=",SEQualAcuS4,", ","p=",pQualAcuS4)
-ResumQuantCroS4<- paste0("b=",bQuantCroS4,", ", "SE=",SEQuantCroS4,", ","p=",pQuantCroS4)
-ResumQuantAcuS4<- paste0("b=",bQuantAcuS4,", ", "SE=",SEQuantAcuS4,", ","p=",pQuantAcuS4)
-
-annotationQualCroS4 <- data.frame(x = 9, y = 5.5,  label = ResumQualCroS4)
-annotationQualAcuS4 <- data.frame(x = 6, y = 5.5,  label = ResumQualAcuS4)
-annotationQuantCroS4 <- data.frame(x =6, y = 5.5,  label = ResumQuantCroS4)
-annotationQuantAcuS4 <- data.frame(x = 6, y = 5.5,  label = ResumQuantAcuS4)
-
-annotationS4<-cbind(
-  rbind(annotationQualCroS4,
-        annotationQualAcuS4,
-        annotationQuantCroS4,
-        annotationQuantAcuS4),
-  SleepType=c(
-        "Quality of Chronic Sleep",
-        "Quality of Acute Sleep",
-        "Quantity of Chronic Sleep",
-        "Quantity of Acute Sleep"))
-```
-
 
 **Prepare data for plots**
 ```{r}
@@ -144,44 +108,14 @@ Data_MoralS4$Outcome_moral<-dplyr::recode(Data_MoralS4$Outcome_moral,
         "Moral_CAR" = "Autonomous cars")
 ```
 
-
-**N in each sleep quantity category**
-```{r}
-Dist.Quantity.ChronicS4<-Data_Study4_Wide %>%
-    dplyr::group_by(SleepQuantCro) %>%
-      summarise(
-        N=n()) %>%
-          spread(SleepQuantCro, N) %>%
-  as.data.frame()
-row.names(Dist.Quantity.ChronicS4)<-"Quantity Chronic"
-
-Dist.Quantity.AcuteS4<-Data_Study4_Wide %>%
-    dplyr::group_by(SleepQuantAcu) %>%
-      summarise(
-        N=n()) %>%
-          spread(SleepQuantAcu, N) %>%
-  as.data.frame()
-row.names(Dist.Quantity.AcuteS4)<-"Quantity Acute"
-
-bind_rows(Dist.Quantity.AcuteS4, Dist.Quantity.ChronicS4)
-
-```
-
 ## Summary of Study 4 results
 
 **Put results in a table**
 ```{r}
-SleepMarker<-c("Quality Chronic","Quality Acute","Quantity Chronic","Quantity Acute")
-bS4<-c(bQualCroS4,bQualAcuS4,bQuantCroS4,bQuantAcuS4)
-SES4<-c(SEQualCroS4,SEQualAcuS4,SEQuantCroS4,SEQuantAcuS4)
-pvalS4<-c(pQualCroS4,pQualAcuS4,pQuantCroS4,pQuantAcuS4)
-NS4<-c(length(QualCroLMS4$fitted.values),
-     length(QualAcuLMS4$fitted.values),
-     length(QuantCroLMS4$fitted.values),
-     length(QuantAcuLMS4$fitted.values))
-
-ResultsStudy4<-data.frame("Sleep Indicator"=SleepMarker, "Unstandardized Slope"=bS4, "Standard Errors"=SES4, "p values"=pvalS4, "N"=NS4)
-gt(ResultsStudy4)
+gt(results_S4) %>% 
+  fmt_number(
+    columns = 2:5,
+    decimals = 2)
 ```
 
 ## Plots of Study 4 results
@@ -227,7 +161,5 @@ ggplot(Data_PlotS4, aes(x=SleepValue, y=MoralZ)) +
        theme_bw() + ylab("Utilitirianism") + xlab("") +
        theme(axis.title.y = element_text(size = 11, hjust = 0.5, face="bold"),
              axis.title.x = element_text(face="bold", size = 11, hjust = 0.5)) +
-       guides(size=FALSE, colour=FALSE, fill=FALSE) +
-       geom_label(data=annotationS4, aes( x=x, y=y, label=label),
-                  color="black",  size=3.5 , angle=45, alpha=7/10, inherit.aes = FALSE)
+       guides(size=FALSE, colour=FALSE, fill=FALSE) 
 ```

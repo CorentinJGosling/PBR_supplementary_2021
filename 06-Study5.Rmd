@@ -1,7 +1,7 @@
 # Study 5
 
 ```{r}
-Data_Study5_Wide<-Data_Meta_Raw.wide[Data_Meta_Raw.wide$Study==5,]
+Data_Study5_Wide <- subset(Data_Meta_Raw.wide, Study == 5)
 ```
 
 ## Data analysis
@@ -37,31 +37,6 @@ FQuantAcuS5<-round(do.call(rbind, out(Anova(QuantCroLMS5, test.statistic="Pillai
 pQuantAcuS5<-  round(ifelse(do.call(rbind, out(Anova(QuantAcuLMS5, test.statistic="Pillai")))[6]*4<.99, do.call(rbind, out(Anova(QuantAcuLMS5, test.statistic="Pillai")))[6]*4, .99), digit=2)
 
 ```
-
-**Create datasets to display regression summary in plots**
-```{r}
-ResumQualCroS5<- paste0("F=",FQualCroS5,",","p=",pQualCroS5)
-ResumQualAcuS5<- paste0("F=",FQualAcuS5,",", "p=",pQualAcuS5)
-ResumQuantCroS5<- paste0("F=",FQuantCroS5,",","p=",pQuantCroS5)
-ResumQuantAcuS5<- paste0("F=",FQuantAcuS5,",","p=",pQuantAcuS5)
-
-annotationQualCroS5 <- data.frame(x = 14, y = 2,  label = ResumQualCroS5)
-annotationQualAcuS5 <- data.frame(x = 14, y = 2,  label = ResumQualAcuS5)
-annotationQuantCroS5 <- data.frame(x = 9, y = 2,  label = ResumQuantCroS5)
-annotationQuantAcuS5 <- data.frame(x = 9, y = 2,  label = ResumQuantAcuS5)
-
-annotationS5<-cbind(
-  rbind(annotationQualCroS5, 
-        annotationQualAcuS5, 
-        annotationQuantCroS5, 
-        annotationQuantAcuS5),
-  SleepType=c(
-        "Quality of Chronic Sleep", 
-        "Quality of Acute Sleep", 
-        "Quantity of Chronic Sleep", 
-        "Quantity of Acute Sleep"))
-```
-
 
 **Prepare data for plots**
 ```{r}
@@ -168,8 +143,5 @@ ggplot(Data_ScatterS5, aes(x=SleepValue, y=MoralValue1,
              axis.title.x = element_text(face="bold", size = 11, hjust = 0.5)) +
        guides(size=FALSE, colour=FALSE) + 
        scale_fill_manual(values=c("red","#193B94"))+
-       scale_color_manual(values=c("red","#193B94"))+
-
-       geom_label(data=annotationS5, aes( x=x, y=y, label=label), 
-                  color="black",  size=3.5 , angle=45, alpha=7/10, inherit.aes = FALSE)
+       scale_color_manual(values=c("red","#193B94"))
 ```

@@ -21,11 +21,11 @@ Raw data are available in supplementary materials. Any question about this suppl
 *1. These packages installed and loaded*
 
 ```{r, eval=FALSE, message=FALSE, warning=FALSE}
-install.packages(c("knitr", "geepack" ,"gt", "ggplot2", "tidyr", "dplyr", "car", "lavaan", "metafor", "lme4", "lmerTest", "stringr", "ggplot2", "DescTools", "corrplot")) 
+install.packages(c("knitr", "geepack" ,"gt", "ggplot2", "tidyr", "dplyr", "car", "lavaan", "metafor", "lme4", "lmerTest", "stringr", "ggplot2", "DescTools", "broom")) 
 ```
 
 ```{r, message=FALSE, warning=FALSE}
-library(knitr);library(geepack); library(gt); library(ggplot2); library(tidyr); library(dplyr);library(car);library(lavaan); library(metafor); library(kableExtra); library(gt);library(lme4);library(lmerTest); library(DescTools);library(stringr); library(corrplot)
+library(knitr);library(geepack); library(gt); library(ggplot2); library(tidyr); library(dplyr);library(car);library(lavaan); library(metafor); library(kableExtra); library(gt);library(lme4);library(lmerTest); library(DescTools);library(stringr); library(broom)
 ```
 
 *2. The datasets of the individual studies loaded*

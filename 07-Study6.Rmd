@@ -1,7 +1,7 @@
 # Study 6
 
 ```{r}
-Data_Study6_Wide<-Data_Meta_Raw.wide[Data_Meta_Raw.wide$Study==6,]
+Data_Study6_Wide <- subset(Data_Meta_Raw.wide, Study == 6)
 ```
 
 
@@ -38,31 +38,6 @@ FQuantAcuS6<-round(do.call(rbind, out(Anova(QuantCroLMS6, test.statistic="Pillai
 pQuantAcuS6<-  round(ifelse(do.call(rbind, out(Anova(QuantAcuLMS6, test.statistic="Pillai")))[6]*4<.99, do.call(rbind, out(Anova(QuantAcuLMS6, test.statistic="Pillai")))[6]*4, .99), digit=2)
 
 ```
-
-**Create datasets to display regression summary in plots**
-```{r}
-ResumQualCroS6<- paste0("F=",FQualCroS6,",","p=",pQualCroS6)
-ResumQualAcuS6<- paste0("F=",FQualAcuS6,",", "p=",pQualAcuS6)
-ResumQuantCroS6<- paste0("F=",FQuantCroS6,",","p=",pQuantCroS6)
-ResumQuantAcuS6<- paste0("F=",FQuantAcuS6,",","p=",pQuantAcuS6)
-
-annotationQualCroS6 <- data.frame(x = 14.5, y = 2.5,  label = ResumQualCroS6)
-annotationQualAcuS6 <- data.frame(x = 16.5, y = 2.5,  label = ResumQualAcuS6)
-annotationQuantCroS6 <- data.frame(x =7, y = 2.5,  label = ResumQuantCroS6)
-annotationQuantAcuS6 <- data.frame(x = 7, y = 2.5,  label = ResumQuantAcuS6)
-
-annotationS6<-cbind(
-  rbind(annotationQualCroS6, 
-        annotationQualAcuS6, 
-        annotationQuantCroS6, 
-        annotationQuantAcuS6),
-  SleepType=c(
-        "Quality of Chronic Sleep", 
-        "Quality of Acute Sleep", 
-        "Quantity of Chronic Sleep", 
-        "Quantity of Acute Sleep"))
-```
-
 
 **Prepare data for plots**
 ```{r}
@@ -105,31 +80,6 @@ Data_ScatterS6<- Data_PlotS6 %>%
 Data_ScatterS6$Outcome<-dplyr::recode(Data_ScatterS6$Outcome, 
         "MoralZ_DIL" = "Dilemmas",
         "MoralZ_SCA" = "Scale")
-
-```
-
-**N in each sleep quantity category**
-```{r}
-Data_Study6_Wide$SleepQuantCroR<-round(Data_Study6_Wide$SleepQuantCro)
-Data_Study6_Wide$SleepQuantAcuR<-round(Data_Study6_Wide$SleepQuantAcu)
-
-Dist.Quantity.ChronicS6<-Data_Study6_Wide %>% 
-    dplyr::group_by(SleepQuantCroR) %>% 
-      summarise(
-        N=n()) %>% 
-          spread(SleepQuantCroR, N) %>% 
-  as.data.frame()
-row.names(Dist.Quantity.ChronicS6)<-"Quantity Chronic"
-
-Dist.Quantity.AcuteS6<-Data_Study6_Wide %>% 
-    dplyr::group_by(SleepQuantAcuR) %>% 
-      summarise(
-        N=n()) %>% 
-          spread(SleepQuantAcuR, N) %>% 
-  as.data.frame()
-row.names(Dist.Quantity.AcuteS6)<-"Quantity Acute"
-
-bind_rows(Dist.Quantity.AcuteS6, Dist.Quantity.ChronicS6)
 
 ```
 
