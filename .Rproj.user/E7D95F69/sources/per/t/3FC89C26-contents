@@ -43,7 +43,7 @@ s1 <- cor(df.cor.S1, use = "complete.obs")
 "study2"
 s2 <- cor(df.cor.S2, use = "complete.obs")
 "study3"
-s3 <- cor(df.cor.S3, use = "pairwise.complete.obs")
+s3 <- cor(df.cor.S3, use = "complete.obs")
 "study4"
 s4 <- cor(df.cor.S4, use = "complete.obs")
 "study5"
