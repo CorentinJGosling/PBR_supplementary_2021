@@ -25,7 +25,7 @@ install.packages(c("knitr", "geepack" ,"gt", "ggplot2", "tidyr", "dplyr", "car",
 ```
 
 ```{r, message=FALSE, warning=FALSE}
-library(knitr);library(geepack); library(gt); library(ggplot2); library(tidyr); library(dplyr);library(car);library(lavaan); library(metafor); library(kableExtra); library(gt);library(lme4);library(lmerTest); library(DescTools);library(stringr); library(broom)
+library(knitr);library(geepack); library(gt); library(ggplot2); library(tidyr); library(dplyr);library(car);library(lavaan); library(metafor); library(kableExtra); library(gt);library(lme4);library(lmerTest); library(DescTools);library(stringr); library(broom); library(Hmisc)
 ```
 
 *2. The datasets of the individual studies loaded*

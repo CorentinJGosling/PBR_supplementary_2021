@@ -213,7 +213,7 @@ Data_Meta_S4_transit2<-do.call(rbind,Data_Meta_S4_transit1)
 
 
 #if a participant has a cooks' distance > to the cut off for one sleep-outcome association, he will be considered as an outlier in all associations) 
-ID.Cook<-subset(Data_Meta_S4_transit2$ResponseId,
+ID.Cook<-subset(Data_Meta_S4_transit2$ID,
                   Data_Meta_S4_transit2$CookQualAcuOUT==1 |
                   Data_Meta_S4_transit2$CookQualCroOUT==1 |
                   Data_Meta_S4_transit2$CookQuantAcuOUT==1 |
@@ -223,7 +223,7 @@ ID.Cook<-subset(Data_Meta_S4_transit2$ResponseId,
 
 ```{r}
 # Exclude influential participants
-Data_Meta_Cook<-filter(Data_Meta_Raw.wide, !(ResponseId %in% ID.Cook)) 
+Data_Meta_Cook<-filter(Data_Meta_Raw.wide, !(ID %in% ID.Cook)) 
 
 # Split the dataset with influential participants excluded
 Data_Meta_Cook.split<-split(Data_Meta_Cook, Data_Meta_Cook$Study)
@@ -281,14 +281,14 @@ Meta.Cook<-rma.mv(yi,V.Cook,
 **Exclusion of participants with a large hat value**
 ```{r}
 #if a participant has an hat value > to the cut off for one sleep-outcome association, he will be  considered as an outlier in all associations)
-ID.Hat<-subset(Data_Meta_S4_transit2$ResponseId,
+ID.Hat<-subset(Data_Meta_S4_transit2$ID,
                   Data_Meta_S4_transit2$HatQualAcuOUT==1 |
                   Data_Meta_S4_transit2$HatQualCroOUT==1 |
                   Data_Meta_S4_transit2$HatQuantAcuOUT==1 |
                   Data_Meta_S4_transit2$HatQuantCroOUT==1)
 
 # Exclude influential participants
-Data_Meta_Hat<-filter(Data_Meta_Raw.wide, !(ResponseId %in% ID.Hat)) 
+Data_Meta_Hat<-filter(Data_Meta_Raw.wide, !(ID %in% ID.Hat)) 
 
 # Split the dataset with influential participants excluded
 Data_Meta_Hat.split<-split(Data_Meta_Hat, Data_Meta_Hat$Study)

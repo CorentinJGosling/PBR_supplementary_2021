@@ -24,7 +24,7 @@
 <meta name="author" content="Trémolière B &amp; Gosling CJ" />
 
 
-<meta name="date" content="2021-02-20" />
+<meta name="date" content="2021-02-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -51,6 +51,14 @@
 
 
 
+<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.15/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
 
 
 <style type="text/css">
@@ -133,16 +141,75 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Tremoliere & Gosling (2021)</a></li>
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
-<li class="chapter" data-level="1" data-path="study-1.html"><a href="study-1.html"><i class="fa fa-check"></i><b>1</b> Study 1</a></li>
-<li class="chapter" data-level="2" data-path="study-2.html"><a href="study-2.html"><i class="fa fa-check"></i><b>2</b> Study 2</a></li>
-<li class="chapter" data-level="3" data-path="study-3.html"><a href="study-3.html"><i class="fa fa-check"></i><b>3</b> Study 3</a></li>
-<li class="chapter" data-level="4" data-path="study-4.html"><a href="study-4.html"><i class="fa fa-check"></i><b>4</b> Study 4</a></li>
-<li class="chapter" data-level="5" data-path="study-5.html"><a href="study-5.html"><i class="fa fa-check"></i><b>5</b> Study 5</a></li>
-<li class="chapter" data-level="6" data-path="study-6.html"><a href="study-6.html"><i class="fa fa-check"></i><b>6</b> Study 6</a></li>
-<li class="chapter" data-level="7" data-path="primary-meta-analysis.html"><a href="primary-meta-analysis.html"><i class="fa fa-check"></i><b>7</b> Primary Meta-analysis</a></li>
-<li class="chapter" data-level="8" data-path="sensitivity-analyses.html"><a href="sensitivity-analyses.html"><i class="fa fa-check"></i><b>8</b> Sensitivity analyses</a></li>
-<li class="chapter" data-level="9" data-path="summary-results.html"><a href="summary-results.html"><i class="fa fa-check"></i><b>9</b> Summary results</a></li>
-<li class="chapter" data-level="10" data-path="post-hoc-exploratory-analyses.html"><a href="post-hoc-exploratory-analyses.html"><i class="fa fa-check"></i><b>10</b> Post hoc exploratory analyses</a></li>
+<li class="chapter" data-level="1" data-path="study-1.html"><a href="study-1.html"><i class="fa fa-check"></i><b>1</b> Study 1</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="study-1.html"><a href="study-1.html#data-analysis"><i class="fa fa-check"></i><b>1.1</b> Data analysis</a></li>
+<li class="chapter" data-level="1.2" data-path="study-1.html"><a href="study-1.html#summary-of-study-1-results"><i class="fa fa-check"></i><b>1.2</b> Summary of Study 1 results</a></li>
+<li class="chapter" data-level="1.3" data-path="study-1.html"><a href="study-1.html#plot-study-1-results"><i class="fa fa-check"></i><b>1.3</b> Plot Study 1 results</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="study-2.html"><a href="study-2.html"><i class="fa fa-check"></i><b>2</b> Study 2</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="study-1.html"><a href="study-1.html#data-analysis"><i class="fa fa-check"></i><b>2.1</b> Data analysis</a></li>
+<li class="chapter" data-level="2.2" data-path="study-2.html"><a href="study-2.html#summary-of-study-2-results"><i class="fa fa-check"></i><b>2.2</b> Summary of Study 2 results</a></li>
+<li class="chapter" data-level="2.3" data-path="study-2.html"><a href="study-2.html#plot-study-2-results"><i class="fa fa-check"></i><b>2.3</b> Plot Study 2 Results</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="study-3.html"><a href="study-3.html"><i class="fa fa-check"></i><b>3</b> Study 3</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="study-1.html"><a href="study-1.html#data-analysis"><i class="fa fa-check"></i><b>3.1</b> Data analysis</a></li>
+<li class="chapter" data-level="3.2" data-path="study-3.html"><a href="study-3.html#summary-of-study-3-results"><i class="fa fa-check"></i><b>3.2</b> Summary of Study 3 results</a></li>
+<li class="chapter" data-level="3.3" data-path="study-3.html"><a href="study-3.html#plot-study-3-results"><i class="fa fa-check"></i><b>3.3</b> Plot Study 3 results</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="study-4.html"><a href="study-4.html"><i class="fa fa-check"></i><b>4</b> Study 4</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="study-1.html"><a href="study-1.html#data-analysis"><i class="fa fa-check"></i><b>4.1</b> Data analysis</a></li>
+<li class="chapter" data-level="4.2" data-path="study-4.html"><a href="study-4.html#summary-of-study-4-results"><i class="fa fa-check"></i><b>4.2</b> Summary of Study 4 results</a></li>
+<li class="chapter" data-level="4.3" data-path="study-4.html"><a href="study-4.html#plots-of-study-4-results"><i class="fa fa-check"></i><b>4.3</b> Plots of Study 4 results</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="study-5.html"><a href="study-5.html"><i class="fa fa-check"></i><b>5</b> Study 5</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="study-1.html"><a href="study-1.html#data-analysis"><i class="fa fa-check"></i><b>5.1</b> Data analysis</a></li>
+<li class="chapter" data-level="5.2" data-path="study-5.html"><a href="study-5.html#summary-of-study-5-results"><i class="fa fa-check"></i><b>5.2</b> Summary of Study 5 results</a></li>
+<li class="chapter" data-level="5.3" data-path="study-5.html"><a href="study-5.html#plots-of-study-5-results"><i class="fa fa-check"></i><b>5.3</b> Plots of Study 5 results</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="study-6.html"><a href="study-6.html"><i class="fa fa-check"></i><b>6</b> Study 6</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="study-1.html"><a href="study-1.html#data-analysis"><i class="fa fa-check"></i><b>6.1</b> Data analysis</a></li>
+<li class="chapter" data-level="6.2" data-path="study-6.html"><a href="study-6.html#summary-of-study-6-results"><i class="fa fa-check"></i><b>6.2</b> Summary of Study 6 results</a></li>
+<li class="chapter" data-level="6.3" data-path="study-6.html"><a href="study-6.html#plots-of-study-6-results"><i class="fa fa-check"></i><b>6.3</b> Plots of Study 6 results</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="primary-meta-analysis.html"><a href="primary-meta-analysis.html"><i class="fa fa-check"></i><b>7</b> Primary Meta-analysis</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="primary-meta-analysis.html"><a href="primary-meta-analysis.html#functions-performing-data-analysis-and-facilitating-data-reporting"><i class="fa fa-check"></i><b>7.1</b> Functions performing data analysis and facilitating data reporting**</a></li>
+<li class="chapter" data-level="7.2" data-path="primary-meta-analysis.html"><a href="primary-meta-analysis.html#primary-analysis"><i class="fa fa-check"></i><b>7.2</b> Primary Analysis</a></li>
+<li class="chapter" data-level="7.3" data-path="primary-meta-analysis.html"><a href="primary-meta-analysis.html#summary-of-the-results-of-the-primary-meta-analysis-and-of-the-individual-studies"><i class="fa fa-check"></i><b>7.3</b> Summary of the results of the primary meta-analysis and of the individual studies</a></li>
+<li class="chapter" data-level="7.4" data-path="primary-meta-analysis.html"><a href="primary-meta-analysis.html#heterogeneity"><i class="fa fa-check"></i><b>7.4</b> Heterogeneity</a></li>
+<li class="chapter" data-level="7.5" data-path="primary-meta-analysis.html"><a href="primary-meta-analysis.html#plot-of-the-primary-meta-analysis-results"><i class="fa fa-check"></i><b>7.5</b> Plot of the primary meta-analysis results</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="sensitivity-analyses.html"><a href="sensitivity-analyses.html"><i class="fa fa-check"></i><b>8</b> Sensitivity analyses</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="sensitivity-analyses.html"><a href="sensitivity-analyses.html#sensitivity-analysis-1-refitting-primary-model-but-with-a-cs-structure"><i class="fa fa-check"></i><b>8.1</b> Sensitivity analysis 1 : Refitting primary model but with a CS structure</a></li>
+<li class="chapter" data-level="8.2" data-path="sensitivity-analyses.html"><a href="sensitivity-analyses.html#sensitivity-analysis-2-by-fitting-separate-models-but-with-an-unstructed-variance-structure"><i class="fa fa-check"></i><b>8.2</b> Sensitivity Analysis 2 : By fitting separate models but with an unstructed variance structure</a></li>
+<li class="chapter" data-level="8.3" data-path="sensitivity-analyses.html"><a href="sensitivity-analyses.html#sensitivity-analysis-3-one-stage-meta-analysis"><i class="fa fa-check"></i><b>8.3</b> Sensitivity analysis 3 : One-stage meta-analysis</a></li>
+<li class="chapter" data-level="8.4" data-path="sensitivity-analyses.html"><a href="sensitivity-analyses.html#sensitivity-analyses-4-and-5-excluding-outliers"><i class="fa fa-check"></i><b>8.4</b> Sensitivity analyses 4 and 5 : Excluding outliers</a></li>
+<li class="chapter" data-level="8.5" data-path="sensitivity-analyses.html"><a href="sensitivity-analyses.html#sensitivity-analysis-6-short-durations"><i class="fa fa-check"></i><b>8.5</b> Sensitivity analysis 6 : Short durations</a></li>
+<li class="chapter" data-level="8.6" data-path="sensitivity-analyses.html"><a href="sensitivity-analyses.html#sensitivity-analysis-7-all-participants"><i class="fa fa-check"></i><b>8.6</b> Sensitivity analysis 7 : all participants</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="summary-results.html"><a href="summary-results.html"><i class="fa fa-check"></i><b>9</b> Summary results</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="summary-results.html"><a href="summary-results.html#quality-of-acute-sleep"><i class="fa fa-check"></i><b>9.1</b> Quality of Acute Sleep</a></li>
+<li class="chapter" data-level="9.2" data-path="summary-results.html"><a href="summary-results.html#quality-of-chronic-sleep"><i class="fa fa-check"></i><b>9.2</b> Quality of Chronic Sleep</a></li>
+<li class="chapter" data-level="9.3" data-path="summary-results.html"><a href="summary-results.html#quantity-of-acute-sleep"><i class="fa fa-check"></i><b>9.3</b> Quantity of Acute Sleep</a></li>
+<li class="chapter" data-level="9.4" data-path="summary-results.html"><a href="summary-results.html#quantity-of-chronic-sleep"><i class="fa fa-check"></i><b>9.4</b> Quantity of Chronic Sleep</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="post-hoc-exploratory-analyses.html"><a href="post-hoc-exploratory-analyses.html"><i class="fa fa-check"></i><b>10</b> Post hoc exploratory analyses</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="post-hoc-exploratory-analyses.html"><a href="post-hoc-exploratory-analyses.html#correlation-matrix-study-1"><i class="fa fa-check"></i><b>10.1</b> Correlation matrix Study 1</a></li>
+<li class="chapter" data-level="10.2" data-path="post-hoc-exploratory-analyses.html"><a href="post-hoc-exploratory-analyses.html#correlation-matrix-study-2"><i class="fa fa-check"></i><b>10.2</b> Correlation matrix Study 2</a></li>
+<li class="chapter" data-level="10.3" data-path="post-hoc-exploratory-analyses.html"><a href="post-hoc-exploratory-analyses.html#correlation-matrix-study-3"><i class="fa fa-check"></i><b>10.3</b> Correlation matrix Study 3</a></li>
+<li class="chapter" data-level="10.4" data-path="post-hoc-exploratory-analyses.html"><a href="post-hoc-exploratory-analyses.html#correlation-matrix-study-4"><i class="fa fa-check"></i><b>10.4</b> Correlation matrix Study 4</a></li>
+<li class="chapter" data-level="10.5" data-path="post-hoc-exploratory-analyses.html"><a href="post-hoc-exploratory-analyses.html#correlation-matrix-study-5"><i class="fa fa-check"></i><b>10.5</b> Correlation matrix Study 5</a></li>
+<li class="chapter" data-level="10.6" data-path="post-hoc-exploratory-analyses.html"><a href="post-hoc-exploratory-analyses.html#correlation-matrix-study-6"><i class="fa fa-check"></i><b>10.6</b> Correlation matrix Study 6</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -162,56 +229,56 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="study-2" class="section level1" number="2">
 <h1><span class="header-section-number">2</span> Study 2</h1>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="study-2.html#cb20-1" aria-hidden="true" tabindex="-1"></a>Data_Study2_Wide <span class="ot">&lt;-</span> <span class="fu">subset</span>(Data_Meta_Raw.wide, Study <span class="sc">==</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="study-2.html#cb21-1" aria-hidden="true" tabindex="-1"></a>Data_Study2_Wide <span class="ot">&lt;-</span> <span class="fu">subset</span>(Data_Meta_Raw.wide, Study <span class="sc">==</span> <span class="dv">2</span>)</span></code></pre></div>
 <div id="data-analysis" class="section level2" number="2.1">
 <h2><span class="header-section-number">2.1</span> Data analysis</h2>
 <p><strong>Run linear regressions for each sleep variable (IV) on endorsement of moral principles (DV)</strong></p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="study-2.html#cb21-1" aria-hidden="true" tabindex="-1"></a>QualCroLMS2<span class="ot">&lt;-</span><span class="fu">lm</span>(Moral_SCA<span class="sc">~</span>SleepQualCro, Data_Study2_Wide)</span>
-<span id="cb21-2"><a href="study-2.html#cb21-2" aria-hidden="true" tabindex="-1"></a>QualAcuLMS2<span class="ot">&lt;-</span><span class="fu">lm</span>(Moral_SCA<span class="sc">~</span>SleepQualAcu,Data_Study2_Wide)</span>
-<span id="cb21-3"><a href="study-2.html#cb21-3" aria-hidden="true" tabindex="-1"></a>QuantCroLMS2<span class="ot">&lt;-</span><span class="fu">lm</span>(Moral_SCA<span class="sc">~</span>SleepQuantCro, Data_Study2_Wide)</span>
-<span id="cb21-4"><a href="study-2.html#cb21-4" aria-hidden="true" tabindex="-1"></a>QuantAcuLMS2<span class="ot">&lt;-</span><span class="fu">lm</span>(Moral_SCA<span class="sc">~</span>SleepQuantAcu, Data_Study2_Wide)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="study-2.html#cb22-1" aria-hidden="true" tabindex="-1"></a>QualCroLMS2<span class="ot">&lt;-</span><span class="fu">lm</span>(Moral_SCA<span class="sc">~</span>SleepQualCro, Data_Study2_Wide)</span>
+<span id="cb22-2"><a href="study-2.html#cb22-2" aria-hidden="true" tabindex="-1"></a>QualAcuLMS2<span class="ot">&lt;-</span><span class="fu">lm</span>(Moral_SCA<span class="sc">~</span>SleepQualAcu,Data_Study2_Wide)</span>
+<span id="cb22-3"><a href="study-2.html#cb22-3" aria-hidden="true" tabindex="-1"></a>QuantCroLMS2<span class="ot">&lt;-</span><span class="fu">lm</span>(Moral_SCA<span class="sc">~</span>SleepQuantCro, Data_Study2_Wide)</span>
+<span id="cb22-4"><a href="study-2.html#cb22-4" aria-hidden="true" tabindex="-1"></a>QuantAcuLMS2<span class="ot">&lt;-</span><span class="fu">lm</span>(Moral_SCA<span class="sc">~</span>SleepQuantAcu, Data_Study2_Wide)</span></code></pre></div>
 <p><strong>Extract coefficients from linear regression models </strong></p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="study-2.html#cb22-1" aria-hidden="true" tabindex="-1"></a>results_S2 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(</span>
-<span id="cb22-2"><a href="study-2.html#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>(QualCroLMS2)[<span class="dv">2</span>,],</span>
-<span id="cb22-3"><a href="study-2.html#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>(QualAcuLMS2)[<span class="dv">2</span>,],</span>
-<span id="cb22-4"><a href="study-2.html#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>(QuantCroLMS2)[<span class="dv">2</span>,],</span>
-<span id="cb22-5"><a href="study-2.html#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>(QuantAcuLMS2)[<span class="dv">2</span>,]) <span class="sc">%&gt;%</span></span>
-<span id="cb22-6"><a href="study-2.html#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb22-7"><a href="study-2.html#cb22-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">p.value =</span> <span class="fu">case_when</span>(</span>
-<span id="cb22-8"><a href="study-2.html#cb22-8" aria-hidden="true" tabindex="-1"></a>      p.value<span class="sc">*</span><span class="dv">4</span> <span class="sc">&lt;</span> <span class="dv">1</span> <span class="sc">~</span> p.value<span class="sc">*</span><span class="dv">4</span>,</span>
-<span id="cb22-9"><a href="study-2.html#cb22-9" aria-hidden="true" tabindex="-1"></a>      p.value<span class="sc">*</span><span class="dv">4</span> <span class="sc">&gt;=</span> <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>))</span></code></pre></div>
-<p><strong>Prepare data for plots</strong></p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="study-2.html#cb23-1" aria-hidden="true" tabindex="-1"></a>Data_PlotS2<span class="ot">&lt;-</span> Data_Study2_Wide <span class="sc">%&gt;%</span></span>
-<span id="cb23-2"><a href="study-2.html#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb23-3"><a href="study-2.html#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols=</span><span class="fu">c</span>(SleepQualCro, SleepQualAcu, SleepQuantCro, SleepQuantAcu),</span>
-<span id="cb23-4"><a href="study-2.html#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to=</span><span class="st">&quot;SleepType&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb23-5"><a href="study-2.html#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">&quot;SleepValue&quot;</span><span class="ot">=</span>value) <span class="sc">%&gt;%</span></span>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="study-2.html#cb23-1" aria-hidden="true" tabindex="-1"></a>results_S2 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(</span>
+<span id="cb23-2"><a href="study-2.html#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>(QualCroLMS2)[<span class="dv">2</span>,],</span>
+<span id="cb23-3"><a href="study-2.html#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>(QualAcuLMS2)[<span class="dv">2</span>,],</span>
+<span id="cb23-4"><a href="study-2.html#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>(QuantCroLMS2)[<span class="dv">2</span>,],</span>
+<span id="cb23-5"><a href="study-2.html#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>(QuantAcuLMS2)[<span class="dv">2</span>,]) <span class="sc">%&gt;%</span></span>
 <span id="cb23-6"><a href="study-2.html#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb23-7"><a href="study-2.html#cb23-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">SleepLength=</span><span class="fu">case_when</span>(</span>
-<span id="cb23-8"><a href="study-2.html#cb23-8" aria-hidden="true" tabindex="-1"></a>      SleepType<span class="sc">==</span><span class="st">&quot;SleepQualCro&quot;</span> <span class="sc">|</span> SleepType<span class="sc">==</span><span class="st">&quot;SleepQuantCro&quot;</span><span class="sc">~</span><span class="st">&quot;Chronic&quot;</span>,</span>
-<span id="cb23-9"><a href="study-2.html#cb23-9" aria-hidden="true" tabindex="-1"></a>      SleepType<span class="sc">==</span><span class="st">&quot;SleepQualAcu&quot;</span> <span class="sc">|</span> SleepType<span class="sc">==</span><span class="st">&quot;SleepQuantAcu&quot;</span><span class="sc">~</span><span class="st">&quot;Acute&quot;</span>),</span>
-<span id="cb23-10"><a href="study-2.html#cb23-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">SleepQuanthist=</span><span class="fu">case_when</span>(</span>
-<span id="cb23-11"><a href="study-2.html#cb23-11" aria-hidden="true" tabindex="-1"></a>      SleepType<span class="sc">==</span><span class="st">&quot;SleepQualCro&quot;</span> <span class="sc">|</span> SleepType<span class="sc">==</span><span class="st">&quot;SleepQualAcu&quot;</span><span class="sc">~</span><span class="st">&quot;Sleep Quality&quot;</span>,</span>
-<span id="cb23-12"><a href="study-2.html#cb23-12" aria-hidden="true" tabindex="-1"></a>      SleepType<span class="sc">==</span><span class="st">&quot;SleepQuantCro&quot;</span> <span class="sc">|</span> SleepType<span class="sc">==</span><span class="st">&quot;SleepQuantAcu&quot;</span><span class="sc">~</span><span class="st">&quot;Sleep Quantity&quot;</span>))</span>
-<span id="cb23-13"><a href="study-2.html#cb23-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-14"><a href="study-2.html#cb23-14" aria-hidden="true" tabindex="-1"></a>Data_PlotS2<span class="sc">$</span>SleepType<span class="ot">&lt;-</span>dplyr<span class="sc">::</span><span class="fu">recode</span>(Data_PlotS2<span class="sc">$</span>SleepType, </span>
-<span id="cb23-15"><a href="study-2.html#cb23-15" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;SleepQualCro&quot;</span> <span class="ot">=</span> <span class="st">&quot;Quality of Chronic Sleep&quot;</span>,</span>
-<span id="cb23-16"><a href="study-2.html#cb23-16" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;SleepQualAcu&quot;</span> <span class="ot">=</span> <span class="st">&quot;Quality of Acute Sleep&quot;</span>,</span>
-<span id="cb23-17"><a href="study-2.html#cb23-17" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;SleepQuantCro&quot;</span> <span class="ot">=</span> <span class="st">&quot;Quantity of Chronic Sleep&quot;</span>,</span>
-<span id="cb23-18"><a href="study-2.html#cb23-18" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;SleepQuantAcu&quot;</span> <span class="ot">=</span> <span class="st">&quot;Quantity of Acute Sleep&quot;</span>)</span></code></pre></div>
+<span id="cb23-7"><a href="study-2.html#cb23-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">p.value =</span> <span class="fu">case_when</span>(</span>
+<span id="cb23-8"><a href="study-2.html#cb23-8" aria-hidden="true" tabindex="-1"></a>      p.value<span class="sc">*</span><span class="dv">4</span> <span class="sc">&lt;</span> <span class="dv">1</span> <span class="sc">~</span> p.value<span class="sc">*</span><span class="dv">4</span>,</span>
+<span id="cb23-9"><a href="study-2.html#cb23-9" aria-hidden="true" tabindex="-1"></a>      p.value<span class="sc">*</span><span class="dv">4</span> <span class="sc">&gt;=</span> <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>))</span></code></pre></div>
+<p><strong>Prepare data for plots</strong></p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="study-2.html#cb24-1" aria-hidden="true" tabindex="-1"></a>Data_PlotS2<span class="ot">&lt;-</span> Data_Study2_Wide <span class="sc">%&gt;%</span></span>
+<span id="cb24-2"><a href="study-2.html#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb24-3"><a href="study-2.html#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols=</span><span class="fu">c</span>(SleepQualCro, SleepQualAcu, SleepQuantCro, SleepQuantAcu),</span>
+<span id="cb24-4"><a href="study-2.html#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to=</span><span class="st">&quot;SleepType&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb24-5"><a href="study-2.html#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">&quot;SleepValue&quot;</span><span class="ot">=</span>value) <span class="sc">%&gt;%</span></span>
+<span id="cb24-6"><a href="study-2.html#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb24-7"><a href="study-2.html#cb24-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">SleepLength=</span><span class="fu">case_when</span>(</span>
+<span id="cb24-8"><a href="study-2.html#cb24-8" aria-hidden="true" tabindex="-1"></a>      SleepType<span class="sc">==</span><span class="st">&quot;SleepQualCro&quot;</span> <span class="sc">|</span> SleepType<span class="sc">==</span><span class="st">&quot;SleepQuantCro&quot;</span><span class="sc">~</span><span class="st">&quot;Chronic&quot;</span>,</span>
+<span id="cb24-9"><a href="study-2.html#cb24-9" aria-hidden="true" tabindex="-1"></a>      SleepType<span class="sc">==</span><span class="st">&quot;SleepQualAcu&quot;</span> <span class="sc">|</span> SleepType<span class="sc">==</span><span class="st">&quot;SleepQuantAcu&quot;</span><span class="sc">~</span><span class="st">&quot;Acute&quot;</span>),</span>
+<span id="cb24-10"><a href="study-2.html#cb24-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">SleepQuanthist=</span><span class="fu">case_when</span>(</span>
+<span id="cb24-11"><a href="study-2.html#cb24-11" aria-hidden="true" tabindex="-1"></a>      SleepType<span class="sc">==</span><span class="st">&quot;SleepQualCro&quot;</span> <span class="sc">|</span> SleepType<span class="sc">==</span><span class="st">&quot;SleepQualAcu&quot;</span><span class="sc">~</span><span class="st">&quot;Sleep Quality&quot;</span>,</span>
+<span id="cb24-12"><a href="study-2.html#cb24-12" aria-hidden="true" tabindex="-1"></a>      SleepType<span class="sc">==</span><span class="st">&quot;SleepQuantCro&quot;</span> <span class="sc">|</span> SleepType<span class="sc">==</span><span class="st">&quot;SleepQuantAcu&quot;</span><span class="sc">~</span><span class="st">&quot;Sleep Quantity&quot;</span>))</span>
+<span id="cb24-13"><a href="study-2.html#cb24-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-14"><a href="study-2.html#cb24-14" aria-hidden="true" tabindex="-1"></a>Data_PlotS2<span class="sc">$</span>SleepType<span class="ot">&lt;-</span>dplyr<span class="sc">::</span><span class="fu">recode</span>(Data_PlotS2<span class="sc">$</span>SleepType, </span>
+<span id="cb24-15"><a href="study-2.html#cb24-15" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;SleepQualCro&quot;</span> <span class="ot">=</span> <span class="st">&quot;Quality of Chronic Sleep&quot;</span>,</span>
+<span id="cb24-16"><a href="study-2.html#cb24-16" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;SleepQualAcu&quot;</span> <span class="ot">=</span> <span class="st">&quot;Quality of Acute Sleep&quot;</span>,</span>
+<span id="cb24-17"><a href="study-2.html#cb24-17" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;SleepQuantCro&quot;</span> <span class="ot">=</span> <span class="st">&quot;Quantity of Chronic Sleep&quot;</span>,</span>
+<span id="cb24-18"><a href="study-2.html#cb24-18" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;SleepQuantAcu&quot;</span> <span class="ot">=</span> <span class="st">&quot;Quantity of Acute Sleep&quot;</span>)</span></code></pre></div>
 </div>
 <div id="summary-of-study-2-results" class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> Summary of Study 2 results</h2>
 <p><strong>Put results in a table</strong></p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="study-2.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gt</span>(results_S2) <span class="sc">%&gt;%</span> </span>
-<span id="cb24-2"><a href="study-2.html#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_number</span>(</span>
-<span id="cb24-3"><a href="study-2.html#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>,</span>
-<span id="cb24-4"><a href="study-2.html#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">decimals =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="study-2.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gt</span>(results_S2) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-2"><a href="study-2.html#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_number</span>(</span>
+<span id="cb25-3"><a href="study-2.html#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>,</span>
+<span id="cb25-4"><a href="study-2.html#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">decimals =</span> <span class="dv">2</span>)</span></code></pre></div>
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#foawiuywry .gt_table {
+#gvrysxipjw .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -236,7 +303,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-left-color: #D3D3D3;
 }
 
-#foawiuywry .gt_heading {
+#gvrysxipjw .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -248,7 +315,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#foawiuywry .gt_title {
+#gvrysxipjw .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -258,7 +325,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-width: 0;
 }
 
-#foawiuywry .gt_subtitle {
+#gvrysxipjw .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -268,13 +335,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-width: 0;
 }
 
-#foawiuywry .gt_bottom_border {
+#gvrysxipjw .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#foawiuywry .gt_col_headings {
+#gvrysxipjw .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -289,7 +356,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#foawiuywry .gt_col_heading {
+#gvrysxipjw .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -309,7 +376,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#foawiuywry .gt_column_spanner_outer {
+#gvrysxipjw .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -321,15 +388,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 4px;
 }
 
-#foawiuywry .gt_column_spanner_outer:first-child {
+#gvrysxipjw .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#foawiuywry .gt_column_spanner_outer:last-child {
+#gvrysxipjw .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#foawiuywry .gt_column_spanner {
+#gvrysxipjw .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -341,7 +408,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   width: 100%;
 }
 
-#foawiuywry .gt_group_heading {
+#gvrysxipjw .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -363,7 +430,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#foawiuywry .gt_empty_group_heading {
+#gvrysxipjw .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -378,15 +445,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#foawiuywry .gt_from_md > :first-child {
+#gvrysxipjw .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#foawiuywry .gt_from_md > :last-child {
+#gvrysxipjw .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#foawiuywry .gt_row {
+#gvrysxipjw .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -405,7 +472,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#foawiuywry .gt_stub {
+#gvrysxipjw .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -417,7 +484,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-left: 12px;
 }
 
-#foawiuywry .gt_summary_row {
+#gvrysxipjw .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -427,7 +494,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#foawiuywry .gt_first_summary_row {
+#gvrysxipjw .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -437,7 +504,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-color: #D3D3D3;
 }
 
-#foawiuywry .gt_grand_summary_row {
+#gvrysxipjw .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -447,7 +514,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#foawiuywry .gt_first_grand_summary_row {
+#gvrysxipjw .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -457,11 +524,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-color: #D3D3D3;
 }
 
-#foawiuywry .gt_striped {
+#gvrysxipjw .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#foawiuywry .gt_table_body {
+#gvrysxipjw .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -470,7 +537,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#foawiuywry .gt_footnotes {
+#gvrysxipjw .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -484,13 +551,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#foawiuywry .gt_footnote {
+#gvrysxipjw .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#foawiuywry .gt_sourcenotes {
+#gvrysxipjw .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -504,46 +571,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#foawiuywry .gt_sourcenote {
+#gvrysxipjw .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#foawiuywry .gt_left {
+#gvrysxipjw .gt_left {
   text-align: left;
 }
 
-#foawiuywry .gt_center {
+#gvrysxipjw .gt_center {
   text-align: center;
 }
 
-#foawiuywry .gt_right {
+#gvrysxipjw .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#foawiuywry .gt_font_normal {
+#gvrysxipjw .gt_font_normal {
   font-weight: normal;
 }
 
-#foawiuywry .gt_font_bold {
+#gvrysxipjw .gt_font_bold {
   font-weight: bold;
 }
 
-#foawiuywry .gt_font_italic {
+#gvrysxipjw .gt_font_italic {
   font-style: italic;
 }
 
-#foawiuywry .gt_super {
+#gvrysxipjw .gt_super {
   font-size: 65%;
 }
 
-#foawiuywry .gt_footnote_marks {
+#gvrysxipjw .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
 </style>
-<div id="foawiuywry" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+<div id="gvrysxipjw" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
   
   <thead class="gt_col_headings">
     <tr>
@@ -591,43 +658,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="plot-study-2-results" class="section level2" number="2.3">
 <h2><span class="header-section-number">2.3</span> Plot Study 2 Results</h2>
 <p><strong>Plot distribution for each sleep indicator</strong></p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="study-2.html#cb25-1" aria-hidden="true" tabindex="-1"></a>DistQualityS2<span class="ot">&lt;-</span><span class="fu">ggplot</span>(Data_PlotS2, <span class="fu">aes</span>(<span class="at">x=</span>SleepValue, <span class="at">fill=</span><span class="fu">factor</span>(SleepLength))) <span class="sc">+</span> </span>
-<span id="cb25-2"><a href="study-2.html#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha=</span><span class="fl">0.5</span>, <span class="at">size=</span><span class="fl">0.5</span>,<span class="at">adjust =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
-<span id="cb25-3"><a href="study-2.html#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;#193B94&quot;</span>, <span class="st">&quot;#BDCAEE&quot;</span>, <span class="st">&quot;#193B94&quot;</span>, <span class="st">&quot;#BDCAEE&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb25-4"><a href="study-2.html#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
-<span id="cb25-5"><a href="study-2.html#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Density&quot;</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">&quot;&quot;</span>) <span class="sc">+</span></span>
-<span id="cb25-6"><a href="study-2.html#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span><span class="fu">factor</span>(SleepQuanthist), <span class="at">scale=</span><span class="st">&quot;free_x&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb25-7"><a href="study-2.html#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill=</span><span class="fu">guide_legend</span>(<span class="st">&quot;Sleep Length&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb25-8"><a href="study-2.html#cb25-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb25-9"><a href="study-2.html#cb25-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">11</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">face=</span><span class="st">&quot;bold&quot;</span>),</span>
-<span id="cb25-10"><a href="study-2.html#cb25-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">face=</span><span class="st">&quot;bold&quot;</span>, <span class="at">size =</span> <span class="dv">11</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>),</span>
-<span id="cb25-11"><a href="study-2.html#cb25-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position=</span><span class="st">&quot;top&quot;</span>,</span>
-<span id="cb25-12"><a href="study-2.html#cb25-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">colour=</span><span class="st">&quot;black&quot;</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">face=</span><span class="st">&quot;bold&quot;</span>)) </span>
-<span id="cb25-13"><a href="study-2.html#cb25-13" aria-hidden="true" tabindex="-1"></a>DistQualityS2</span></code></pre></div>
-<p><img src="PBR_SupplementaryResults_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
-<p><strong>Plot distribution for the scores to the moral scale</strong></p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="study-2.html#cb26-1" aria-hidden="true" tabindex="-1"></a>DistMoralS2<span class="ot">&lt;-</span><span class="fu">ggplot</span>(Data_Study2_Raw, <span class="fu">aes</span>(<span class="at">x=</span>Moral_SCA, <span class="at">fill=</span><span class="st">&quot;#193B94&quot;</span>)) <span class="sc">+</span> </span>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="study-2.html#cb26-1" aria-hidden="true" tabindex="-1"></a>DistQualityS2<span class="ot">&lt;-</span><span class="fu">ggplot</span>(Data_PlotS2, <span class="fu">aes</span>(<span class="at">x=</span>SleepValue, <span class="at">fill=</span><span class="fu">factor</span>(SleepLength))) <span class="sc">+</span> </span>
 <span id="cb26-2"><a href="study-2.html#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha=</span><span class="fl">0.5</span>, <span class="at">size=</span><span class="fl">0.5</span>,<span class="at">adjust =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
-<span id="cb26-3"><a href="study-2.html#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
-<span id="cb26-4"><a href="study-2.html#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Density&quot;</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">&quot;Moral Scale&quot;</span>) <span class="sc">+</span></span>
-<span id="cb26-5"><a href="study-2.html#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill=</span><span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
-<span id="cb26-6"><a href="study-2.html#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb26-7"><a href="study-2.html#cb26-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">11</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">face=</span><span class="st">&quot;bold&quot;</span>),</span>
-<span id="cb26-8"><a href="study-2.html#cb26-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">face=</span><span class="st">&quot;bold&quot;</span>, <span class="at">size =</span> <span class="dv">11</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>))</span>
-<span id="cb26-9"><a href="study-2.html#cb26-9" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb26-10"><a href="study-2.html#cb26-10" aria-hidden="true" tabindex="-1"></a>DistMoralS2</span></code></pre></div>
+<span id="cb26-3"><a href="study-2.html#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;#193B94&quot;</span>, <span class="st">&quot;#BDCAEE&quot;</span>, <span class="st">&quot;#193B94&quot;</span>, <span class="st">&quot;#BDCAEE&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb26-4"><a href="study-2.html#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
+<span id="cb26-5"><a href="study-2.html#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Density&quot;</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">&quot;&quot;</span>) <span class="sc">+</span></span>
+<span id="cb26-6"><a href="study-2.html#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span><span class="fu">factor</span>(SleepQuanthist), <span class="at">scale=</span><span class="st">&quot;free_x&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb26-7"><a href="study-2.html#cb26-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill=</span><span class="fu">guide_legend</span>(<span class="st">&quot;Sleep Length&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb26-8"><a href="study-2.html#cb26-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb26-9"><a href="study-2.html#cb26-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">11</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">face=</span><span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb26-10"><a href="study-2.html#cb26-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">face=</span><span class="st">&quot;bold&quot;</span>, <span class="at">size =</span> <span class="dv">11</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>),</span>
+<span id="cb26-11"><a href="study-2.html#cb26-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position=</span><span class="st">&quot;top&quot;</span>,</span>
+<span id="cb26-12"><a href="study-2.html#cb26-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">colour=</span><span class="st">&quot;black&quot;</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">face=</span><span class="st">&quot;bold&quot;</span>)) </span>
+<span id="cb26-13"><a href="study-2.html#cb26-13" aria-hidden="true" tabindex="-1"></a>DistQualityS2</span></code></pre></div>
 <p><img src="PBR_SupplementaryResults_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
-<p><strong>Scatterplots</strong></p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="study-2.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Data_PlotS2, <span class="fu">aes</span>(<span class="at">x=</span>SleepValue, <span class="at">y=</span>Moral_SCA)) <span class="sc">+</span> </span>
-<span id="cb27-2"><a href="study-2.html#cb27-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_jitter</span>(<span class="at">alpha=</span><span class="fl">0.6</span>, <span class="at">color=</span><span class="st">&quot;#545454&quot;</span>, <span class="at">size=</span><span class="fl">1.2</span>) <span class="sc">+</span> </span>
-<span id="cb27-3"><a href="study-2.html#cb27-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>)<span class="sc">+</span></span>
-<span id="cb27-4"><a href="study-2.html#cb27-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">facet_wrap</span>(<span class="sc">~</span><span class="fu">factor</span>(SleepType), <span class="at">scales=</span><span class="st">&quot;free_x&quot;</span>) <span class="sc">+</span></span>
-<span id="cb27-5"><a href="study-2.html#cb27-5" aria-hidden="true" tabindex="-1"></a>       <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Utilitirianism&quot;</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">&quot;&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb27-6"><a href="study-2.html#cb27-6" aria-hidden="true" tabindex="-1"></a>       <span class="fu">theme</span>(<span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">11</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">face=</span><span class="st">&quot;bold&quot;</span>), </span>
-<span id="cb27-7"><a href="study-2.html#cb27-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">face=</span><span class="st">&quot;bold&quot;</span>, <span class="at">size =</span> <span class="dv">11</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>)) <span class="sc">+</span></span>
-<span id="cb27-8"><a href="study-2.html#cb27-8" aria-hidden="true" tabindex="-1"></a>       <span class="fu">guides</span>(<span class="at">size=</span><span class="cn">FALSE</span>, <span class="at">colour=</span><span class="cn">FALSE</span>, <span class="at">fill=</span><span class="cn">FALSE</span>)</span></code></pre></div>
-<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><strong>Plot distribution for the scores to the moral scale</strong></p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="study-2.html#cb27-1" aria-hidden="true" tabindex="-1"></a>DistMoralS2<span class="ot">&lt;-</span><span class="fu">ggplot</span>(Data_Study2_Raw, <span class="fu">aes</span>(<span class="at">x=</span>Moral_SCA, <span class="at">fill=</span><span class="st">&quot;#193B94&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb27-2"><a href="study-2.html#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha=</span><span class="fl">0.5</span>, <span class="at">size=</span><span class="fl">0.5</span>,<span class="at">adjust =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb27-3"><a href="study-2.html#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
+<span id="cb27-4"><a href="study-2.html#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Density&quot;</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">&quot;Moral Scale&quot;</span>) <span class="sc">+</span></span>
+<span id="cb27-5"><a href="study-2.html#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill=</span><span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb27-6"><a href="study-2.html#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb27-7"><a href="study-2.html#cb27-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">11</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">face=</span><span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb27-8"><a href="study-2.html#cb27-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">face=</span><span class="st">&quot;bold&quot;</span>, <span class="at">size =</span> <span class="dv">11</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>))</span>
+<span id="cb27-9"><a href="study-2.html#cb27-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb27-10"><a href="study-2.html#cb27-10" aria-hidden="true" tabindex="-1"></a>DistMoralS2</span></code></pre></div>
 <p><img src="PBR_SupplementaryResults_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
+<p><strong>Scatterplots</strong></p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="study-2.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Data_PlotS2, <span class="fu">aes</span>(<span class="at">x=</span>SleepValue, <span class="at">y=</span>Moral_SCA)) <span class="sc">+</span> </span>
+<span id="cb28-2"><a href="study-2.html#cb28-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_jitter</span>(<span class="at">alpha=</span><span class="fl">0.6</span>, <span class="at">color=</span><span class="st">&quot;#545454&quot;</span>, <span class="at">size=</span><span class="fl">1.2</span>) <span class="sc">+</span> </span>
+<span id="cb28-3"><a href="study-2.html#cb28-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>)<span class="sc">+</span></span>
+<span id="cb28-4"><a href="study-2.html#cb28-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">facet_wrap</span>(<span class="sc">~</span><span class="fu">factor</span>(SleepType), <span class="at">scales=</span><span class="st">&quot;free_x&quot;</span>) <span class="sc">+</span></span>
+<span id="cb28-5"><a href="study-2.html#cb28-5" aria-hidden="true" tabindex="-1"></a>       <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Utilitirianism&quot;</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">&quot;&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb28-6"><a href="study-2.html#cb28-6" aria-hidden="true" tabindex="-1"></a>       <span class="fu">theme</span>(<span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">11</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">face=</span><span class="st">&quot;bold&quot;</span>), </span>
+<span id="cb28-7"><a href="study-2.html#cb28-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">face=</span><span class="st">&quot;bold&quot;</span>, <span class="at">size =</span> <span class="dv">11</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>)) <span class="sc">+</span></span>
+<span id="cb28-8"><a href="study-2.html#cb28-8" aria-hidden="true" tabindex="-1"></a>       <span class="fu">guides</span>(<span class="at">size=</span><span class="cn">FALSE</span>, <span class="at">colour=</span><span class="cn">FALSE</span>, <span class="at">fill=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="PBR_SupplementaryResults_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
 
 </div>
 </div>

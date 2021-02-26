@@ -459,7 +459,7 @@ gt(df.Results.Prim[5:nrow(df.Results.Prim),c(1:5,8:9)]) %>%
 Heterogeneity.Prim<-as.data.frame(ExtractHeterogeneityFUNCTION(Meta.Prim, V.Prim))
 Heterogeneity.Prim2<-data.frame(apply(Heterogeneity.Prim[,3:7], 2, function(x) as.numeric(as.character(x))))
 
-gt(cbind(Heterogeneity.Prim[,1:2], Heterogeneity.Prim2)) %>% 
+gt(cbind(Heterogeneity.Prim[5:12,1:2], Heterogeneity.Prim2[5:12,])) %>% 
   fmt_number(
     columns = 3:7,
     decimals = 3)

@@ -1,7 +1,6 @@
 # Post hoc exploratory analyses
 
 ```{r}
-Data_Meta_Raw.wide
 df.S1 <- subset(Data_Meta_Raw.wide, Study == 1)
 df.S2 <- subset(Data_Meta_Raw.wide, Study == 2)
 df.S3 <- subset(Data_Meta_Raw.wide, Study == 3)
@@ -34,44 +33,58 @@ df.cor.S6 <- df.S6[ , c('SleepQualCro', 'SleepQualAcu', 'SleepQuantCro', 'SleepQ
                'Moral_DIL', 'Moral_SCA')]
 
 
-df.cor.S1$DT <- data.frame(apply(df.cor.S1[ ,c('Psych_TOT', 'Mach_TOT', 'Narc_TOT')], 1, sum))
-df.cor.S2$DT <- data.frame(apply(df.cor.S2[ ,c('Psych_TOT', 'Mach_TOT', 'Narc_TOT')], 1, sum))
-df.cor.S3$DT <- data.frame(apply(df.cor.S3[ ,c('Psych_TOT', 'Mach_TOT', 'Narc_TOT')], 1, sum))
+s1 <- round(cor(df.cor.S1, use = "pairwise.complete.obs"), 2)
+s2 <- round(cor(df.cor.S2, use = "pairwise.complete.obs"), 2)
+s3 <- round(cor(df.cor.S3, use = "pairwise.complete.obs"), 2)
+s4 <- round(cor(df.cor.S4, use = "pairwise.complete.obs"), 2)
+s5 <- round(cor(df.cor.S5, use = "pairwise.complete.obs"), 2)
+s6 <- round(cor(df.cor.S6, use = "pairwise.complete.obs"), 2)
+```
 
-"study1"
-s1 <- cor(df.cor.S1, use = "complete.obs")
-"study2"
-s2 <- cor(df.cor.S2, use = "complete.obs")
-"study3"
-s3 <- cor(df.cor.S3, use = "complete.obs")
-"study4"
-s4 <- cor(df.cor.S4, use = "complete.obs")
-"study5"
-s5 <- cor(df.cor.S5, use = "complete.obs")
-"study6"
-s6 <- cor(df.cor.S6, use = "complete.obs")
+## Correlation matrix Study 1
+```{r}
+DT::datatable(s1, options = list(
+    scrollX = TRUE,
+    dom = c('t'),
+    ordering = FALSE))
+```
 
+## Correlation matrix Study 2
+```{r}
+DT::datatable(s2, options = list(
+    scrollX = TRUE,
+    dom = c('t'),
+    ordering = FALSE))
+```
 
+## Correlation matrix Study 3
+```{r}
+DT::datatable(s3, options = list(
+    scrollX = TRUE,
+    dom = c('t'),
+    ordering = FALSE))
+```
 
-cor.test(~CRT_TOT + AOT_TOT, df.S3)
+## Correlation matrix Study 4
+```{r}
+DT::datatable(s4, options = list(
+    scrollX = TRUE,
+    dom = c('t'),
+    ordering = FALSE))
+```
 
-# apaTables::apa.cor.table(df.cor.S1, filename="Study1.doc")
-# 
-# apaTables::apa.cor.table(df.cor.S2, filename="Study2.doc")
-# 
-# apaTables::apa.cor.table(df.cor.S3,  filename="Study3.doc")
-# 
-# apaTables::apa.cor.table(df.cor.S4,  filename="Study4.doc")
-# 
-# apaTables::apa.cor.table(df.cor.S5,  filename="Study5.doc")
-# 
-# apaTables::apa.cor.table(df.cor.S6,  filename="Study6.doc")
+## Correlation matrix Study 5
+```{r}
+DT::datatable(s5, options = list(
+    scrollX = TRUE,
+    dom = c('t'),
+    ordering = FALSE))
+```
 
-s1
-s2
-s3
-# s4
-# s5
-# s6
-
+## Correlation matrix Study 6
+```{r}
+DT::datatable(s6, options = list(
+    scrollX = TRUE,
+    dom = c('t'),
+    ordering = FALSE))
 ```
