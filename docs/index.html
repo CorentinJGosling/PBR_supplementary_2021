@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Psychonomics Bulletin and Review - Supplementary Materials - R Code &amp; Results</title>
   <meta name="description" content="This books is designed to share the code underlying the main analyses and to present supplemental results of Tremolire &amp; Gosling (2021)" />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Psychonomics Bulletin and Review - Supplementary Materials - R Code &amp; Results" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Trémolière B &amp; Gosling CJ" />
 
 
-<meta name="date" content="2021-02-26" />
+<meta name="date" content="2021-04-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +33,8 @@
   
 
 <link rel="next" href="study-1.html"/>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -51,14 +51,14 @@
 
 
 
-<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.15/datatables.js"></script>
+<script src="libs/datatables-binding-0.17/datatables.js"></script>
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
-<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
 
 
 <style type="text/css">
@@ -149,31 +149,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="study-2.html"><a href="study-2.html"><i class="fa fa-check"></i><b>2</b> Study 2</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="study-1.html"><a href="study-1.html#data-analysis"><i class="fa fa-check"></i><b>2.1</b> Data analysis</a></li>
+<li class="chapter" data-level="2.1" data-path="study-2.html"><a href="study-2.html#data-analysis-1"><i class="fa fa-check"></i><b>2.1</b> Data analysis</a></li>
 <li class="chapter" data-level="2.2" data-path="study-2.html"><a href="study-2.html#summary-of-study-2-results"><i class="fa fa-check"></i><b>2.2</b> Summary of Study 2 results</a></li>
 <li class="chapter" data-level="2.3" data-path="study-2.html"><a href="study-2.html#plot-study-2-results"><i class="fa fa-check"></i><b>2.3</b> Plot Study 2 Results</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="study-3.html"><a href="study-3.html"><i class="fa fa-check"></i><b>3</b> Study 3</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="study-1.html"><a href="study-1.html#data-analysis"><i class="fa fa-check"></i><b>3.1</b> Data analysis</a></li>
+<li class="chapter" data-level="3.1" data-path="study-3.html"><a href="study-3.html#data-analysis-2"><i class="fa fa-check"></i><b>3.1</b> Data analysis</a></li>
 <li class="chapter" data-level="3.2" data-path="study-3.html"><a href="study-3.html#summary-of-study-3-results"><i class="fa fa-check"></i><b>3.2</b> Summary of Study 3 results</a></li>
 <li class="chapter" data-level="3.3" data-path="study-3.html"><a href="study-3.html#plot-study-3-results"><i class="fa fa-check"></i><b>3.3</b> Plot Study 3 results</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="study-4.html"><a href="study-4.html"><i class="fa fa-check"></i><b>4</b> Study 4</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="study-1.html"><a href="study-1.html#data-analysis"><i class="fa fa-check"></i><b>4.1</b> Data analysis</a></li>
+<li class="chapter" data-level="4.1" data-path="study-4.html"><a href="study-4.html#data-analysis-3"><i class="fa fa-check"></i><b>4.1</b> Data analysis</a></li>
 <li class="chapter" data-level="4.2" data-path="study-4.html"><a href="study-4.html#summary-of-study-4-results"><i class="fa fa-check"></i><b>4.2</b> Summary of Study 4 results</a></li>
 <li class="chapter" data-level="4.3" data-path="study-4.html"><a href="study-4.html#plots-of-study-4-results"><i class="fa fa-check"></i><b>4.3</b> Plots of Study 4 results</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="study-5.html"><a href="study-5.html"><i class="fa fa-check"></i><b>5</b> Study 5</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="study-1.html"><a href="study-1.html#data-analysis"><i class="fa fa-check"></i><b>5.1</b> Data analysis</a></li>
+<li class="chapter" data-level="5.1" data-path="study-5.html"><a href="study-5.html#data-analysis-4"><i class="fa fa-check"></i><b>5.1</b> Data analysis</a></li>
 <li class="chapter" data-level="5.2" data-path="study-5.html"><a href="study-5.html#summary-of-study-5-results"><i class="fa fa-check"></i><b>5.2</b> Summary of Study 5 results</a></li>
 <li class="chapter" data-level="5.3" data-path="study-5.html"><a href="study-5.html#plots-of-study-5-results"><i class="fa fa-check"></i><b>5.3</b> Plots of Study 5 results</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="study-6.html"><a href="study-6.html"><i class="fa fa-check"></i><b>6</b> Study 6</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="study-1.html"><a href="study-1.html#data-analysis"><i class="fa fa-check"></i><b>6.1</b> Data analysis</a></li>
+<li class="chapter" data-level="6.1" data-path="study-6.html"><a href="study-6.html#data-analysis-5"><i class="fa fa-check"></i><b>6.1</b> Data analysis</a></li>
 <li class="chapter" data-level="6.2" data-path="study-6.html"><a href="study-6.html#summary-of-study-6-results"><i class="fa fa-check"></i><b>6.2</b> Summary of Study 6 results</a></li>
 <li class="chapter" data-level="6.3" data-path="study-6.html"><a href="study-6.html#plots-of-study-6-results"><i class="fa fa-check"></i><b>6.3</b> Plots of Study 6 results</a></li>
 </ul></li>
@@ -230,7 +230,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Psychonomics Bulletin and Review - Supplementary Materials - R Code &amp; Results</h1>
 <p class="author"><em>Trémolière B &amp; Gosling CJ</em></p>
-<p class="date"><em>2021-02-26</em></p>
+<p class="date"><em>2021-04-15</em></p>
 </div>
 <div id="introduction" class="section level1 unnumbered">
 <h1>Introduction</h1>
@@ -495,7 +495,7 @@ Raw data are available in supplementary materials. Any question about this suppl
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#mgrbsylvvb .gt_table {
+#kbgudqtagb .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -520,7 +520,7 @@ Raw data are available in supplementary materials. Any question about this suppl
   border-left-color: #D3D3D3;
 }
 
-#mgrbsylvvb .gt_heading {
+#kbgudqtagb .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -532,7 +532,7 @@ Raw data are available in supplementary materials. Any question about this suppl
   border-right-color: #D3D3D3;
 }
 
-#mgrbsylvvb .gt_title {
+#kbgudqtagb .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -542,7 +542,7 @@ Raw data are available in supplementary materials. Any question about this suppl
   border-bottom-width: 0;
 }
 
-#mgrbsylvvb .gt_subtitle {
+#kbgudqtagb .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -552,13 +552,13 @@ Raw data are available in supplementary materials. Any question about this suppl
   border-top-width: 0;
 }
 
-#mgrbsylvvb .gt_bottom_border {
+#kbgudqtagb .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#mgrbsylvvb .gt_col_headings {
+#kbgudqtagb .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -573,7 +573,7 @@ Raw data are available in supplementary materials. Any question about this suppl
   border-right-color: #D3D3D3;
 }
 
-#mgrbsylvvb .gt_col_heading {
+#kbgudqtagb .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -593,7 +593,7 @@ Raw data are available in supplementary materials. Any question about this suppl
   overflow-x: hidden;
 }
 
-#mgrbsylvvb .gt_column_spanner_outer {
+#kbgudqtagb .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -605,15 +605,15 @@ Raw data are available in supplementary materials. Any question about this suppl
   padding-right: 4px;
 }
 
-#mgrbsylvvb .gt_column_spanner_outer:first-child {
+#kbgudqtagb .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#mgrbsylvvb .gt_column_spanner_outer:last-child {
+#kbgudqtagb .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#mgrbsylvvb .gt_column_spanner {
+#kbgudqtagb .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -625,7 +625,7 @@ Raw data are available in supplementary materials. Any question about this suppl
   width: 100%;
 }
 
-#mgrbsylvvb .gt_group_heading {
+#kbgudqtagb .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -647,7 +647,7 @@ Raw data are available in supplementary materials. Any question about this suppl
   vertical-align: middle;
 }
 
-#mgrbsylvvb .gt_empty_group_heading {
+#kbgudqtagb .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -662,15 +662,15 @@ Raw data are available in supplementary materials. Any question about this suppl
   vertical-align: middle;
 }
 
-#mgrbsylvvb .gt_from_md > :first-child {
+#kbgudqtagb .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#mgrbsylvvb .gt_from_md > :last-child {
+#kbgudqtagb .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#mgrbsylvvb .gt_row {
+#kbgudqtagb .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -689,7 +689,7 @@ Raw data are available in supplementary materials. Any question about this suppl
   overflow-x: hidden;
 }
 
-#mgrbsylvvb .gt_stub {
+#kbgudqtagb .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -701,7 +701,7 @@ Raw data are available in supplementary materials. Any question about this suppl
   padding-left: 12px;
 }
 
-#mgrbsylvvb .gt_summary_row {
+#kbgudqtagb .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -711,7 +711,7 @@ Raw data are available in supplementary materials. Any question about this suppl
   padding-right: 5px;
 }
 
-#mgrbsylvvb .gt_first_summary_row {
+#kbgudqtagb .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -721,7 +721,7 @@ Raw data are available in supplementary materials. Any question about this suppl
   border-top-color: #D3D3D3;
 }
 
-#mgrbsylvvb .gt_grand_summary_row {
+#kbgudqtagb .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -731,7 +731,7 @@ Raw data are available in supplementary materials. Any question about this suppl
   padding-right: 5px;
 }
 
-#mgrbsylvvb .gt_first_grand_summary_row {
+#kbgudqtagb .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -741,11 +741,11 @@ Raw data are available in supplementary materials. Any question about this suppl
   border-top-color: #D3D3D3;
 }
 
-#mgrbsylvvb .gt_striped {
+#kbgudqtagb .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#mgrbsylvvb .gt_table_body {
+#kbgudqtagb .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -754,7 +754,7 @@ Raw data are available in supplementary materials. Any question about this suppl
   border-bottom-color: #D3D3D3;
 }
 
-#mgrbsylvvb .gt_footnotes {
+#kbgudqtagb .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -768,13 +768,13 @@ Raw data are available in supplementary materials. Any question about this suppl
   border-right-color: #D3D3D3;
 }
 
-#mgrbsylvvb .gt_footnote {
+#kbgudqtagb .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#mgrbsylvvb .gt_sourcenotes {
+#kbgudqtagb .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -788,46 +788,46 @@ Raw data are available in supplementary materials. Any question about this suppl
   border-right-color: #D3D3D3;
 }
 
-#mgrbsylvvb .gt_sourcenote {
+#kbgudqtagb .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#mgrbsylvvb .gt_left {
+#kbgudqtagb .gt_left {
   text-align: left;
 }
 
-#mgrbsylvvb .gt_center {
+#kbgudqtagb .gt_center {
   text-align: center;
 }
 
-#mgrbsylvvb .gt_right {
+#kbgudqtagb .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#mgrbsylvvb .gt_font_normal {
+#kbgudqtagb .gt_font_normal {
   font-weight: normal;
 }
 
-#mgrbsylvvb .gt_font_bold {
+#kbgudqtagb .gt_font_bold {
   font-weight: bold;
 }
 
-#mgrbsylvvb .gt_font_italic {
+#kbgudqtagb .gt_font_italic {
   font-style: italic;
 }
 
-#mgrbsylvvb .gt_super {
+#kbgudqtagb .gt_super {
   font-size: 65%;
 }
 
-#mgrbsylvvb .gt_footnote_marks {
+#kbgudqtagb .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
 </style>
-<div id="mgrbsylvvb" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+<div id="kbgudqtagb" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
   
   <thead class="gt_col_headings">
     <tr>
@@ -947,7 +947,7 @@ Raw data are available in supplementary materials. Any question about this suppl
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#ebqnddzlqk .gt_table {
+#mavqpihqqi .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -972,7 +972,7 @@ Raw data are available in supplementary materials. Any question about this suppl
   border-left-color: #D3D3D3;
 }
 
-#ebqnddzlqk .gt_heading {
+#mavqpihqqi .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -984,7 +984,7 @@ Raw data are available in supplementary materials. Any question about this suppl
   border-right-color: #D3D3D3;
 }
 
-#ebqnddzlqk .gt_title {
+#mavqpihqqi .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -994,7 +994,7 @@ Raw data are available in supplementary materials. Any question about this suppl
   border-bottom-width: 0;
 }
 
-#ebqnddzlqk .gt_subtitle {
+#mavqpihqqi .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1004,13 +1004,13 @@ Raw data are available in supplementary materials. Any question about this suppl
   border-top-width: 0;
 }
 
-#ebqnddzlqk .gt_bottom_border {
+#mavqpihqqi .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ebqnddzlqk .gt_col_headings {
+#mavqpihqqi .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1025,7 +1025,7 @@ Raw data are available in supplementary materials. Any question about this suppl
   border-right-color: #D3D3D3;
 }
 
-#ebqnddzlqk .gt_col_heading {
+#mavqpihqqi .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1045,7 +1045,7 @@ Raw data are available in supplementary materials. Any question about this suppl
   overflow-x: hidden;
 }
 
-#ebqnddzlqk .gt_column_spanner_outer {
+#mavqpihqqi .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1057,15 +1057,15 @@ Raw data are available in supplementary materials. Any question about this suppl
   padding-right: 4px;
 }
 
-#ebqnddzlqk .gt_column_spanner_outer:first-child {
+#mavqpihqqi .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ebqnddzlqk .gt_column_spanner_outer:last-child {
+#mavqpihqqi .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ebqnddzlqk .gt_column_spanner {
+#mavqpihqqi .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1077,7 +1077,7 @@ Raw data are available in supplementary materials. Any question about this suppl
   width: 100%;
 }
 
-#ebqnddzlqk .gt_group_heading {
+#mavqpihqqi .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1099,7 +1099,7 @@ Raw data are available in supplementary materials. Any question about this suppl
   vertical-align: middle;
 }
 
-#ebqnddzlqk .gt_empty_group_heading {
+#mavqpihqqi .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1114,15 +1114,15 @@ Raw data are available in supplementary materials. Any question about this suppl
   vertical-align: middle;
 }
 
-#ebqnddzlqk .gt_from_md > :first-child {
+#mavqpihqqi .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ebqnddzlqk .gt_from_md > :last-child {
+#mavqpihqqi .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ebqnddzlqk .gt_row {
+#mavqpihqqi .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1141,7 +1141,7 @@ Raw data are available in supplementary materials. Any question about this suppl
   overflow-x: hidden;
 }
 
-#ebqnddzlqk .gt_stub {
+#mavqpihqqi .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1153,7 +1153,7 @@ Raw data are available in supplementary materials. Any question about this suppl
   padding-left: 12px;
 }
 
-#ebqnddzlqk .gt_summary_row {
+#mavqpihqqi .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1163,7 +1163,7 @@ Raw data are available in supplementary materials. Any question about this suppl
   padding-right: 5px;
 }
 
-#ebqnddzlqk .gt_first_summary_row {
+#mavqpihqqi .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1173,7 +1173,7 @@ Raw data are available in supplementary materials. Any question about this suppl
   border-top-color: #D3D3D3;
 }
 
-#ebqnddzlqk .gt_grand_summary_row {
+#mavqpihqqi .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1183,7 +1183,7 @@ Raw data are available in supplementary materials. Any question about this suppl
   padding-right: 5px;
 }
 
-#ebqnddzlqk .gt_first_grand_summary_row {
+#mavqpihqqi .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1193,11 +1193,11 @@ Raw data are available in supplementary materials. Any question about this suppl
   border-top-color: #D3D3D3;
 }
 
-#ebqnddzlqk .gt_striped {
+#mavqpihqqi .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ebqnddzlqk .gt_table_body {
+#mavqpihqqi .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1206,7 +1206,7 @@ Raw data are available in supplementary materials. Any question about this suppl
   border-bottom-color: #D3D3D3;
 }
 
-#ebqnddzlqk .gt_footnotes {
+#mavqpihqqi .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1220,13 +1220,13 @@ Raw data are available in supplementary materials. Any question about this suppl
   border-right-color: #D3D3D3;
 }
 
-#ebqnddzlqk .gt_footnote {
+#mavqpihqqi .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#ebqnddzlqk .gt_sourcenotes {
+#mavqpihqqi .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1240,119 +1240,119 @@ Raw data are available in supplementary materials. Any question about this suppl
   border-right-color: #D3D3D3;
 }
 
-#ebqnddzlqk .gt_sourcenote {
+#mavqpihqqi .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#ebqnddzlqk .gt_left {
+#mavqpihqqi .gt_left {
   text-align: left;
 }
 
-#ebqnddzlqk .gt_center {
+#mavqpihqqi .gt_center {
   text-align: center;
 }
 
-#ebqnddzlqk .gt_right {
+#mavqpihqqi .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ebqnddzlqk .gt_font_normal {
+#mavqpihqqi .gt_font_normal {
   font-weight: normal;
 }
 
-#ebqnddzlqk .gt_font_bold {
+#mavqpihqqi .gt_font_bold {
   font-weight: bold;
 }
 
-#ebqnddzlqk .gt_font_italic {
+#mavqpihqqi .gt_font_italic {
   font-style: italic;
 }
 
-#ebqnddzlqk .gt_super {
+#mavqpihqqi .gt_super {
   font-size: 65%;
 }
 
-#ebqnddzlqk .gt_footnote_marks {
+#mavqpihqqi .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
 </style>
-<div id="ebqnddzlqk" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+<div id="mavqpihqqi" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
   
   <thead class="gt_col_headings">
     <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Study</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Mean score (SD) at sacrificial dilemmas</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Mean score (SD) at moral scale</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Mean score (SD) at autonomours car dilemmas</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Mean quantity (SD) of chronic sleep (hours)</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Mean quantity (SD) of acute sleep (hours)</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Mean quality (SD) of chronic sleep</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Mean quality (SD) of acute sleep</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Study</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Mean score (SD) at sacrificial dilemmas</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Mean score (SD) at moral scale</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Mean score (SD) at autonomours car dilemmas</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Mean quantity (SD) of chronic sleep (hours)</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Mean quantity (SD) of acute sleep (hours)</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Mean quality (SD) of chronic sleep</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Mean quality (SD) of acute sleep</th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
     <tr>
-      <td class="gt_row gt_center">1</td>
-      <td class="gt_row gt_center">49.81 (29.6)</td>
-      <td class="gt_row gt_center">NA (NA)</td>
-      <td class="gt_row gt_center">NA (NA)</td>
-      <td class="gt_row gt_center">6.68 (1.32)</td>
-      <td class="gt_row gt_center">6.52 (1.46)</td>
-      <td class="gt_row gt_center">6.19 (2.24)</td>
-      <td class="gt_row gt_center">6.28 (2.52)</td>
+      <td class="gt_row gt_left">1</td>
+      <td class="gt_row gt_left">49.81 (29.6)</td>
+      <td class="gt_row gt_left">NA (NA)</td>
+      <td class="gt_row gt_left">NA (NA)</td>
+      <td class="gt_row gt_left">6.68 (1.32)</td>
+      <td class="gt_row gt_left">6.52 (1.46)</td>
+      <td class="gt_row gt_left">6.19 (2.24)</td>
+      <td class="gt_row gt_left">6.28 (2.52)</td>
     </tr>
     <tr>
-      <td class="gt_row gt_center">2</td>
-      <td class="gt_row gt_center">NA (NA)</td>
-      <td class="gt_row gt_center">34.1 (4.4)</td>
-      <td class="gt_row gt_center">NA (NA)</td>
-      <td class="gt_row gt_center">7.02 (0.98)</td>
-      <td class="gt_row gt_center">6.89 (1.27)</td>
-      <td class="gt_row gt_center">6.42 (2.16)</td>
-      <td class="gt_row gt_center">6.84 (2.18)</td>
+      <td class="gt_row gt_left">2</td>
+      <td class="gt_row gt_left">NA (NA)</td>
+      <td class="gt_row gt_left">34.1 (4.4)</td>
+      <td class="gt_row gt_left">NA (NA)</td>
+      <td class="gt_row gt_left">7.02 (0.98)</td>
+      <td class="gt_row gt_left">6.89 (1.27)</td>
+      <td class="gt_row gt_left">6.42 (2.16)</td>
+      <td class="gt_row gt_left">6.84 (2.18)</td>
     </tr>
     <tr>
-      <td class="gt_row gt_center">3</td>
-      <td class="gt_row gt_center">NA (NA)</td>
-      <td class="gt_row gt_center">37.08 (3.98)</td>
-      <td class="gt_row gt_center">NA (NA)</td>
-      <td class="gt_row gt_center">7.13 (1.48)</td>
-      <td class="gt_row gt_center">7.29 (1.68)</td>
-      <td class="gt_row gt_center">5.23 (2.06)</td>
-      <td class="gt_row gt_center">5.63 (2.28)</td>
+      <td class="gt_row gt_left">3</td>
+      <td class="gt_row gt_left">NA (NA)</td>
+      <td class="gt_row gt_left">37.08 (3.98)</td>
+      <td class="gt_row gt_left">NA (NA)</td>
+      <td class="gt_row gt_left">7.13 (1.48)</td>
+      <td class="gt_row gt_left">7.29 (1.68)</td>
+      <td class="gt_row gt_left">5.23 (2.06)</td>
+      <td class="gt_row gt_left">5.63 (2.28)</td>
     </tr>
     <tr>
-      <td class="gt_row gt_center">4</td>
-      <td class="gt_row gt_center">58.51 (25.94)</td>
-      <td class="gt_row gt_center">33.55 (4.11)</td>
-      <td class="gt_row gt_center">0.82 (0.19)</td>
-      <td class="gt_row gt_center">7.19 (1.09)</td>
-      <td class="gt_row gt_center">7 (1.32)</td>
-      <td class="gt_row gt_center">14.29 (3.69)</td>
-      <td class="gt_row gt_center">6.77 (2.19)</td>
+      <td class="gt_row gt_left">4</td>
+      <td class="gt_row gt_left">58.51 (25.94)</td>
+      <td class="gt_row gt_left">33.55 (4.11)</td>
+      <td class="gt_row gt_left">0.82 (0.19)</td>
+      <td class="gt_row gt_left">7.19 (1.09)</td>
+      <td class="gt_row gt_left">7 (1.32)</td>
+      <td class="gt_row gt_left">14.29 (3.69)</td>
+      <td class="gt_row gt_left">6.77 (2.19)</td>
     </tr>
     <tr>
-      <td class="gt_row gt_center">5</td>
-      <td class="gt_row gt_center">43.05 (23.07)</td>
-      <td class="gt_row gt_center">36.75 (4.38)</td>
-      <td class="gt_row gt_center">NA (NA)</td>
-      <td class="gt_row gt_center">8.22 (1.23)</td>
-      <td class="gt_row gt_center">8.21 (1.95)</td>
-      <td class="gt_row gt_center">15.78 (2.84)</td>
-      <td class="gt_row gt_center">17.26 (2.24)</td>
+      <td class="gt_row gt_left">5</td>
+      <td class="gt_row gt_left">43.05 (23.07)</td>
+      <td class="gt_row gt_left">36.75 (4.38)</td>
+      <td class="gt_row gt_left">NA (NA)</td>
+      <td class="gt_row gt_left">8.22 (1.23)</td>
+      <td class="gt_row gt_left">8.21 (1.95)</td>
+      <td class="gt_row gt_left">15.78 (2.84)</td>
+      <td class="gt_row gt_left">17.26 (2.24)</td>
     </tr>
     <tr>
-      <td class="gt_row gt_center">6</td>
-      <td class="gt_row gt_center">34.18 (24.03)</td>
-      <td class="gt_row gt_center">34.81 (3.36)</td>
-      <td class="gt_row gt_center">NA (NA)</td>
-      <td class="gt_row gt_center">7.89 (1.05)</td>
-      <td class="gt_row gt_center">7.77 (1.25)</td>
-      <td class="gt_row gt_center">15.89 (2.67)</td>
-      <td class="gt_row gt_center">17.33 (1.83)</td>
+      <td class="gt_row gt_left">6</td>
+      <td class="gt_row gt_left">34.18 (24.03)</td>
+      <td class="gt_row gt_left">34.81 (3.36)</td>
+      <td class="gt_row gt_left">NA (NA)</td>
+      <td class="gt_row gt_left">7.89 (1.05)</td>
+      <td class="gt_row gt_left">7.77 (1.25)</td>
+      <td class="gt_row gt_left">15.89 (2.67)</td>
+      <td class="gt_row gt_left">17.33 (1.83)</td>
     </tr>
   </tbody>
   

@@ -95,5 +95,3 @@ DT::datatable(df.summary[df.summary$'Sleep Indicator'=="Quantity of Chronic Slee
 ```
 
 
-
-```

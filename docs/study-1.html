@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>1 Study 1 | Psychonomics Bulletin and Review - Supplementary Materials - R Code &amp; Results</title>
   <meta name="description" content="This books is designed to share the code underlying the main analyses and to present supplemental results of Tremolire &amp; Gosling (2021)" />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="1 Study 1 | Psychonomics Bulletin and Review - Supplementary Materials - R Code &amp; Results" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Trémolière B &amp; Gosling CJ" />
 
 
-<meta name="date" content="2021-02-26" />
+<meta name="date" content="2021-04-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +33,8 @@
   
 <link rel="prev" href="index.html"/>
 <link rel="next" href="study-2.html"/>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -51,14 +51,14 @@
 
 
 
-<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.15/datatables.js"></script>
+<script src="libs/datatables-binding-0.17/datatables.js"></script>
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
-<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
 
 
 <style type="text/css">
@@ -149,31 +149,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="study-2.html"><a href="study-2.html"><i class="fa fa-check"></i><b>2</b> Study 2</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="study-1.html"><a href="study-1.html#data-analysis"><i class="fa fa-check"></i><b>2.1</b> Data analysis</a></li>
+<li class="chapter" data-level="2.1" data-path="study-2.html"><a href="study-2.html#data-analysis-1"><i class="fa fa-check"></i><b>2.1</b> Data analysis</a></li>
 <li class="chapter" data-level="2.2" data-path="study-2.html"><a href="study-2.html#summary-of-study-2-results"><i class="fa fa-check"></i><b>2.2</b> Summary of Study 2 results</a></li>
 <li class="chapter" data-level="2.3" data-path="study-2.html"><a href="study-2.html#plot-study-2-results"><i class="fa fa-check"></i><b>2.3</b> Plot Study 2 Results</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="study-3.html"><a href="study-3.html"><i class="fa fa-check"></i><b>3</b> Study 3</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="study-1.html"><a href="study-1.html#data-analysis"><i class="fa fa-check"></i><b>3.1</b> Data analysis</a></li>
+<li class="chapter" data-level="3.1" data-path="study-3.html"><a href="study-3.html#data-analysis-2"><i class="fa fa-check"></i><b>3.1</b> Data analysis</a></li>
 <li class="chapter" data-level="3.2" data-path="study-3.html"><a href="study-3.html#summary-of-study-3-results"><i class="fa fa-check"></i><b>3.2</b> Summary of Study 3 results</a></li>
 <li class="chapter" data-level="3.3" data-path="study-3.html"><a href="study-3.html#plot-study-3-results"><i class="fa fa-check"></i><b>3.3</b> Plot Study 3 results</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="study-4.html"><a href="study-4.html"><i class="fa fa-check"></i><b>4</b> Study 4</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="study-1.html"><a href="study-1.html#data-analysis"><i class="fa fa-check"></i><b>4.1</b> Data analysis</a></li>
+<li class="chapter" data-level="4.1" data-path="study-4.html"><a href="study-4.html#data-analysis-3"><i class="fa fa-check"></i><b>4.1</b> Data analysis</a></li>
 <li class="chapter" data-level="4.2" data-path="study-4.html"><a href="study-4.html#summary-of-study-4-results"><i class="fa fa-check"></i><b>4.2</b> Summary of Study 4 results</a></li>
 <li class="chapter" data-level="4.3" data-path="study-4.html"><a href="study-4.html#plots-of-study-4-results"><i class="fa fa-check"></i><b>4.3</b> Plots of Study 4 results</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="study-5.html"><a href="study-5.html"><i class="fa fa-check"></i><b>5</b> Study 5</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="study-1.html"><a href="study-1.html#data-analysis"><i class="fa fa-check"></i><b>5.1</b> Data analysis</a></li>
+<li class="chapter" data-level="5.1" data-path="study-5.html"><a href="study-5.html#data-analysis-4"><i class="fa fa-check"></i><b>5.1</b> Data analysis</a></li>
 <li class="chapter" data-level="5.2" data-path="study-5.html"><a href="study-5.html#summary-of-study-5-results"><i class="fa fa-check"></i><b>5.2</b> Summary of Study 5 results</a></li>
 <li class="chapter" data-level="5.3" data-path="study-5.html"><a href="study-5.html#plots-of-study-5-results"><i class="fa fa-check"></i><b>5.3</b> Plots of Study 5 results</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="study-6.html"><a href="study-6.html"><i class="fa fa-check"></i><b>6</b> Study 6</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="study-1.html"><a href="study-1.html#data-analysis"><i class="fa fa-check"></i><b>6.1</b> Data analysis</a></li>
+<li class="chapter" data-level="6.1" data-path="study-6.html"><a href="study-6.html#data-analysis-5"><i class="fa fa-check"></i><b>6.1</b> Data analysis</a></li>
 <li class="chapter" data-level="6.2" data-path="study-6.html"><a href="study-6.html#summary-of-study-6-results"><i class="fa fa-check"></i><b>6.2</b> Summary of Study 6 results</a></li>
 <li class="chapter" data-level="6.3" data-path="study-6.html"><a href="study-6.html#plots-of-study-6-results"><i class="fa fa-check"></i><b>6.3</b> Plots of Study 6 results</a></li>
 </ul></li>
@@ -335,11 +335,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb16-8"><a href="study-1.html#cb16-8" aria-hidden="true" tabindex="-1"></a>     <span class="fu">length</span>(GEE_SleepQuantAcuS1<span class="sc">$</span>fitted.values)<span class="sc">/</span><span class="dv">11</span>)</span>
 <span id="cb16-9"><a href="study-1.html#cb16-9" aria-hidden="true" tabindex="-1"></a>ResultsStudy1<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="st">&quot;Sleep Indicator&quot;</span><span class="ot">=</span>SleepMarker, <span class="st">&quot;Unstandardized Slope&quot;</span><span class="ot">=</span>bGEES1, <span class="st">&quot;Standard Errors&quot;</span><span class="ot">=</span>SEGEES1, <span class="st">&quot;p values&quot;</span><span class="ot">=</span>pvalGEES1, <span class="st">&quot;N&quot;</span><span class="ot">=</span>NS1)</span>
 <span id="cb16-10"><a href="study-1.html#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="fu">gt</span>(ResultsStudy1)</span></code></pre></div>
-<p><style>html {
+<style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#zjjmyclbrd .gt_table {
+#xmpnuxwdpl .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -364,7 +364,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-left-color: #D3D3D3;
 }
 
-#zjjmyclbrd .gt_heading {
+#xmpnuxwdpl .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -376,7 +376,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#zjjmyclbrd .gt_title {
+#xmpnuxwdpl .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -386,7 +386,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-width: 0;
 }
 
-#zjjmyclbrd .gt_subtitle {
+#xmpnuxwdpl .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -396,13 +396,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-width: 0;
 }
 
-#zjjmyclbrd .gt_bottom_border {
+#xmpnuxwdpl .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#zjjmyclbrd .gt_col_headings {
+#xmpnuxwdpl .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -417,7 +417,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#zjjmyclbrd .gt_col_heading {
+#xmpnuxwdpl .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -437,7 +437,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#zjjmyclbrd .gt_column_spanner_outer {
+#xmpnuxwdpl .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -449,15 +449,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 4px;
 }
 
-#zjjmyclbrd .gt_column_spanner_outer:first-child {
+#xmpnuxwdpl .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#zjjmyclbrd .gt_column_spanner_outer:last-child {
+#xmpnuxwdpl .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#zjjmyclbrd .gt_column_spanner {
+#xmpnuxwdpl .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -469,7 +469,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   width: 100%;
 }
 
-#zjjmyclbrd .gt_group_heading {
+#xmpnuxwdpl .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -491,7 +491,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#zjjmyclbrd .gt_empty_group_heading {
+#xmpnuxwdpl .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -506,15 +506,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#zjjmyclbrd .gt_from_md > :first-child {
+#xmpnuxwdpl .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#zjjmyclbrd .gt_from_md > :last-child {
+#xmpnuxwdpl .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#zjjmyclbrd .gt_row {
+#xmpnuxwdpl .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -533,7 +533,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#zjjmyclbrd .gt_stub {
+#xmpnuxwdpl .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -545,7 +545,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-left: 12px;
 }
 
-#zjjmyclbrd .gt_summary_row {
+#xmpnuxwdpl .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -555,7 +555,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#zjjmyclbrd .gt_first_summary_row {
+#xmpnuxwdpl .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -565,7 +565,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-color: #D3D3D3;
 }
 
-#zjjmyclbrd .gt_grand_summary_row {
+#xmpnuxwdpl .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -575,7 +575,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#zjjmyclbrd .gt_first_grand_summary_row {
+#xmpnuxwdpl .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -585,11 +585,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-color: #D3D3D3;
 }
 
-#zjjmyclbrd .gt_striped {
+#xmpnuxwdpl .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#zjjmyclbrd .gt_table_body {
+#xmpnuxwdpl .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -598,7 +598,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#zjjmyclbrd .gt_footnotes {
+#xmpnuxwdpl .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -612,13 +612,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#zjjmyclbrd .gt_footnote {
+#xmpnuxwdpl .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#zjjmyclbrd .gt_sourcenotes {
+#xmpnuxwdpl .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -632,50 +632,50 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#zjjmyclbrd .gt_sourcenote {
+#xmpnuxwdpl .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#zjjmyclbrd .gt_left {
+#xmpnuxwdpl .gt_left {
   text-align: left;
 }
 
-#zjjmyclbrd .gt_center {
+#xmpnuxwdpl .gt_center {
   text-align: center;
 }
 
-#zjjmyclbrd .gt_right {
+#xmpnuxwdpl .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#zjjmyclbrd .gt_font_normal {
+#xmpnuxwdpl .gt_font_normal {
   font-weight: normal;
 }
 
-#zjjmyclbrd .gt_font_bold {
+#xmpnuxwdpl .gt_font_bold {
   font-weight: bold;
 }
 
-#zjjmyclbrd .gt_font_italic {
+#xmpnuxwdpl .gt_font_italic {
   font-style: italic;
 }
 
-#zjjmyclbrd .gt_super {
+#xmpnuxwdpl .gt_super {
   font-size: 65%;
 }
 
-#zjjmyclbrd .gt_footnote_marks {
+#xmpnuxwdpl .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
 </style>
-<div id="zjjmyclbrd" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+<div id="xmpnuxwdpl" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
   
   <thead class="gt_col_headings">
     <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Sleep.Indicator</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Sleep.Indicator</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Unstandardized.Slope</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Standard.Errors</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">p.values</th>
@@ -684,28 +684,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </thead>
   <tbody class="gt_table_body">
     <tr>
-      <td class="gt_row gt_center">Quality Chronic</td>
+      <td class="gt_row gt_left">Quality Chronic</td>
       <td class="gt_row gt_right">0.03</td>
       <td class="gt_row gt_right">0.11</td>
       <td class="gt_row gt_right">0.99</td>
       <td class="gt_row gt_right">122</td>
     </tr>
     <tr>
-      <td class="gt_row gt_center">Quality Acute</td>
+      <td class="gt_row gt_left">Quality Acute</td>
       <td class="gt_row gt_right">0.11</td>
       <td class="gt_row gt_right">0.10</td>
       <td class="gt_row gt_right">0.99</td>
       <td class="gt_row gt_right">122</td>
     </tr>
     <tr>
-      <td class="gt_row gt_center">Quantity Chronic</td>
+      <td class="gt_row gt_left">Quantity Chronic</td>
       <td class="gt_row gt_right">0.00</td>
       <td class="gt_row gt_right">0.19</td>
       <td class="gt_row gt_right">0.99</td>
       <td class="gt_row gt_right">122</td>
     </tr>
     <tr>
-      <td class="gt_row gt_center">Quantity Acute</td>
+      <td class="gt_row gt_left">Quantity Acute</td>
       <td class="gt_row gt_right">0.14</td>
       <td class="gt_row gt_right">0.17</td>
       <td class="gt_row gt_right">0.99</td>
@@ -715,7 +715,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
   
 </table></div>
-<br>
+<p><br>
 </br></p>
 </div>
 <div id="plot-study-1-results" class="section level2" number="1.3">

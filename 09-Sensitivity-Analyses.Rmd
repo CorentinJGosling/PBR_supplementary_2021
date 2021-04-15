@@ -186,15 +186,15 @@ IdentifyOutlier<-function(x){
 
   #Identify large hat values (cut off = 3*mean(hat values)
   ifelse(x$HatQualCro>=3*mean(x$HatQualCro), 1, 0)->x$HatQualCroOUT
-  ifelse(x$HatQualCro>=3*mean(x$HatQualAcu), 1, 0)->x$HatQualAcuOUT
-  ifelse(x$HatQualCro>=3*mean(x$HatQuantCro), 1, 0)->x$HatQuantCroOUT
-  ifelse(x$HatQualCro>=3*mean(x$HatQuantAcu), 1, 0)->x$HatQuantAcuOUT
+  ifelse(x$HatQualAcu>=3*mean(x$HatQualAcu), 1, 0)->x$HatQualAcuOUT
+  ifelse(x$HatQuantCro>=3*mean(x$HatQuantCro), 1, 0)->x$HatQuantCroOUT
+  ifelse(x$HatQuantAcu>=3*mean(x$HatQuantAcu), 1, 0)->x$HatQuantAcuOUT
   
   #Identify large cooks' distance (cut off = 4/sample size)
   ifelse(x$CookQualCro>=4/nrow(x), 1, 0)->x$CookQualCroOUT
-  ifelse(x$CookQualCro>=4/nrow(x), 1, 0)->x$CookQualAcuOUT
-  ifelse(x$CookQualCro>=4/nrow(x), 1, 0)->x$CookQuantCroOUT
-  ifelse(x$CookQualCro>=4/nrow(x), 1, 0)->x$CookQuantAcuOUT
+  ifelse(x$CookQualAcu>=4/nrow(x), 1, 0)->x$CookQualAcuOUT
+  ifelse(x$CookQuantCro>=4/nrow(x), 1, 0)->x$CookQuantCroOUT
+  ifelse(x$CookQuantAcu>=4/nrow(x), 1, 0)->x$CookQuantAcuOUT
   x}
 ```
 

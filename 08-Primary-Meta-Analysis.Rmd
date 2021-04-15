@@ -261,7 +261,7 @@ CorCIFUNCTION<-function(x,y){
 }
 ```
 
-**Function extracting critical information from meta analyses (performed using metafor)**
+**Function extracting critical information from meta analyses**
 ```{r}
 ExtractMetaFUNCTION<-function(x){
   cbind(
@@ -297,23 +297,23 @@ ExtractHeterogeneityFUNCTION<-function(x, y){
 
 **Functions selecting appropriate data in the correlation or variance/covariance matrix (i.e., information regarding only the relationship between sleep and moral outcomes and not those regarding - for example - the relationship between 2 sleep indicators)**
 ```{r}
-FourPredictFUNCTION<-function(x){
+FourPredictFUNCTION <- function(x){
 x[str_detect(row.names(x), "Sleep") & str_detect(row.names(x), "Moral"),
   str_detect(colnames(x), "Sleep") & str_detect(colnames(x), "Moral")]}
 
-QualAcuPredictFUNCTION<-function(x){
+QualAcuPredictFUNCTION <- function(x){
 x[str_detect(row.names(x), "SleepQualAcu") & str_detect(row.names(x), "Moral"),
   str_detect(colnames(x), "SleepQualAcu") & str_detect(colnames(x), "Moral")]}  
 
-QualCroPredictFUNCTION<-function(x){
+QualCroPredictFUNCTION <- function(x){
 x[str_detect(row.names(x), "SleepQualCro") & str_detect(row.names(x), "Moral"),
   str_detect(colnames(x), "SleepQualCro") & str_detect(colnames(x), "Moral")]} 
 
-QuantAcuPredictFUNCTION<-function(x){
+QuantAcuPredictFUNCTION <- function(x){
 x[str_detect(row.names(x), "SleepQuantAcu") & str_detect(row.names(x), "Moral"),
   str_detect(colnames(x), "SleepQuantAcu") & str_detect(colnames(x), "Moral")]} 
 
-QuantCroPredictFUNCTION<-function(x){
+QuantCroPredictFUNCTION <- function(x){
 x[str_detect(row.names(x), "SleepQuantCro") & str_detect(row.names(x), "Moral"),
   str_detect(colnames(x), "SleepQuantCro") & str_detect(colnames(x), "Moral")]} 
 ```
@@ -394,10 +394,10 @@ V.Prim=bldiag(list(
 # We simplified the structure by requesting a HCS structure
 # We correct the 95%CI with a bonferroni procedure due to the 4 assessments of our hypothesis
 Meta.Prim<-rma.mv(yi,V.Prim, 
-                  mods=~Predictor-1, 
+                  mods = ~Predictor-1, 
                   random = ~ Out.Pred | Study, 
-                  struct="HCS", 
-                  data=ES.Prim, level=100-(5/4))
+                  struct = "HCS", 
+                  data = ES.Prim, level = 100 - (5/4))
 ```
 
 ## Summary of the results of the primary meta-analysis and of the individual studies
@@ -466,12 +466,13 @@ gt(cbind(Heterogeneity.Prim[5:12,1:2], Heterogeneity.Prim2[5:12,])) %>%
 
 #Overall heterogeneity is low. The highest heterogeneity is found for the association between moral dilemmas and chronic sleep quality. Despite this, effect sizes remained systematically low.
 
-gt(df.Results.Prim[df.Results.Prim$Outcome=="Dilemmas" & df.Results.Prim$SleepIndicator=="Quality of Chronic Sleep",])
+gt(subset(df.Results.Prim[df.Results.Prim$Outcome=="Dilemmas" & df.Results.Prim$SleepIndicator=="Quality of Chronic Sleep",], select = -c(p.val, Adj.p.val, Cochran.Q, Cochran.Q.p.val, TOST, ES.ID))) %>% 
+  fmt_number(
+    columns = 5:7,
+    decimals = 3)
 ```
 
 ## Plot of the primary meta-analysis results
-
-**we scaled the size of the dots of each study by the inverse of its variance**
 
 ```{r, fig.width = 8, fig.height = 7}
 df.graph.prim<-df.Results.Prim
@@ -545,7 +546,7 @@ p<-ggplot(data=df.graph.prim)+
               "#60C3FF"), 
     name="",
     guide=guide_legend(reverse=T)) + #+
-  scale_size_manual(values=c(6,rev(var.studies/30)))#c(1, rep(4, 6)) 
+  scale_size_manual(values=c(5, rep(2, 6)) )#c(1, rep(4, 6)) 
 
 p+guides( shape=FALSE,fill = FALSE,  size=FALSE,linetype=FALSE)#
 
